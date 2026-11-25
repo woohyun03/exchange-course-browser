@@ -14,7 +14,7 @@ function message(text) {
 }
 
 async function fetchAsset(path) {
-  const response = await fetch(new URL(path, root));
+  const response = await fetch(new URL(path, root), { cache: "no-cache" });
   if (!response.ok) {
     throw new Error(`Could not load ${path}`);
   }
@@ -79,14 +79,15 @@ function showTable(columns, rows, labels, limit) {
 }
 
 async function displayResults() {
-  const fields = [...form.querySelectorAll("[name]")];
+  const fields = [...form.querySelectorAll("[name]:not([data-plan-context])")];
   if (!fields.some((field) => params.has(field.name))) return;
 
   const bindings = {};
   for (const field of fields) {
     const raw = (params.get(field.name) ?? "").trim();
     field.value = raw;
-    if (!field.checkValidity() || (field.required && field.value === "")) {
+    const disabledOption = field instanceof HTMLSelectElement && field.selectedOptions[0]?.disabled;
+    if (!field.checkValidity() || disabledOption || (field.required && field.value === "")) {
       message("Check your inputs and run the search again.");
       return;
     }

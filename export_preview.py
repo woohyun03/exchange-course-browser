@@ -1,5 +1,6 @@
 """Export the Flask templates and queries for a browser-only team preview."""
 
+from hashlib import sha256
 import json
 import os
 from pathlib import Path
@@ -60,6 +61,9 @@ def export_url(endpoint, **values):
         target += "/"
     current_directory = request.path if request.path == "/" else request.path + "/"
     relative = posixpath.relpath(target, start=current_directory)
+    if endpoint == "static":
+        asset = SITE / "static" / values["filename"]
+        return relative + "?v=" + sha256(asset.read_bytes()).hexdigest()[:12]
     return relative + "/" if target.endswith("/") else relative
 
 
@@ -67,7 +71,8 @@ def main():
     SITE.mkdir(exist_ok=True)
     static = SITE / "static"
     static.mkdir(exist_ok=True)
-    shutil.copyfile(PROJECT / "app/static/style.css", static / "style.css")
+    for asset in ("style.css", "plan.js"):
+        shutil.copyfile(PROJECT / "app/static" / asset, static / asset)
     (SITE / ".nojekyll").touch()
 
     preview_db = SITE / ".app.db.new"

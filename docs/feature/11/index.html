@@ -4,23 +4,24 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Check timetable clashes · Exchange Student Course Browser</title>
-  <link rel="stylesheet" href="../../static/style.css">
+  <link rel="stylesheet" href="../../static/style.css?v=c8fd3053e0f9">
 </head>
 <body>
 
 <header class="topbar">
-  <a class="brand" href="../../">Exchange Student Course Browser</a>
+  <a class="brand" href="../../" data-plan-link>Exchange Student Course Browser</a>
 
-  <nav aria-label="Main navigation"><a href="../../">All tools</a></nav>
+  <nav aria-label="Main navigation"><a href="../../" data-plan-link>All tools</a></nav>
 
 </header>
 <main>
+  <p class="plan-route" data-plan-route hidden></p>
 
 <h1 class="feature-title">Check timetable clashes</h1>
 <p class="dim feature-description">Find other classes at the same exchange university that overlap a selected class.</p>
 
 
-<form class="block form" data-feature="11" method="get" action="./">
+<form class="block form" data-feature="11" method="get" action="./" data-preserve-plan>
 
   <label>
     <span class="label">Class offering</span>
@@ -28,307 +29,911 @@
       <select name="offering_id" required>
         <option value="">— choose —</option>
 
-        <option value="109" >Abnormal Psychology - University College London - Sem 1, Mon 14:30-17:30 (#109)</option>
 
-        <option value="110" >Abnormal Psychology - University College London - Sem 2, Tue 09:30-10:30 (#110)</option>
 
-        <option value="35" >Abnormal Psychology - University of Toronto - Sem 1, Wed 09:00-10:00 (#35)</option>
+        <option value="109"
+          data-destination="3"
+          data-semester="Sem 1">Abnormal Psychology - University College London - Sem 1, Mon 14:30-17:30 (#109)</option>
 
-        <option value="36" >Abnormal Psychology - University of Toronto - Sem 2, Mon 12:00-14:00 (#36)</option>
 
-        <option value="86" >Advanced Calculus - University College London - Sem 1, Mon 11:30-14:30 (#86)</option>
 
-        <option value="87" >Advanced Calculus - University College London - Sem 2, Thu 10:30-12:30 (#87)</option>
+        <option value="110"
+          data-destination="3"
+          data-semester="Sem 2">Abnormal Psychology - University College London - Sem 2, Tue 09:30-10:30 (#110)</option>
 
-        <option value="10" >Advanced Calculus - University of Toronto - Sem 2, Wed 10:30-12:30 (#10)</option>
 
-        <option value="11" >Algebra I - University of Toronto - Sem 2, Fri 16:00-17:00 (#11)</option>
 
-        <option value="116" >Analytical Mechanics - University College London - Sem 1, Tue 09:00-11:00 (#116)</option>
+        <option value="35"
+          data-destination="2"
+          data-semester="Sem 1">Abnormal Psychology - University of Toronto - Sem 1, Wed 09:00-10:00 (#35)</option>
 
-        <option value="93" >Applied Econometrics - University College London - Sem 1, Mon 16:30-19:30 (#93)</option>
 
-        <option value="17" >Applied Econometrics - University of Toronto - Sem 1, Wed 14:00-15:00 (#17)</option>
 
-        <option value="18" >Applied Econometrics - University of Toronto - Sem 2, Mon 16:30-18:30 (#18)</option>
+        <option value="36"
+          data-destination="2"
+          data-semester="Sem 2">Abnormal Psychology - University of Toronto - Sem 2, Mon 12:00-14:00 (#36)</option>
 
-        <option value="84" >Applied Linear Algebra - University College London - Sem 2, Fri 13:00-14:00 (#84)</option>
 
-        <option value="118" >Astrophysics - University College London - Sem 1, Wed 14:00-16:00 (#118)</option>
 
-        <option value="119" >Astrophysics - University College London - Sem 2, Wed 12:30-13:30 (#119)</option>
+        <option value="86"
+          data-destination="3"
+          data-semester="Sem 1">Advanced Calculus - University College London - Sem 1, Mon 11:30-14:30 (#86)</option>
 
-        <option value="103" >Behavioural Finance - University College London - Sem 2, Thu 09:30-11:30 (#103)</option>
 
-        <option value="28" >Behavioural Finance - University of Toronto - Sem 2, Mon 16:30-17:30 (#28)</option>
 
-        <option value="104" >Biopsychology - University College London - Sem 2, Mon 16:30-18:30 (#104)</option>
+        <option value="87"
+          data-destination="3"
+          data-semester="Sem 2">Advanced Calculus - University College London - Sem 2, Thu 10:30-12:30 (#87)</option>
 
-        <option value="30" >Brain and Behaviour - University of Toronto - Sem 2, Fri 13:30-14:30 (#30)</option>
 
-        <option value="139" >Brand Management - University College London - Sem 1, Mon 11:00-12:00 (#139)</option>
 
-        <option value="64" >Brand Management - University of Toronto - Sem 2, Tue 12:30-13:30 (#64)</option>
+        <option value="10"
+          data-destination="2"
+          data-semester="Sem 2">Advanced Calculus - University of Toronto - Sem 2, Wed 10:30-12:30 (#10)</option>
 
-        <option value="100" >Business Finance - University College London - Sem 1, Fri 10:00-11:00 (#100)</option>
 
-        <option value="75" >Buyer Behaviour - University of Toronto - Sem 2, Fri 13:30-15:30 (#75)</option>
 
-        <option value="130" >Classical Civilisations - University College London - Sem 2, Mon 09:30-12:30 (#130)</option>
+        <option value="11"
+          data-destination="2"
+          data-semester="Sem 2">Algebra I - University of Toronto - Sem 2, Fri 16:00-17:00 (#11)</option>
 
-        <option value="31" >Cognition - University of Toronto - Sem 1, Fri 09:00-11:00 (#31)</option>
 
-        <option value="32" >Cognition - University of Toronto - Sem 2, Wed 14:00-16:00 (#32)</option>
 
-        <option value="128" >Cold War Politics - University College London - Sem 2, Wed 10:00-12:00 (#128)</option>
+        <option value="116"
+          data-destination="3"
+          data-semester="Sem 1">Analytical Mechanics - University College London - Sem 1, Tue 09:00-11:00 (#116)</option>
 
-        <option value="52" >Cold War Politics - University of Toronto - Sem 1, Fri 09:00-11:00 (#52)</option>
 
-        <option value="58" >Colonialism and Empire - University of Toronto - Sem 2, Fri 09:30-12:30 (#58)</option>
 
-        <option value="9" >Combinatorics and Graph Theory - University of Toronto - Sem 2, Fri 16:00-18:00 (#9)</option>
+        <option value="93"
+          data-destination="3"
+          data-semester="Sem 1">Applied Econometrics - University College London - Sem 1, Mon 16:30-19:30 (#93)</option>
 
-        <option value="89" >Complex Analysis - University College London - Sem 1, Wed 13:30-14:30 (#89)</option>
 
-        <option value="80" >Computer Graphics - University College London - Sem 1, Tue 12:00-14:00 (#80)</option>
 
-        <option value="81" >Computer Graphics - University College London - Sem 2, Fri 12:30-13:30 (#81)</option>
+        <option value="17"
+          data-destination="2"
+          data-semester="Sem 1">Applied Econometrics - University of Toronto - Sem 1, Wed 14:00-15:00 (#17)</option>
 
-        <option value="6" >Computer Graphics - University of Toronto - Sem 1, Tue 16:00-18:00 (#6)</option>
 
-        <option value="79" >Computer Networking - University College London - Sem 2, Fri 14:00-16:00 (#79)</option>
 
-        <option value="82" >Computer Security - University College London - Sem 2, Tue 13:30-16:30 (#82)</option>
+        <option value="18"
+          data-destination="2"
+          data-semester="Sem 2">Applied Econometrics - University of Toronto - Sem 2, Mon 16:30-18:30 (#18)</option>
 
-        <option value="7" >Computer Security - University of Toronto - Sem 2, Wed 17:00-18:00 (#7)</option>
 
-        <option value="77" >Database Systems - University College London - Sem 1, Fri 15:30-16:30 (#77)</option>
 
-        <option value="4" >Database Systems - University of Toronto - Sem 1, Mon 16:30-18:30 (#4)</option>
+        <option value="84"
+          data-destination="3"
+          data-semester="Sem 2">Applied Linear Algebra - University College London - Sem 2, Fri 13:00-14:00 (#84)</option>
 
-        <option value="5" >Database Systems - University of Toronto - Sem 2, Tue 12:30-15:30 (#5)</option>
 
-        <option value="97" >Development Economics - University College London - Sem 2, Wed 12:30-14:30 (#97)</option>
 
-        <option value="21" >Development Economics - University of Toronto - Sem 1, Wed 08:00-09:00 (#21)</option>
+        <option value="118"
+          data-destination="3"
+          data-semester="Sem 1">Astrophysics - University College London - Sem 1, Wed 14:00-16:00 (#118)</option>
 
-        <option value="22" >Development Economics - University of Toronto - Sem 2, Wed 16:30-19:30 (#22)</option>
 
-        <option value="37" >Developmental Psychology - University of Toronto - Sem 2, Mon 08:30-10:30 (#37)</option>
 
-        <option value="83" >Differential Equations - University College London - Sem 2, Thu 17:30-20:30 (#83)</option>
+        <option value="119"
+          data-destination="3"
+          data-semester="Sem 2">Astrophysics - University College London - Sem 2, Wed 12:30-13:30 (#119)</option>
 
-        <option value="60" >E-Marketing Strategy - University of Toronto - Sem 2, Fri 09:30-12:30 (#60)</option>
 
-        <option value="127" >East Asia since 1800 - University College London - Sem 1, Mon 08:30-10:30 (#127)</option>
 
-        <option value="39" >Electrodynamics - University of Toronto - Sem 1, Wed 15:30-18:30 (#39)</option>
+        <option value="103"
+          data-destination="3"
+          data-semester="Sem 2">Behavioural Finance - University College London - Sem 2, Thu 09:30-11:30 (#103)</option>
 
-        <option value="115" >Electromagnetic Theory - University College London - Sem 2, Mon 11:30-13:30 (#115)</option>
 
-        <option value="132" >Environmental History - University College London - Sem 1, Mon 08:30-11:30 (#132)</option>
 
-        <option value="133" >Environmental History - University College London - Sem 2, Thu 09:00-11:00 (#133)</option>
+        <option value="28"
+          data-destination="2"
+          data-semester="Sem 2">Behavioural Finance - University of Toronto - Sem 2, Mon 16:30-17:30 (#28)</option>
 
-        <option value="105" >Experimental Design in Psychology - University College London - Sem 1, Wed 16:00-18:00 (#105)</option>
 
-        <option value="34" >Experimental Design in Psychology - University of Toronto - Sem 1, Tue 08:00-10:00 (#34)</option>
 
-        <option value="98" >Financial Derivatives - University College London - Sem 2, Tue 09:30-11:30 (#98)</option>
+        <option value="104"
+          data-destination="3"
+          data-semester="Sem 2">Biopsychology - University College London - Sem 2, Mon 16:30-18:30 (#104)</option>
 
-        <option value="25" >Financial Derivatives - University of Toronto - Sem 1, Wed 10:30-12:30 (#25)</option>
 
-        <option value="26" >Financial Derivatives - University of Toronto - Sem 2, Wed 08:30-10:30 (#26)</option>
 
-        <option value="23" >Financial Management - University of Toronto - Sem 1, Thu 09:30-11:30 (#23)</option>
+        <option value="30"
+          data-destination="2"
+          data-semester="Sem 2">Brain and Behaviour - University of Toronto - Sem 2, Fri 13:30-14:30 (#30)</option>
 
-        <option value="102" >Fintech and Digital Banking - University College London - Sem 1, Wed 09:00-11:00 (#102)</option>
 
-        <option value="107" >General Psychology - University College London - Sem 1, Tue 13:30-16:30 (#107)</option>
 
-        <option value="53" >Global History - University of Toronto - Sem 1, Fri 16:30-19:30 (#53)</option>
+        <option value="139"
+          data-destination="3"
+          data-semester="Sem 1">Brand Management - University College London - Sem 1, Mon 11:00-12:00 (#139)</option>
 
-        <option value="54" >Global History - University of Toronto - Sem 2, Mon 10:00-13:00 (#54)</option>
 
-        <option value="94" >Global Trade and Finance - University College London - Sem 1, Wed 14:30-16:30 (#94)</option>
 
-        <option value="14" >Global Trade and Finance - University of Toronto - Sem 1, Wed 08:30-10:30 (#14)</option>
+        <option value="64"
+          data-destination="2"
+          data-semester="Sem 2">Brand Management - University of Toronto - Sem 2, Tue 12:30-13:30 (#64)</option>
 
-        <option value="15" >Global Trade and Finance - University of Toronto - Sem 2, Mon 09:30-10:30 (#15)</option>
 
-        <option value="108" >Health Psychology - University College London - Sem 1, Tue 13:30-15:30 (#108)</option>
 
-        <option value="50" >Historical Linguistics - University of Toronto - Sem 1, Fri 13:00-15:00 (#50)</option>
+        <option value="100"
+          data-destination="3"
+          data-semester="Sem 1">Business Finance - University College London - Sem 1, Fri 10:00-11:00 (#100)</option>
 
-        <option value="131" >History of Science - University College London - Sem 1, Fri 08:00-10:00 (#131)</option>
 
-        <option value="56" >History of Science - University of Toronto - Sem 1, Wed 13:30-16:30 (#56)</option>
 
-        <option value="57" >History of Science - University of Toronto - Sem 2, Fri 08:30-11:30 (#57)</option>
+        <option value="75"
+          data-destination="2"
+          data-semester="Sem 2">Buyer Behaviour - University of Toronto - Sem 2, Fri 13:30-15:30 (#75)</option>
 
-        <option value="129" >History of the European Union - University College London - Sem 1, Mon 09:00-11:00 (#129)</option>
 
-        <option value="51" >History of the European Union - University of Toronto - Sem 1, Mon 13:30-15:30 (#51)</option>
 
-        <option value="85" >Introduction to Abstract Algebra - University College London - Sem 2, Wed 08:30-09:30 (#85)</option>
+        <option value="130"
+          data-destination="3"
+          data-semester="Sem 2">Classical Civilisations - University College London - Sem 2, Mon 09:30-12:30 (#130)</option>
 
-        <option value="101" >Introduction to Accounting - University College London - Sem 1, Fri 11:30-13:30 (#101)</option>
 
-        <option value="24" >Introduction to Accounting - University of Toronto - Sem 1, Wed 14:30-16:30 (#24)</option>
 
-        <option value="141" >Introduction to Data Science - University College London - Sem 1, Fri 14:30-15:30 (#141)</option>
+        <option value="31"
+          data-destination="2"
+          data-semester="Sem 1">Cognition - University of Toronto - Sem 1, Fri 09:00-11:00 (#31)</option>
 
-        <option value="1" >Introduction to Machine Learning - University of Toronto - Sem 1, Wed 14:30-16:30 (#1)</option>
 
-        <option value="62" >Introduction to Marketing - University of Toronto - Sem 1, Tue 08:30-11:30 (#62)</option>
 
-        <option value="69" >Introduction to Probability - University of Toronto - Sem 1, Thu 17:30-20:30 (#69)</option>
+        <option value="32"
+          data-destination="2"
+          data-semester="Sem 2">Cognition - University of Toronto - Sem 2, Wed 14:00-16:00 (#32)</option>
 
-        <option value="70" >Introduction to Probability - University of Toronto - Sem 2, Fri 13:30-15:30 (#70)</option>
 
-        <option value="46" >Introduction to Semantics - University of Toronto - Sem 2, Mon 12:00-14:00 (#46)</option>
 
-        <option value="122" >Introduction to Syntax - University College London - Sem 2, Thu 14:00-15:00 (#122)</option>
+        <option value="128"
+          data-destination="3"
+          data-semester="Sem 2">Cold War Politics - University College London - Sem 2, Wed 10:00-12:00 (#128)</option>
 
-        <option value="95" >Labour Economics - University College London - Sem 1, Fri 12:00-14:00 (#95)</option>
 
-        <option value="96" >Labour Economics - University College London - Sem 2, Fri 14:30-16:30 (#96)</option>
 
-        <option value="20" >Labour Economics - University of Toronto - Sem 1, Thu 14:00-16:00 (#20)</option>
+        <option value="52"
+          data-destination="2"
+          data-semester="Sem 1">Cold War Politics - University of Toronto - Sem 1, Fri 09:00-11:00 (#52)</option>
 
-        <option value="120" >Language and Identity - University College London - Sem 1, Tue 11:30-13:30 (#120)</option>
 
-        <option value="48" >Language and Identity - University of Toronto - Sem 2, Fri 15:30-18:30 (#48)</option>
 
-        <option value="47" >Language and Mind - University of Toronto - Sem 2, Mon 10:00-11:00 (#47)</option>
+        <option value="58"
+          data-destination="2"
+          data-semester="Sem 2">Colonialism and Empire - University of Toronto - Sem 2, Fri 09:30-12:30 (#58)</option>
 
-        <option value="143" >Linear Models - University College London - Sem 1, Mon 17:00-18:00 (#143)</option>
 
-        <option value="65" >Linear Models - University of Toronto - Sem 1, Fri 12:00-14:00 (#65)</option>
 
-        <option value="66" >Linear Models - University of Toronto - Sem 2, Thu 12:00-15:00 (#66)</option>
+        <option value="9"
+          data-destination="2"
+          data-semester="Sem 2">Combinatorics and Graph Theory - University of Toronto - Sem 2, Fri 16:00-18:00 (#9)</option>
 
-        <option value="27" >Managing Financial Risk - University of Toronto - Sem 1, Tue 12:30-13:30 (#27)</option>
 
-        <option value="135" >Market Research Methods - University College London - Sem 2, Mon 09:30-11:30 (#135)</option>
 
-        <option value="138" >Marketing Management - University College London - Sem 2, Tue 16:30-18:30 (#138)</option>
+        <option value="89"
+          data-destination="3"
+          data-semester="Sem 1">Complex Analysis - University College London - Sem 1, Wed 13:30-14:30 (#89)</option>
 
-        <option value="134" >Marketing of Services - University College London - Sem 2, Thu 17:30-19:30 (#134)</option>
 
-        <option value="59" >Marketing of Services - University of Toronto - Sem 1, Mon 13:30-14:30 (#59)</option>
 
-        <option value="142" >Mathematical Statistics - University College London - Sem 2, Thu 15:30-17:30 (#142)</option>
+        <option value="80"
+          data-destination="3"
+          data-semester="Sem 1">Computer Graphics - University College London - Sem 1, Tue 12:00-14:00 (#80)</option>
 
-        <option value="150" >Mathematics for Physicists - University College London - Sem 1, Wed 15:30-16:30 (#150)</option>
 
-        <option value="151" >Mathematics for Physicists - University College London - Sem 2, Fri 15:30-16:30 (#151)</option>
 
-        <option value="8" >Matrices and Linear Algebra - University of Toronto - Sem 1, Fri 12:00-14:00 (#8)</option>
+        <option value="81"
+          data-destination="3"
+          data-semester="Sem 2">Computer Graphics - University College London - Sem 2, Fri 12:30-13:30 (#81)</option>
 
-        <option value="123" >Meaning in Language - University College London - Sem 1, Wed 12:00-15:00 (#123)</option>
 
-        <option value="124" >Meaning in Language - University College London - Sem 2, Wed 10:00-13:00 (#124)</option>
 
-        <option value="40" >Mechanics - University of Toronto - Sem 2, Wed 16:30-17:30 (#40)</option>
+        <option value="6"
+          data-destination="2"
+          data-semester="Sem 1">Computer Graphics - University of Toronto - Sem 1, Tue 16:00-18:00 (#6)</option>
 
-        <option value="106" >Memory and Cognition - University College London - Sem 2, Wed 11:30-14:30 (#106)</option>
 
-        <option value="16" >Microeconomic Theory - University of Toronto - Sem 2, Fri 10:30-11:30 (#16)</option>
 
-        <option value="33" >Mind and Behaviour - University of Toronto - Sem 1, Tue 08:30-10:30 (#33)</option>
+        <option value="79"
+          data-destination="3"
+          data-semester="Sem 2">Computer Networking - University College London - Sem 2, Fri 14:00-16:00 (#79)</option>
 
-        <option value="55" >Modern China and Japan - University of Toronto - Sem 2, Thu 10:00-12:00 (#55)</option>
 
-        <option value="38" >Modern Physics - University of Toronto - Sem 2, Thu 17:00-18:00 (#38)</option>
 
-        <option value="145" >Multivariate Analysis - University College London - Sem 1, Mon 15:30-17:30 (#145)</option>
+        <option value="82"
+          data-destination="3"
+          data-semester="Sem 2">Computer Security - University College London - Sem 2, Tue 13:30-16:30 (#82)</option>
 
-        <option value="73" >Multivariate Analysis - University of Toronto - Sem 2, Tue 11:00-14:00 (#73)</option>
 
-        <option value="88" >Number Theory - University College London - Sem 1, Mon 08:00-10:00 (#88)</option>
 
-        <option value="13" >Number Theory - University of Toronto - Sem 2, Fri 10:30-13:30 (#13)</option>
+        <option value="7"
+          data-destination="2"
+          data-semester="Sem 2">Computer Security - University of Toronto - Sem 2, Wed 17:00-18:00 (#7)</option>
 
-        <option value="136" >Online Marketing - University College London - Sem 1, Wed 12:30-13:30 (#136)</option>
 
-        <option value="137" >Online Marketing - University College London - Sem 2, Fri 08:00-11:00 (#137)</option>
 
-        <option value="78" >Operating Systems Principles - University College London - Sem 1, Tue 14:30-16:30 (#78)</option>
+        <option value="77"
+          data-destination="3"
+          data-semester="Sem 1">Database Systems - University College London - Sem 1, Fri 15:30-16:30 (#77)</option>
 
-        <option value="2" >Operating Systems Principles - University of Toronto - Sem 2, Tue 14:00-16:00 (#2)</option>
 
-        <option value="117" >Optics - University College London - Sem 1, Wed 13:30-15:30 (#117)</option>
 
-        <option value="42" >Optics - University of Toronto - Sem 1, Wed 16:00-19:00 (#42)</option>
+        <option value="4"
+          data-destination="2"
+          data-semester="Sem 1">Database Systems - University of Toronto - Sem 1, Mon 16:30-18:30 (#4)</option>
 
-        <option value="43" >Optics - University of Toronto - Sem 2, Thu 08:30-10:30 (#43)</option>
 
-        <option value="44" >Particle Physics - University of Toronto - Sem 2, Tue 08:00-09:00 (#44)</option>
 
-        <option value="121" >Phonetics - University College London - Sem 1, Wed 11:00-13:00 (#121)</option>
+        <option value="5"
+          data-destination="2"
+          data-semester="Sem 2">Database Systems - University of Toronto - Sem 2, Tue 12:30-15:30 (#5)</option>
 
-        <option value="99" >Portfolio Management - University College London - Sem 2, Wed 15:30-17:30 (#99)</option>
 
-        <option value="19" >Principles of Macroeconomics - University of Toronto - Sem 1, Thu 14:30-17:30 (#19)</option>
 
-        <option value="90" >Principles of Microeconomics - University College London - Sem 2, Thu 14:30-16:30 (#90)</option>
+        <option value="97"
+          data-destination="3"
+          data-semester="Sem 2">Development Economics - University College London - Sem 2, Wed 12:30-14:30 (#97)</option>
 
-        <option value="68" >Principles of Statistical Inference - University of Toronto - Sem 2, Mon 08:00-10:00 (#68)</option>
 
-        <option value="125" >Psycholinguistics - University College London - Sem 2, Tue 16:00-18:00 (#125)</option>
 
-        <option value="49" >Psycholinguistics - University of Toronto - Sem 2, Thu 11:30-13:30 (#49)</option>
+        <option value="21"
+          data-destination="2"
+          data-semester="Sem 1">Development Economics - University of Toronto - Sem 1, Wed 08:00-09:00 (#21)</option>
 
-        <option value="74" >Public Finance - University of Toronto - Sem 2, Mon 08:30-11:30 (#74)</option>
 
-        <option value="113" >Quantum Theory - University College London - Sem 1, Wed 08:30-09:30 (#113)</option>
 
-        <option value="114" >Quantum Theory - University College London - Sem 2, Fri 17:00-20:00 (#114)</option>
+        <option value="22"
+          data-destination="2"
+          data-semester="Sem 2">Development Economics - University of Toronto - Sem 2, Wed 16:30-19:30 (#22)</option>
 
-        <option value="29" >Real Estate Finance - University of Toronto - Sem 2, Wed 14:30-15:30 (#29)</option>
 
-        <option value="61" >Research for Marketing Decisions - University of Toronto - Sem 2, Mon 17:00-20:00 (#61)</option>
 
-        <option value="140" >Retail Marketing - University College London - Sem 1, Tue 17:30-20:30 (#140)</option>
+        <option value="37"
+          data-destination="2"
+          data-semester="Sem 2">Developmental Psychology - University of Toronto - Sem 2, Mon 08:30-10:30 (#37)</option>
 
-        <option value="63" >Retail Marketing - University of Toronto - Sem 2, Thu 09:00-11:00 (#63)</option>
 
-        <option value="144" >Sample Surveys - University College London - Sem 2, Thu 16:30-18:30 (#144)</option>
 
-        <option value="126" >Second Language Acquisition - University College London - Sem 2, Mon 16:30-17:30 (#126)</option>
+        <option value="83"
+          data-destination="3"
+          data-semester="Sem 2">Differential Equations - University College London - Sem 2, Thu 17:30-20:30 (#83)</option>
 
-        <option value="45" >Sentence Structure - University of Toronto - Sem 2, Mon 17:00-18:00 (#45)</option>
 
-        <option value="148" >Social Behaviour - University College London - Sem 1, Fri 09:00-11:00 (#148)</option>
 
-        <option value="149" >Social Behaviour - University College London - Sem 2, Mon 11:00-13:00 (#149)</option>
+        <option value="60"
+          data-destination="2"
+          data-semester="Sem 2">E-Marketing Strategy - University of Toronto - Sem 2, Fri 09:30-12:30 (#60)</option>
 
-        <option value="76" >Software Construction - University College London - Sem 2, Wed 08:30-10:30 (#76)</option>
 
-        <option value="3" >Software Engineering Principles - University of Toronto - Sem 2, Thu 13:30-16:30 (#3)</option>
 
-        <option value="111" >Statistical Mechanics - University College London - Sem 1, Wed 14:30-16:30 (#111)</option>
+        <option value="127"
+          data-destination="3"
+          data-semester="Sem 1">East Asia since 1800 - University College London - Sem 1, Mon 08:30-10:30 (#127)</option>
 
-        <option value="112" >Statistical Mechanics - University College London - Sem 2, Tue 09:30-11:30 (#112)</option>
 
-        <option value="41" >Statistical Physics - University of Toronto - Sem 2, Mon 13:30-14:30 (#41)</option>
 
-        <option value="67" >Survey Design and Analysis - University of Toronto - Sem 1, Mon 14:00-16:00 (#67)</option>
+        <option value="39"
+          data-destination="2"
+          data-semester="Sem 1">Electrodynamics - University of Toronto - Sem 1, Wed 15:30-18:30 (#39)</option>
 
-        <option value="91" >The Global Economy - University College London - Sem 1, Tue 14:00-17:00 (#91)</option>
 
-        <option value="92" >The Global Economy - University College London - Sem 2, Wed 17:00-18:00 (#92)</option>
 
-        <option value="146" >Time Series Analysis - University College London - Sem 1, Tue 08:00-10:00 (#146)</option>
+        <option value="115"
+          data-destination="3"
+          data-semester="Sem 2">Electromagnetic Theory - University College London - Sem 2, Mon 11:30-13:30 (#115)</option>
 
-        <option value="147" >Time Series Analysis - University College London - Sem 2, Mon 12:30-13:30 (#147)</option>
 
-        <option value="71" >Time Series Analysis - University of Toronto - Sem 1, Tue 11:00-13:00 (#71)</option>
 
-        <option value="72" >Time Series Analysis - University of Toronto - Sem 2, Tue 11:30-13:30 (#72)</option>
+        <option value="132"
+          data-destination="3"
+          data-semester="Sem 1">Environmental History - University College London - Sem 1, Mon 08:30-11:30 (#132)</option>
 
-        <option value="12" >Topology - University of Toronto - Sem 2, Tue 14:00-16:00 (#12)</option>
+
+
+        <option value="133"
+          data-destination="3"
+          data-semester="Sem 2">Environmental History - University College London - Sem 2, Thu 09:00-11:00 (#133)</option>
+
+
+
+        <option value="105"
+          data-destination="3"
+          data-semester="Sem 1">Experimental Design in Psychology - University College London - Sem 1, Wed 16:00-18:00 (#105)</option>
+
+
+
+        <option value="34"
+          data-destination="2"
+          data-semester="Sem 1">Experimental Design in Psychology - University of Toronto - Sem 1, Tue 08:00-10:00 (#34)</option>
+
+
+
+        <option value="98"
+          data-destination="3"
+          data-semester="Sem 2">Financial Derivatives - University College London - Sem 2, Tue 09:30-11:30 (#98)</option>
+
+
+
+        <option value="25"
+          data-destination="2"
+          data-semester="Sem 1">Financial Derivatives - University of Toronto - Sem 1, Wed 10:30-12:30 (#25)</option>
+
+
+
+        <option value="26"
+          data-destination="2"
+          data-semester="Sem 2">Financial Derivatives - University of Toronto - Sem 2, Wed 08:30-10:30 (#26)</option>
+
+
+
+        <option value="23"
+          data-destination="2"
+          data-semester="Sem 1">Financial Management - University of Toronto - Sem 1, Thu 09:30-11:30 (#23)</option>
+
+
+
+        <option value="102"
+          data-destination="3"
+          data-semester="Sem 1">Fintech and Digital Banking - University College London - Sem 1, Wed 09:00-11:00 (#102)</option>
+
+
+
+        <option value="107"
+          data-destination="3"
+          data-semester="Sem 1">General Psychology - University College London - Sem 1, Tue 13:30-16:30 (#107)</option>
+
+
+
+        <option value="53"
+          data-destination="2"
+          data-semester="Sem 1">Global History - University of Toronto - Sem 1, Fri 16:30-19:30 (#53)</option>
+
+
+
+        <option value="54"
+          data-destination="2"
+          data-semester="Sem 2">Global History - University of Toronto - Sem 2, Mon 10:00-13:00 (#54)</option>
+
+
+
+        <option value="94"
+          data-destination="3"
+          data-semester="Sem 1">Global Trade and Finance - University College London - Sem 1, Wed 14:30-16:30 (#94)</option>
+
+
+
+        <option value="14"
+          data-destination="2"
+          data-semester="Sem 1">Global Trade and Finance - University of Toronto - Sem 1, Wed 08:30-10:30 (#14)</option>
+
+
+
+        <option value="15"
+          data-destination="2"
+          data-semester="Sem 2">Global Trade and Finance - University of Toronto - Sem 2, Mon 09:30-10:30 (#15)</option>
+
+
+
+        <option value="108"
+          data-destination="3"
+          data-semester="Sem 1">Health Psychology - University College London - Sem 1, Tue 13:30-15:30 (#108)</option>
+
+
+
+        <option value="50"
+          data-destination="2"
+          data-semester="Sem 1">Historical Linguistics - University of Toronto - Sem 1, Fri 13:00-15:00 (#50)</option>
+
+
+
+        <option value="131"
+          data-destination="3"
+          data-semester="Sem 1">History of Science - University College London - Sem 1, Fri 08:00-10:00 (#131)</option>
+
+
+
+        <option value="56"
+          data-destination="2"
+          data-semester="Sem 1">History of Science - University of Toronto - Sem 1, Wed 13:30-16:30 (#56)</option>
+
+
+
+        <option value="57"
+          data-destination="2"
+          data-semester="Sem 2">History of Science - University of Toronto - Sem 2, Fri 08:30-11:30 (#57)</option>
+
+
+
+        <option value="129"
+          data-destination="3"
+          data-semester="Sem 1">History of the European Union - University College London - Sem 1, Mon 09:00-11:00 (#129)</option>
+
+
+
+        <option value="51"
+          data-destination="2"
+          data-semester="Sem 1">History of the European Union - University of Toronto - Sem 1, Mon 13:30-15:30 (#51)</option>
+
+
+
+        <option value="85"
+          data-destination="3"
+          data-semester="Sem 2">Introduction to Abstract Algebra - University College London - Sem 2, Wed 08:30-09:30 (#85)</option>
+
+
+
+        <option value="101"
+          data-destination="3"
+          data-semester="Sem 1">Introduction to Accounting - University College London - Sem 1, Fri 11:30-13:30 (#101)</option>
+
+
+
+        <option value="24"
+          data-destination="2"
+          data-semester="Sem 1">Introduction to Accounting - University of Toronto - Sem 1, Wed 14:30-16:30 (#24)</option>
+
+
+
+        <option value="141"
+          data-destination="3"
+          data-semester="Sem 1">Introduction to Data Science - University College London - Sem 1, Fri 14:30-15:30 (#141)</option>
+
+
+
+        <option value="1"
+          data-destination="2"
+          data-semester="Sem 1">Introduction to Machine Learning - University of Toronto - Sem 1, Wed 14:30-16:30 (#1)</option>
+
+
+
+        <option value="62"
+          data-destination="2"
+          data-semester="Sem 1">Introduction to Marketing - University of Toronto - Sem 1, Tue 08:30-11:30 (#62)</option>
+
+
+
+        <option value="69"
+          data-destination="2"
+          data-semester="Sem 1">Introduction to Probability - University of Toronto - Sem 1, Thu 17:30-20:30 (#69)</option>
+
+
+
+        <option value="70"
+          data-destination="2"
+          data-semester="Sem 2">Introduction to Probability - University of Toronto - Sem 2, Fri 13:30-15:30 (#70)</option>
+
+
+
+        <option value="46"
+          data-destination="2"
+          data-semester="Sem 2">Introduction to Semantics - University of Toronto - Sem 2, Mon 12:00-14:00 (#46)</option>
+
+
+
+        <option value="122"
+          data-destination="3"
+          data-semester="Sem 2">Introduction to Syntax - University College London - Sem 2, Thu 14:00-15:00 (#122)</option>
+
+
+
+        <option value="95"
+          data-destination="3"
+          data-semester="Sem 1">Labour Economics - University College London - Sem 1, Fri 12:00-14:00 (#95)</option>
+
+
+
+        <option value="96"
+          data-destination="3"
+          data-semester="Sem 2">Labour Economics - University College London - Sem 2, Fri 14:30-16:30 (#96)</option>
+
+
+
+        <option value="20"
+          data-destination="2"
+          data-semester="Sem 1">Labour Economics - University of Toronto - Sem 1, Thu 14:00-16:00 (#20)</option>
+
+
+
+        <option value="120"
+          data-destination="3"
+          data-semester="Sem 1">Language and Identity - University College London - Sem 1, Tue 11:30-13:30 (#120)</option>
+
+
+
+        <option value="48"
+          data-destination="2"
+          data-semester="Sem 2">Language and Identity - University of Toronto - Sem 2, Fri 15:30-18:30 (#48)</option>
+
+
+
+        <option value="47"
+          data-destination="2"
+          data-semester="Sem 2">Language and Mind - University of Toronto - Sem 2, Mon 10:00-11:00 (#47)</option>
+
+
+
+        <option value="143"
+          data-destination="3"
+          data-semester="Sem 1">Linear Models - University College London - Sem 1, Mon 17:00-18:00 (#143)</option>
+
+
+
+        <option value="65"
+          data-destination="2"
+          data-semester="Sem 1">Linear Models - University of Toronto - Sem 1, Fri 12:00-14:00 (#65)</option>
+
+
+
+        <option value="66"
+          data-destination="2"
+          data-semester="Sem 2">Linear Models - University of Toronto - Sem 2, Thu 12:00-15:00 (#66)</option>
+
+
+
+        <option value="27"
+          data-destination="2"
+          data-semester="Sem 1">Managing Financial Risk - University of Toronto - Sem 1, Tue 12:30-13:30 (#27)</option>
+
+
+
+        <option value="135"
+          data-destination="3"
+          data-semester="Sem 2">Market Research Methods - University College London - Sem 2, Mon 09:30-11:30 (#135)</option>
+
+
+
+        <option value="138"
+          data-destination="3"
+          data-semester="Sem 2">Marketing Management - University College London - Sem 2, Tue 16:30-18:30 (#138)</option>
+
+
+
+        <option value="134"
+          data-destination="3"
+          data-semester="Sem 2">Marketing of Services - University College London - Sem 2, Thu 17:30-19:30 (#134)</option>
+
+
+
+        <option value="59"
+          data-destination="2"
+          data-semester="Sem 1">Marketing of Services - University of Toronto - Sem 1, Mon 13:30-14:30 (#59)</option>
+
+
+
+        <option value="142"
+          data-destination="3"
+          data-semester="Sem 2">Mathematical Statistics - University College London - Sem 2, Thu 15:30-17:30 (#142)</option>
+
+
+
+        <option value="150"
+          data-destination="3"
+          data-semester="Sem 1">Mathematics for Physicists - University College London - Sem 1, Wed 15:30-16:30 (#150)</option>
+
+
+
+        <option value="151"
+          data-destination="3"
+          data-semester="Sem 2">Mathematics for Physicists - University College London - Sem 2, Fri 15:30-16:30 (#151)</option>
+
+
+
+        <option value="8"
+          data-destination="2"
+          data-semester="Sem 1">Matrices and Linear Algebra - University of Toronto - Sem 1, Fri 12:00-14:00 (#8)</option>
+
+
+
+        <option value="123"
+          data-destination="3"
+          data-semester="Sem 1">Meaning in Language - University College London - Sem 1, Wed 12:00-15:00 (#123)</option>
+
+
+
+        <option value="124"
+          data-destination="3"
+          data-semester="Sem 2">Meaning in Language - University College London - Sem 2, Wed 10:00-13:00 (#124)</option>
+
+
+
+        <option value="40"
+          data-destination="2"
+          data-semester="Sem 2">Mechanics - University of Toronto - Sem 2, Wed 16:30-17:30 (#40)</option>
+
+
+
+        <option value="106"
+          data-destination="3"
+          data-semester="Sem 2">Memory and Cognition - University College London - Sem 2, Wed 11:30-14:30 (#106)</option>
+
+
+
+        <option value="16"
+          data-destination="2"
+          data-semester="Sem 2">Microeconomic Theory - University of Toronto - Sem 2, Fri 10:30-11:30 (#16)</option>
+
+
+
+        <option value="33"
+          data-destination="2"
+          data-semester="Sem 1">Mind and Behaviour - University of Toronto - Sem 1, Tue 08:30-10:30 (#33)</option>
+
+
+
+        <option value="55"
+          data-destination="2"
+          data-semester="Sem 2">Modern China and Japan - University of Toronto - Sem 2, Thu 10:00-12:00 (#55)</option>
+
+
+
+        <option value="38"
+          data-destination="2"
+          data-semester="Sem 2">Modern Physics - University of Toronto - Sem 2, Thu 17:00-18:00 (#38)</option>
+
+
+
+        <option value="145"
+          data-destination="3"
+          data-semester="Sem 1">Multivariate Analysis - University College London - Sem 1, Mon 15:30-17:30 (#145)</option>
+
+
+
+        <option value="73"
+          data-destination="2"
+          data-semester="Sem 2">Multivariate Analysis - University of Toronto - Sem 2, Tue 11:00-14:00 (#73)</option>
+
+
+
+        <option value="88"
+          data-destination="3"
+          data-semester="Sem 1">Number Theory - University College London - Sem 1, Mon 08:00-10:00 (#88)</option>
+
+
+
+        <option value="13"
+          data-destination="2"
+          data-semester="Sem 2">Number Theory - University of Toronto - Sem 2, Fri 10:30-13:30 (#13)</option>
+
+
+
+        <option value="136"
+          data-destination="3"
+          data-semester="Sem 1">Online Marketing - University College London - Sem 1, Wed 12:30-13:30 (#136)</option>
+
+
+
+        <option value="137"
+          data-destination="3"
+          data-semester="Sem 2">Online Marketing - University College London - Sem 2, Fri 08:00-11:00 (#137)</option>
+
+
+
+        <option value="78"
+          data-destination="3"
+          data-semester="Sem 1">Operating Systems Principles - University College London - Sem 1, Tue 14:30-16:30 (#78)</option>
+
+
+
+        <option value="2"
+          data-destination="2"
+          data-semester="Sem 2">Operating Systems Principles - University of Toronto - Sem 2, Tue 14:00-16:00 (#2)</option>
+
+
+
+        <option value="117"
+          data-destination="3"
+          data-semester="Sem 1">Optics - University College London - Sem 1, Wed 13:30-15:30 (#117)</option>
+
+
+
+        <option value="42"
+          data-destination="2"
+          data-semester="Sem 1">Optics - University of Toronto - Sem 1, Wed 16:00-19:00 (#42)</option>
+
+
+
+        <option value="43"
+          data-destination="2"
+          data-semester="Sem 2">Optics - University of Toronto - Sem 2, Thu 08:30-10:30 (#43)</option>
+
+
+
+        <option value="44"
+          data-destination="2"
+          data-semester="Sem 2">Particle Physics - University of Toronto - Sem 2, Tue 08:00-09:00 (#44)</option>
+
+
+
+        <option value="121"
+          data-destination="3"
+          data-semester="Sem 1">Phonetics - University College London - Sem 1, Wed 11:00-13:00 (#121)</option>
+
+
+
+        <option value="99"
+          data-destination="3"
+          data-semester="Sem 2">Portfolio Management - University College London - Sem 2, Wed 15:30-17:30 (#99)</option>
+
+
+
+        <option value="19"
+          data-destination="2"
+          data-semester="Sem 1">Principles of Macroeconomics - University of Toronto - Sem 1, Thu 14:30-17:30 (#19)</option>
+
+
+
+        <option value="90"
+          data-destination="3"
+          data-semester="Sem 2">Principles of Microeconomics - University College London - Sem 2, Thu 14:30-16:30 (#90)</option>
+
+
+
+        <option value="68"
+          data-destination="2"
+          data-semester="Sem 2">Principles of Statistical Inference - University of Toronto - Sem 2, Mon 08:00-10:00 (#68)</option>
+
+
+
+        <option value="125"
+          data-destination="3"
+          data-semester="Sem 2">Psycholinguistics - University College London - Sem 2, Tue 16:00-18:00 (#125)</option>
+
+
+
+        <option value="49"
+          data-destination="2"
+          data-semester="Sem 2">Psycholinguistics - University of Toronto - Sem 2, Thu 11:30-13:30 (#49)</option>
+
+
+
+        <option value="74"
+          data-destination="2"
+          data-semester="Sem 2">Public Finance - University of Toronto - Sem 2, Mon 08:30-11:30 (#74)</option>
+
+
+
+        <option value="113"
+          data-destination="3"
+          data-semester="Sem 1">Quantum Theory - University College London - Sem 1, Wed 08:30-09:30 (#113)</option>
+
+
+
+        <option value="114"
+          data-destination="3"
+          data-semester="Sem 2">Quantum Theory - University College London - Sem 2, Fri 17:00-20:00 (#114)</option>
+
+
+
+        <option value="29"
+          data-destination="2"
+          data-semester="Sem 2">Real Estate Finance - University of Toronto - Sem 2, Wed 14:30-15:30 (#29)</option>
+
+
+
+        <option value="61"
+          data-destination="2"
+          data-semester="Sem 2">Research for Marketing Decisions - University of Toronto - Sem 2, Mon 17:00-20:00 (#61)</option>
+
+
+
+        <option value="140"
+          data-destination="3"
+          data-semester="Sem 1">Retail Marketing - University College London - Sem 1, Tue 17:30-20:30 (#140)</option>
+
+
+
+        <option value="63"
+          data-destination="2"
+          data-semester="Sem 2">Retail Marketing - University of Toronto - Sem 2, Thu 09:00-11:00 (#63)</option>
+
+
+
+        <option value="144"
+          data-destination="3"
+          data-semester="Sem 2">Sample Surveys - University College London - Sem 2, Thu 16:30-18:30 (#144)</option>
+
+
+
+        <option value="126"
+          data-destination="3"
+          data-semester="Sem 2">Second Language Acquisition - University College London - Sem 2, Mon 16:30-17:30 (#126)</option>
+
+
+
+        <option value="45"
+          data-destination="2"
+          data-semester="Sem 2">Sentence Structure - University of Toronto - Sem 2, Mon 17:00-18:00 (#45)</option>
+
+
+
+        <option value="148"
+          data-destination="3"
+          data-semester="Sem 1">Social Behaviour - University College London - Sem 1, Fri 09:00-11:00 (#148)</option>
+
+
+
+        <option value="149"
+          data-destination="3"
+          data-semester="Sem 2">Social Behaviour - University College London - Sem 2, Mon 11:00-13:00 (#149)</option>
+
+
+
+        <option value="76"
+          data-destination="3"
+          data-semester="Sem 2">Software Construction - University College London - Sem 2, Wed 08:30-10:30 (#76)</option>
+
+
+
+        <option value="3"
+          data-destination="2"
+          data-semester="Sem 2">Software Engineering Principles - University of Toronto - Sem 2, Thu 13:30-16:30 (#3)</option>
+
+
+
+        <option value="111"
+          data-destination="3"
+          data-semester="Sem 1">Statistical Mechanics - University College London - Sem 1, Wed 14:30-16:30 (#111)</option>
+
+
+
+        <option value="112"
+          data-destination="3"
+          data-semester="Sem 2">Statistical Mechanics - University College London - Sem 2, Tue 09:30-11:30 (#112)</option>
+
+
+
+        <option value="41"
+          data-destination="2"
+          data-semester="Sem 2">Statistical Physics - University of Toronto - Sem 2, Mon 13:30-14:30 (#41)</option>
+
+
+
+        <option value="67"
+          data-destination="2"
+          data-semester="Sem 1">Survey Design and Analysis - University of Toronto - Sem 1, Mon 14:00-16:00 (#67)</option>
+
+
+
+        <option value="91"
+          data-destination="3"
+          data-semester="Sem 1">The Global Economy - University College London - Sem 1, Tue 14:00-17:00 (#91)</option>
+
+
+
+        <option value="92"
+          data-destination="3"
+          data-semester="Sem 2">The Global Economy - University College London - Sem 2, Wed 17:00-18:00 (#92)</option>
+
+
+
+        <option value="146"
+          data-destination="3"
+          data-semester="Sem 1">Time Series Analysis - University College London - Sem 1, Tue 08:00-10:00 (#146)</option>
+
+
+
+        <option value="147"
+          data-destination="3"
+          data-semester="Sem 2">Time Series Analysis - University College London - Sem 2, Mon 12:30-13:30 (#147)</option>
+
+
+
+        <option value="71"
+          data-destination="2"
+          data-semester="Sem 1">Time Series Analysis - University of Toronto - Sem 1, Tue 11:00-13:00 (#71)</option>
+
+
+
+        <option value="72"
+          data-destination="2"
+          data-semester="Sem 2">Time Series Analysis - University of Toronto - Sem 2, Tue 11:30-13:30 (#72)</option>
+
+
+
+        <option value="12"
+          data-destination="2"
+          data-semester="Sem 2">Topology - University of Toronto - Sem 2, Tue 14:00-16:00 (#12)</option>
 
       </select>
 
@@ -343,8 +948,12 @@
 
 </main>
 
-<script src="../../static/sql-wasm.js" defer></script>
-<script src="../../static/preview.js" defer></script>
+<script id="exchange-choices" type="application/json">{"destinations": [[3, "University College London"], [2, "University of Toronto"]], "semesters": ["Sem 1", "Sem 2"]}</script>
+<script src="../../static/plan.js?v=af92ba2f930c" defer></script>
+
+
+<script src="../../static/sql-wasm.js?v=d6a9cc234ef1" defer></script>
+<script src="../../static/preview.js?v=e29067605058" defer></script>
 
 </body>
 </html>

@@ -4,20 +4,50 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Exchange Student Course Browser</title>
-  <link rel="stylesheet" href="static/style.css">
+  <link rel="stylesheet" href="static/style.css?v=c8fd3053e0f9">
 </head>
 <body>
 
 <header class="topbar">
-  <a class="brand" href="./">Exchange Student Course Browser</a>
+  <a class="brand" href="./" data-plan-link>Exchange Student Course Browser</a>
 
 </header>
 <main>
+  <p class="plan-route" data-plan-route hidden></p>
 
 <section class="search-panel">
-  <h1>Find a course</h1>
-  <p>Browse sample courses at HKU, the University of Toronto and UCL.</p>
-  <form class="search-form" method="get" action="feature/1/">
+  <h1>Plan your exchange from HKU</h1>
+  <p>Choose where and when you’re going to see courses, HKU equivalents and classes that fit your timetable.</p>
+  <form class="plan-form" method="get" action="./" id="exchange-plan">
+    <label>
+      <span class="label">Exchange university</span>
+      <select name="destination" required>
+        <option value="">Choose a university</option>
+
+        <option value="3">University College London</option>
+
+        <option value="2">University of Toronto</option>
+
+      </select>
+    </label>
+    <label>
+      <span class="label">Exchange semester</span>
+      <select name="semester" required>
+        <option value="">Choose a semester</option>
+
+        <option value="Sem 1">Sem 1</option>
+
+        <option value="Sem 2">Sem 2</option>
+
+      </select>
+    </label>
+    <button type="submit">Set exchange plan</button>
+  </form>
+</section>
+<section class="plan-search" data-plan-search hidden>
+  <h2>Search your destination’s courses</h2>
+  <form class="search-form" method="get" action="feature/1/" data-preserve-plan>
+    <input type="hidden" name="uni_id" data-plan-default>
     <label for="keyword" class="sr-only">Course name keyword</label>
     <input id="keyword" name="keyword" type="search" placeholder="Try database" required>
     <button type="submit">Search courses</button>
@@ -26,18 +56,25 @@
 <div class="cards">
 
   <section class="feature-group">
-    <h2>Explore courses</h2>
+    <h2>Find courses</h2>
     <ul>
 
       <li>
-        <a href="feature/2/">
-          <span>Browse by university and department</span>
-          <small>Find courses offered by a specific university and department.</small>
+        <a href="feature/1/" data-plan-link>
+          <span>Search courses by name</span>
+          <small>Search course names and narrow the results to your exchange university.</small>
         </a>
       </li>
 
       <li>
-        <a href="feature/4/">
+        <a href="feature/2/" data-plan-link>
+          <span>Browse by university and department</span>
+          <small>Browse the course catalogue of an exchange university by department.</small>
+        </a>
+      </li>
+
+      <li>
+        <a href="feature/4/" data-plan-link>
           <span>Find courses without a final exam</span>
           <small>See exam-free classes actually offered in the selected semester.</small>
         </a>
@@ -47,41 +84,20 @@
   </section>
 
   <section class="feature-group">
-    <h2>Plan your exchange</h2>
+    <h2>Check HKU equivalents</h2>
     <ul>
 
       <li>
-        <a href="feature/3/">
-          <span>Travel-friendly timetable</span>
-          <small>Find Monday to Wednesday classes that start at or after your chosen time.</small>
-        </a>
-      </li>
-
-      <li>
-        <a href="feature/5/">
+        <a href="feature/5/" data-plan-link>
           <span>Find HKU course equivalents</span>
           <small>Look up recorded HKU equivalents and compare credits with your exchange university.</small>
         </a>
       </li>
 
       <li>
-        <a href="feature/7/">
-          <span>Check student progress</span>
-          <small>Compare enrolled and required credits and see the average grade for each semester.</small>
-        </a>
-      </li>
-
-      <li>
-        <a href="feature/9/">
+        <a href="feature/9/" data-plan-link>
           <span>Find courses without HKU equivalents</span>
           <small>See which courses have no recorded equivalent at HKU.</small>
-        </a>
-      </li>
-
-      <li>
-        <a href="feature/11/">
-          <span>Check timetable clashes</span>
-          <small>Find other classes at the same exchange university that overlap a selected class.</small>
         </a>
       </li>
 
@@ -89,25 +105,53 @@
   </section>
 
   <section class="feature-group">
-    <h2>View statistics</h2>
+    <h2>Plan your semester</h2>
     <ul>
 
       <li>
-        <a href="feature/6/">
+        <a href="feature/3/" data-plan-link>
+          <span>Travel-friendly timetable</span>
+          <small>Find Monday to Wednesday classes that start at or after your chosen time.</small>
+        </a>
+      </li>
+
+      <li>
+        <a href="feature/11/" data-plan-link>
+          <span>Check timetable clashes</span>
+          <small>Find other classes at the same exchange university that overlap a selected class.</small>
+        </a>
+      </li>
+
+      <li>
+        <a href="feature/7/" data-plan-link>
+          <span>Check student progress</span>
+          <small>See a sample student’s credits, credit requirement and average grade by semester.</small>
+        </a>
+      </li>
+
+    </ul>
+  </section>
+
+  <section class="feature-group">
+    <h2>Explore course statistics</h2>
+    <ul>
+
+      <li>
+        <a href="feature/6/" data-plan-link>
           <span>Compare teaching loads</span>
           <small>See how many class offerings each teacher handles in the selected semester.</small>
         </a>
       </li>
 
       <li>
-        <a href="feature/8/">
+        <a href="feature/8/" data-plan-link>
           <span>Compare course failure rates</span>
           <small>See the share of graded enrollments with a mark below 50.</small>
         </a>
       </li>
 
       <li>
-        <a href="feature/10/">
+        <a href="feature/10/" data-plan-link>
           <span>Find popular courses</span>
           <small>See which courses reached a minimum number of enrollments in a semester.</small>
         </a>
@@ -119,6 +163,10 @@
 </div>
 
 </main>
+
+<script id="exchange-choices" type="application/json">{"destinations": [[3, "University College London"], [2, "University of Toronto"]], "semesters": ["Sem 1", "Sem 2"]}</script>
+<script src="static/plan.js?v=af92ba2f930c" defer></script>
+
 
 </body>
 </html>
