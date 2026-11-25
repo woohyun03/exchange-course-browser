@@ -16,10 +16,10 @@
     for (const label of document.querySelectorAll("[data-semester-name]")) {
       label.textContent = term.replace("Sem ", "Semester ");
     }
-    for (const badge of document.querySelectorAll("[data-destination-badge]")) {
-      badge.textContent = appearance?.badge ?? "";
-      badge.dataset.school = appearance?.theme ?? "";
-      badge.hidden = !appearance;
+    const markSource = document.getElementById("campus-marks").content.querySelector(`[data-campus="${id}"]`);
+    for (const mark of document.querySelectorAll("[data-destination-mark]")) {
+      mark.hidden = !markSource;
+      if (markSource) mark.src = markSource.getAttribute("src");
     }
 
     const photo = document.querySelector("[data-campus-photo]");

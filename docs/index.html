@@ -4,14 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Exchange Planner</title>
-  <link rel="stylesheet" href="static/style.css?v=79c23f0552ff">
+  <link rel="stylesheet" href="static/style.css?v=3cb58a5b8d0e">
 </head>
 <body id="exchange-planner">
 <header class="identity">
   <a class="identity-link" href="./" data-plan-link>
-    <span class="school-badge" data-school="hku" aria-hidden="true">HKU</span>
+    <img class="campus-mark" width="40" height="40" alt=""
+     src="static/campus/hku.svg?v=58170c6886a2"
+     >
     <span>Exchange Planner</span>
   </a>
+  <span class="project-label">COMP3278 student project</span>
 </header>
 <main>
 
@@ -64,12 +67,15 @@
 
     <div class="journey">
       <div class="stop">
-        <span class="school-badge" data-school="hku" aria-hidden="true">HKU</span>
+        <img class="campus-mark" width="40" height="40" alt=""
+     src="static/campus/hku.svg?v=58170c6886a2"
+     >
         <div><span class="caption">Home university</span><strong>The University of Hong Kong</strong></div>
       </div>
       <div class="stop">
-        <span class="school-badge" data-school="toronto"
-              data-destination-badge aria-hidden="true">U of T</span>
+        <img class="campus-mark" width="40" height="40" alt=""
+     src="static/campus/toronto.svg?v=8e8869192932"
+     data-destination-mark>
         <div>
           <span class="caption">Exchange university</span>
           <strong data-destination-name>University of Toronto</strong>
@@ -82,9 +88,16 @@
 
 </main>
 
+<template id="campus-marks">
+
+  <img data-campus="2" src="static/campus/toronto.svg?v=8e8869192932" alt="">
+
+  <img data-campus="3" src="static/campus/ucl.svg?v=b197e17c76cd" alt="">
+
+</template>
 <script id="exchange-choices" type="application/json">{"destinations": [[3, "University College London"], [2, "University of Toronto"]], "semesters": ["Sem 1", "Sem 2"]}</script>
-<script id="campus-photos" type="application/json">{"2": {"alt": "Entrance to University College at the University of Toronto", "badge": "U of T", "city": "Toronto, Canada", "credit": "City of Toronto", "file": "toronto.jpg", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0/", "source": "https://commons.wikimedia.org/wiki/File:University_College_in_Toronto.jpg", "theme": "toronto"}, "3": {"alt": "Columns of the University College London portico", "badge": "UCL", "city": "London, United Kingdom", "credit": "Raya Sharbain", "file": "ucl.jpg", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0/", "source": "https://commons.wikimedia.org/wiki/File:Portico_of_University_College_London.jpg", "theme": "ucl"}}</script>
-<script src="static/plan.js?v=171c22b763ea" defer></script>
+<script id="campus-photos" type="application/json">{"2": {"alt": "Entrance to University College at the University of Toronto", "city": "Toronto, Canada", "credit": "City of Toronto", "file": "toronto.jpg", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0/", "mark": "toronto", "source": "https://commons.wikimedia.org/wiki/File:University_College_in_Toronto.jpg"}, "3": {"alt": "Columns of the University College London portico", "city": "London, United Kingdom", "credit": "Raya Sharbain", "file": "ucl.jpg", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0/", "mark": "ucl", "source": "https://commons.wikimedia.org/wiki/File:Portico_of_University_College_London.jpg"}}</script>
+<script src="static/plan.js?v=1dd0953d48ae" defer></script>
 
 
 
