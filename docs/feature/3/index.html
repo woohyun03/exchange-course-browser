@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Travel-friendly timetable · Exchange Planner</title>
-  <link rel="stylesheet" href="../../static/style.css?v=d1cd50f2ade8">
+  <link rel="stylesheet" href="../../static/style.css?v=79c23f0552ff">
 </head>
 <body id="exchange-planner">
 <header class="identity">
@@ -41,10 +41,13 @@
     <a href="./" data-plan-link
        aria-current="true">Timetable</a>
 
-    <a href="../7/" data-plan-link
+    <a href="../10/" data-plan-link
        >Insights</a>
 
   </nav>
+
+
+
 
 
 <div class="course-content">
@@ -63,8 +66,9 @@
 
 
 
+
   <form class="form" data-feature="3" method="get"
-        action="./" data-preserve-plan>
+        action="./" data-run-with-plan>
 
 
     <label>
@@ -117,7 +121,7 @@
       <span class="label">Earliest start time</span>
 
 
-        <input type="time" name="earliest_start" value=""
+        <input type="time" name="earliest_start" value="10:00"
                 required>
 
     </label>
@@ -128,7 +132,11 @@
 
 
 
-  <div id="preview-result" aria-live="polite"></div>
+
+  <div id="preview-result" aria-live="polite" data-empty-message="No Monday to Wednesday classes match. Try an earlier start time."
+       data-hidden-columns=""></div>
+
+
 
 </div>
 
@@ -136,12 +144,12 @@
 
 <script id="exchange-choices" type="application/json">{"destinations": [[3, "University College London"], [2, "University of Toronto"]], "semesters": ["Sem 1", "Sem 2"]}</script>
 <script id="campus-photos" type="application/json">{"2": {"alt": "Entrance to University College at the University of Toronto", "badge": "U of T", "city": "Toronto, Canada", "credit": "City of Toronto", "file": "toronto.jpg", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0/", "source": "https://commons.wikimedia.org/wiki/File:University_College_in_Toronto.jpg", "theme": "toronto"}, "3": {"alt": "Columns of the University College London portico", "badge": "UCL", "city": "London, United Kingdom", "credit": "Raya Sharbain", "file": "ucl.jpg", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0/", "source": "https://commons.wikimedia.org/wiki/File:Portico_of_University_College_London.jpg", "theme": "ucl"}}</script>
-<script src="../../static/plan.js?v=c32ebdb7d291" defer></script>
+<script src="../../static/plan.js?v=171c22b763ea" defer></script>
 
 
 
 <script src="../../static/sql-wasm.js?v=d6a9cc234ef1" defer></script>
-<script src="../../static/preview.js?v=5a2b77b78af7" defer></script>
+<script src="../../static/preview.js?v=66158257ca14" defer></script>
 
 </body>
 </html>

@@ -88,7 +88,14 @@
     }
   }
 
-  if (mainForm.dataset.feature === "4" && [...mainForm.querySelectorAll("label")].every(label => label.hidden)) {
+  const student = mainForm.elements.namedItem("student_id");
+  if (student && !params.has("student_id") && !student.value) {
+    const first = [...student.options].find(option => option.value && !option.disabled);
+    if (first) student.value = first.value;
+  }
+
+  if (mainForm.hasAttribute("data-run-with-plan") &&
+      [...mainForm.querySelectorAll("label")].every(label => label.hidden)) {
     mainForm.hidden = true;
   }
 })();

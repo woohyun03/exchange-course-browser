@@ -29,6 +29,10 @@ function addCell(row, tag, text) {
 }
 
 function showTable(columns, rows, labels, limit) {
+  const hidden = (results.dataset.hiddenColumns ?? "").split(",");
+  const visible = columns.map((key, index) => ({
+    key, index, label: labels[key] ?? key[0].toUpperCase() + key.slice(1),
+  })).filter((column) => !hidden.includes(column.key));
   const section = document.createElement("section");
   section.className = "block flat";
   section.setAttribute("aria-labelledby", "results-heading");
@@ -49,7 +53,7 @@ function showTable(columns, rows, labels, limit) {
   if (rows.length === 0) {
     const empty = document.createElement("p");
     empty.className = "empty";
-    empty.textContent = "No results match these filters.";
+    empty.textContent = results.dataset.emptyMessage ?? "No results match these filters.";
     section.append(empty);
   } else {
     const wrapper = document.createElement("div");
@@ -59,15 +63,26 @@ function showTable(columns, rows, labels, limit) {
     wrapper.setAttribute("aria-label", "Query results table");
     const table = document.createElement("table");
     table.className = "data";
-    const header = table.createTHead().insertRow();
-    for (const column of columns) {
-      addCell(header, "th", labels[column] ?? column[0].toUpperCase() + column.slice(1)).scope = "col";
+    table.setAttribute("role", "table");
+    const head = table.createTHead();
+    head.setAttribute("role", "rowgroup");
+    const header = head.insertRow();
+    header.setAttribute("role", "row");
+    for (const { label } of visible) {
+      const cell = addCell(header, "th", label);
+      cell.setAttribute("role", "columnheader");
+      cell.scope = "col";
     }
     const body = table.createTBody();
+    body.setAttribute("role", "rowgroup");
     for (const values of rows.slice(0, limit)) {
       const row = body.insertRow();
-      for (const value of values) {
+      row.setAttribute("role", "row");
+      for (const { index, label } of visible) {
+        const value = values[index];
         const cell = addCell(row, "td", value === null ? "NULL" : String(value));
+        cell.setAttribute("role", "cell");
+        cell.dataset.label = label;
         if (value === null) cell.className = "null";
       }
     }
@@ -82,8 +97,9 @@ async function displayResults() {
   const fields = [...form.querySelectorAll("[name]:not([data-plan-context])")];
   const number = Number(form.dataset.feature);
   const planReady = Boolean(form.querySelector("[data-plan-context]"));
-  if (!fields.some((field) => params.has(field.name)) &&
-      !(planReady && (number === 1 || number === 4))) return;
+  const readyWithPlan = planReady && form.hasAttribute("data-run-with-plan") &&
+    fields.every((field) => !field.required || field.value);
+  if (!fields.some((field) => params.has(field.name)) && !readyWithPlan) return;
 
   const bindings = {};
   for (const field of fields) {
