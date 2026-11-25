@@ -1,0 +1,42 @@
+{
+  "queries": [
+    "SELECT c.courseID, c.name AS courseName, u.name AS university, c.credits,\n       CASE WHEN c.exam = 1 THEN 'Yes' ELSE 'No' END AS hasExam\nFROM courses AS c\nJOIN universities AS u ON u.uniID = c.uniID\nWHERE c.name LIKE '%' || :keyword || '%'\nORDER BY u.name, c.name",
+    "SELECT c.courseID, c.name AS courseName, u.name AS university,\n       d.name AS department, c.credits\nFROM courses AS c\nJOIN universities AS u ON u.uniID = c.uniID\nJOIN departments AS d ON d.deptID = c.deptID\nWHERE c.uniID = :uni_id AND c.deptID = :dept_id\nORDER BY c.name",
+    "SELECT c.name AS courseName, o.term, o.day, o.startTime,\n       o.endTime, c.credits\nFROM courseOfferings AS o\nJOIN courses AS c ON c.courseID = o.courseID\nWHERE c.uniID = :uni_id\n  AND o.day IN ('Mon', 'Tue', 'Wed')\n  AND o.startTime >= :earliest_start\nORDER BY o.startTime DESC, o.day, c.name",
+    "SELECT c.name AS courseName, o.term, o.day,\n       o.startTime, o.endTime, c.credits\nFROM courses AS c\nJOIN courseOfferings AS o ON o.courseID = c.courseID\nWHERE c.uniID = :uni_id\n  AND c.exam = 0\n  AND o.term = :term\nORDER BY o.day, o.startTime, c.name",
+    "SELECT host.name AS hostCourse, u.name AS hostUniversity,\n       home.name AS hkuEquivalent,\n       host.credits AS hostCredits, home.credits AS hkuCredits\nFROM courseEquivalences AS eq\nJOIN courses AS home ON home.courseID = eq.homeCourseID\nJOIN courses AS host ON host.courseID = eq.hostCourseID\nJOIN universities AS u ON u.uniID = host.uniID\nWHERE home.uniID = 1 AND host.uniID = :uni_id\nORDER BY host.name, home.name",
+    "SELECT t.teacherID, t.name AS teacher, o.term,\n       COUNT(*) AS offeringCount\nFROM teachers AS t\nJOIN courseOfferings AS o ON o.teacherID = t.teacherID\nJOIN courses AS c ON c.courseID = o.courseID\nWHERE c.uniID = :uni_id AND o.term = :term\nGROUP BY t.teacherID, t.name, o.term\nORDER BY offeringCount DESC, t.name",
+    "SELECT s.studentID, s.name AS student, o.term,\n       COUNT(*) AS classes, SUM(c.credits) AS enrolledCredits,\n       s.requiredCredits, ROUND(AVG(e.grade), 1) AS avgGrade,\n       CASE WHEN SUM(c.credits) >= s.requiredCredits\n            THEN 'Yes' ELSE 'No' END AS meetsRequirement\nFROM enrollments AS e\nJOIN students AS s ON s.studentID = e.studentID\nJOIN courseOfferings AS o ON o.offeringID = e.offeringID\nJOIN courses AS c ON c.courseID = o.courseID\nWHERE s.studentID = :student_id\nGROUP BY s.studentID, s.name, o.term, s.requiredCredits\nORDER BY o.term",
+    "SELECT c.courseID, c.name AS courseName, o.term,\n       COUNT(e.grade) AS gradedStudents,\n       SUM(CASE WHEN e.grade < 50 THEN 1 ELSE 0 END) AS failedStudents,\n       ROUND(100.0 * SUM(CASE WHEN e.grade < 50 THEN 1 ELSE 0 END)\n             / COUNT(e.grade), 1) AS failRatePct\nFROM courses AS c\nJOIN courseOfferings AS o ON o.courseID = c.courseID\nJOIN enrollments AS e ON e.offeringID = o.offeringID\nWHERE c.uniID = :uni_id AND o.term = :term\nGROUP BY c.courseID, c.name, o.term\nHAVING COUNT(e.grade) > 0\nORDER BY failRatePct DESC, gradedStudents DESC, c.name",
+    "SELECT c.courseID, c.name AS courseName, u.name AS university\nFROM courses c JOIN universities u ON u.uniID = c.uniID\nWHERE c.uniID = :uni_id AND NOT EXISTS (\n  SELECT 1 FROM courseEquivalences eq\n  JOIN courses h ON h.courseID = eq.homeCourseID\n  WHERE eq.hostCourseID = c.courseID AND h.uniID = 1\n)\nORDER BY c.name",
+    "SELECT c.courseID, c.name AS courseName, o.term,\n       COUNT(e.studentID) AS enrolledStudents\nFROM courses c JOIN courseOfferings o ON o.courseID = c.courseID\nJOIN enrollments e ON e.offeringID = o.offeringID\nWHERE c.uniID = :uni_id AND o.term = :term\nGROUP BY c.courseID, c.name, o.term\nHAVING COUNT(e.studentID) >= :min_enrollments\nORDER BY enrolledStudents DESC, c.name",
+    "SELECT b.offeringID, c.name AS conflictingCourse,\n       b.term, b.day, b.startTime, b.endTime\nFROM courseOfferings a\nJOIN courses chosen ON chosen.courseID = a.courseID\nJOIN courseOfferings b ON b.offeringID <> a.offeringID\n  AND b.term = a.term AND b.day = a.day\n  AND a.startTime < b.endTime AND b.startTime < a.endTime\nJOIN courses c ON c.courseID = b.courseID\nWHERE a.offeringID = :offering_id AND c.uniID = chosen.uniID\nORDER BY b.startTime, c.name"
+  ],
+  "columnLabels": {
+    "courseID": "Course ID",
+    "courseName": "Course",
+    "hasExam": "Final exam",
+    "term": "Semester",
+    "startTime": "Start time",
+    "endTime": "End time",
+    "hostCourse": "Exchange course",
+    "hostUniversity": "Exchange university",
+    "hkuEquivalent": "HKU equivalent",
+    "hostCredits": "Exchange credits",
+    "hkuCredits": "HKU credits",
+    "teacherID": "Teacher ID",
+    "offeringCount": "Class offerings",
+    "studentID": "Student ID",
+    "enrolledCredits": "Enrolled credits",
+    "requiredCredits": "Required credits",
+    "avgGrade": "Average grade",
+    "meetsRequirement": "Meets requirement",
+    "gradedStudents": "Graded enrollments",
+    "failedStudents": "Failed enrollments",
+    "failRatePct": "Failure rate (%)",
+    "enrolledStudents": "Enrollments",
+    "offeringID": "Offering ID",
+    "conflictingCourse": "Conflicting course"
+  },
+  "limit": 500
+}

@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Exchange Student Course Browser</title>
+  <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="./">Exchange Student Course Browser</a>
+
+</header>
+<main>
+
+<section class="search-panel">
+  <h1>Find a course</h1>
+  <p>Browse sample courses at HKU, the University of Toronto and UCL.</p>
+  <form class="search-form" method="get" action="feature/1/">
+    <label for="keyword" class="sr-only">Course name keyword</label>
+    <input id="keyword" name="keyword" type="search" placeholder="Try database" required>
+    <button type="submit">Search courses</button>
+  </form>
+</section>
+<div class="cards">
+
+  <section class="feature-group">
+    <h2>Explore courses</h2>
+    <ul>
+
+      <li>
+        <a href="feature/2/">
+          <span>Browse by university and department</span>
+          <small>Find courses offered by a specific university and department.</small>
+        </a>
+      </li>
+
+      <li>
+        <a href="feature/4/">
+          <span>Find courses without a final exam</span>
+          <small>See exam-free classes actually offered in the selected semester.</small>
+        </a>
+      </li>
+
+    </ul>
+  </section>
+
+  <section class="feature-group">
+    <h2>Plan your exchange</h2>
+    <ul>
+
+      <li>
+        <a href="feature/3/">
+          <span>Travel-friendly timetable</span>
+          <small>Find Monday to Wednesday classes that start at or after your chosen time.</small>
+        </a>
+      </li>
+
+      <li>
+        <a href="feature/5/">
+          <span>Find HKU course equivalents</span>
+          <small>Look up recorded HKU equivalents and compare credits with your exchange university.</small>
+        </a>
+      </li>
+
+      <li>
+        <a href="feature/7/">
+          <span>Check student progress</span>
+          <small>Compare enrolled and required credits and see the average grade for each semester.</small>
+        </a>
+      </li>
+
+      <li>
+        <a href="feature/9/">
+          <span>Find courses without HKU equivalents</span>
+          <small>See which courses have no recorded equivalent at HKU.</small>
+        </a>
+      </li>
+
+      <li>
+        <a href="feature/11/">
+          <span>Check timetable clashes</span>
+          <small>Find other classes at the same exchange university that overlap a selected class.</small>
+        </a>
+      </li>
+
+    </ul>
+  </section>
+
+  <section class="feature-group">
+    <h2>View statistics</h2>
+    <ul>
+
+      <li>
+        <a href="feature/6/">
+          <span>Compare teaching loads</span>
+          <small>See how many class offerings each teacher handles in the selected semester.</small>
+        </a>
+      </li>
+
+      <li>
+        <a href="feature/8/">
+          <span>Compare course failure rates</span>
+          <small>See the share of graded enrollments with a mark below 50.</small>
+        </a>
+      </li>
+
+      <li>
+        <a href="feature/10/">
+          <span>Find popular courses</span>
+          <small>See which courses reached a minimum number of enrollments in a semester.</small>
+        </a>
+      </li>
+
+    </ul>
+  </section>
+
+</div>
+
+</main>
+
+</body>
+</html>

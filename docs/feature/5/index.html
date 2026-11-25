@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Find HKU course equivalents · Exchange Student Course Browser</title>
+  <link rel="stylesheet" href="../../static/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../../">Exchange Student Course Browser</a>
+
+  <nav aria-label="Main navigation"><a href="../../">All tools</a></nav>
+
+</header>
+<main>
+
+<h1 class="feature-title">Find HKU course equivalents</h1>
+<p class="dim feature-description">Look up recorded HKU equivalents and compare credits with your exchange university.</p>
+
+
+<form class="block form" data-feature="5" method="get" action="./">
+
+  <label>
+    <span class="label">Exchange university</span>
+
+      <select name="uni_id" required>
+        <option value="">— choose —</option>
+
+        <option value="3" >University College London</option>
+
+        <option value="2" >University of Toronto</option>
+
+      </select>
+
+  </label>
+
+  <button type="submit">Find HKU equivalents</button>
+</form>
+
+
+<div id="preview-result" aria-live="polite"></div>
+
+
+</main>
+
+<script src="../../static/sql-wasm.js" defer></script>
+<script src="../../static/preview.js" defer></script>
+
+</body>
+</html>
