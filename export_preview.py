@@ -71,8 +71,9 @@ def main():
     SITE.mkdir(exist_ok=True)
     static = SITE / "static"
     static.mkdir(exist_ok=True)
-    for asset in ("style.css", "plan.js"):
+    for asset in ("style.css", "plan.js", "course-results.js"):
         shutil.copyfile(PROJECT / "app/static" / asset, static / asset)
+    shutil.copytree(PROJECT / "app/static/campus", static / "campus", dirs_exist_ok=True)
     (SITE / ".nojekyll").touch()
 
     preview_db = SITE / ".app.db.new"
@@ -104,6 +105,7 @@ def main():
 
     config = {
         "queries": [feature.clean_sql for feature in settings.features],
+        "courseDetails": settings.course_details,
         "columnLabels": COLUMN_LABELS,
         "limit": MAX_RESULT_ROWS,
     }

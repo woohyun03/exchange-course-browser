@@ -3,85 +3,158 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Find courses without a final exam · Exchange Student Course Browser</title>
-  <link rel="stylesheet" href="../../static/style.css?v=c8fd3053e0f9">
+  <title>Find courses without a final exam · Exchange Planner</title>
+  <link rel="stylesheet" href="../../static/style.css?v=d1cd50f2ade8">
 </head>
-<body>
-
-<header class="topbar">
-  <a class="brand" href="../../" data-plan-link>Exchange Student Course Browser</a>
-
-  <nav aria-label="Main navigation"><a href="../../" data-plan-link>All tools</a></nav>
-
+<body id="exchange-planner">
+<header class="identity">
+  <a class="identity-link" href="../../" data-plan-link>
+    <span class="school-badge" data-school="hku" aria-hidden="true">HKU</span>
+    <span>Exchange Planner</span>
+  </a>
 </header>
 <main>
-  <p class="plan-route" data-plan-route hidden></p>
 
-<h1 class="feature-title">Find courses without a final exam</h1>
-<p class="dim feature-description">See exam-free classes actually offered in the selected semester.</p>
+  <div class="context" data-plan-route hidden>
+    <div class="context-text">
+      <span class="caption">Your exchange plan</span>
+      <div class="context-universities">
+        <span class="school-badge" data-school="hku">HKU</span>
+        <span class="subtle" aria-hidden="true">→</span>
 
+        <span class="school-badge" data-school=""
+              data-destination-badge aria-hidden="true"></span>
+        <strong data-destination-name></strong>
+        <span class="subtle" data-semester-name></span>
+      </div>
+    </div>
+    <a class="quiet-button" href="../../" data-plan-link>Change plan</a>
+  </div>
+  <nav class="workspace-nav" aria-label="Exchange tools">
 
-<form class="block form" data-feature="4" method="get" action="./" data-preserve-plan>
+    <a href="../1/" data-plan-link
+       aria-current="true">Courses</a>
 
-  <label>
-    <span class="label">Exchange university</span>
+    <a href="../5/" data-plan-link
+       >HKU Equivalents</a>
 
-      <select name="uni_id" required>
-        <option value="">— choose —</option>
+    <a href="../3/" data-plan-link
+       >Timetable</a>
 
+    <a href="../7/" data-plan-link
+       >Insights</a>
 
-
-        <option value="3"
-
-          >University College London</option>
-
-
-
-        <option value="2"
-
-          >University of Toronto</option>
-
-      </select>
-
-  </label>
-
-  <label>
-    <span class="label">Semester</span>
-
-      <select name="term" required>
-        <option value="">— choose —</option>
+  </nav>
 
 
-
-        <option value="Sem 1"
-
-          >Sem 1</option>
+<div class="course-content">
+  <h1>Find courses</h1>
 
 
+  <nav class="modes" aria-label="Courses tools">
 
-        <option value="Sem 2"
+    <a href="../1/" data-plan-link
+       >Search by name</a>
 
-          >Sem 2</option>
+    <a href="../2/" data-plan-link
+       >By department</a>
 
-      </select>
+    <a href="./" data-plan-link
+       aria-current="page">No final exam</a>
 
-  </label>
-
-  <button type="submit">Find exam-free courses</button>
-</form>
+  </nav>
 
 
-<div id="preview-result" aria-live="polite"></div>
 
+  <form class="form course-form" data-feature="4" method="get"
+        action="./" data-preserve-plan>
+
+
+    <label>
+      <span class="label">Exchange university</span>
+
+        <select name="uni_id" required>
+          <option value="">Choose exchange university</option>
+
+
+
+          <option value="3"
+
+            >University College London</option>
+
+
+
+          <option value="2"
+
+            >University of Toronto</option>
+
+        </select>
+
+    </label>
+
+
+    <label>
+      <span class="label">Semester</span>
+
+        <select name="term" required>
+          <option value="">Choose semester</option>
+
+
+
+          <option value="Sem 1"
+
+            >Sem 1</option>
+
+
+
+          <option value="Sem 2"
+
+            >Sem 2</option>
+
+        </select>
+
+    </label>
+
+    <button type="submit" class="primary-button">Find exam-free courses</button>
+  </form>
+
+
+
+  <div id="course-results" data-details-url=""
+       data-clashes-url="../11/" aria-live="polite"></div>
+  <template id="course-result-row">
+    <article class="course-row">
+      <div class="course-main">
+        <div class="course-title"><h2></h2><p class="course-meta"></p></div>
+        <span class="exam-status"></span>
+      </div>
+      <div class="course-actions">
+        <button type="button" class="row-action" data-detail="equivalent" aria-expanded="false">Check HKU equivalent</button>
+        <button type="button" class="row-action" data-detail="times" aria-expanded="false">View class times</button>
+      </div>
+      <div class="course-detail" hidden aria-live="polite">
+        <span class="caption"></span><div class="detail-content"></div>
+      </div>
+    </article>
+  </template>
+
+
+  <div id="preview-result" aria-live="polite"></div>
+
+</div>
 
 </main>
 
 <script id="exchange-choices" type="application/json">{"destinations": [[3, "University College London"], [2, "University of Toronto"]], "semesters": ["Sem 1", "Sem 2"]}</script>
-<script src="../../static/plan.js?v=af92ba2f930c" defer></script>
+<script id="campus-photos" type="application/json">{"2": {"alt": "Entrance to University College at the University of Toronto", "badge": "U of T", "city": "Toronto, Canada", "credit": "City of Toronto", "file": "toronto.jpg", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0/", "source": "https://commons.wikimedia.org/wiki/File:University_College_in_Toronto.jpg", "theme": "toronto"}, "3": {"alt": "Columns of the University College London portico", "badge": "UCL", "city": "London, United Kingdom", "credit": "Raya Sharbain", "file": "ucl.jpg", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0/", "source": "https://commons.wikimedia.org/wiki/File:Portico_of_University_College_London.jpg", "theme": "ucl"}}</script>
+<script src="../../static/plan.js?v=c32ebdb7d291" defer></script>
+
+
+<script src="../../static/course-results.js?v=4a9a79805efa" defer></script>
 
 
 <script src="../../static/sql-wasm.js?v=d6a9cc234ef1" defer></script>
-<script src="../../static/preview.js?v=e29067605058" defer></script>
+<script src="../../static/preview.js?v=5a2b77b78af7" defer></script>
 
 </body>
 </html>

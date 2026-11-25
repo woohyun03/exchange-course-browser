@@ -80,12 +80,15 @@ function showTable(columns, rows, labels, limit) {
 
 async function displayResults() {
   const fields = [...form.querySelectorAll("[name]:not([data-plan-context])")];
-  if (!fields.some((field) => params.has(field.name))) return;
+  const number = Number(form.dataset.feature);
+  const planReady = Boolean(form.querySelector("[data-plan-context]"));
+  if (!fields.some((field) => params.has(field.name)) &&
+      !(planReady && (number === 1 || number === 4))) return;
 
   const bindings = {};
   for (const field of fields) {
-    const raw = (params.get(field.name) ?? "").trim();
-    field.value = raw;
+    if (params.has(field.name)) field.value = params.get(field.name);
+    const raw = field.value.trim();
     const disabledOption = field instanceof HTMLSelectElement && field.selectedOptions[0]?.disabled;
     if (!field.checkValidity() || disabledOption || (field.required && field.value === "")) {
       message("Check your inputs and run the search again.");
@@ -102,21 +105,40 @@ async function displayResults() {
     fetchAsset("app.db").then((response) => response.arrayBuffer()),
   ]);
   const database = new SQL.Database(new Uint8Array(data));
+  let keepDatabase = false;
   try {
     database.run("PRAGMA query_only = ON");
-    const query = config.queries[Number(form.dataset.feature) - 1];
+    const query = config.queries[number - 1];
     const statement = database.prepare(query);
     try {
       statement.bind(bindings);
       const columns = statement.getColumnNames();
       const rows = [];
       while (rows.length <= config.limit && statement.step()) rows.push(statement.get());
-      showTable(columns, rows, config.columnLabels, config.limit);
+      if (window.renderCourseResults) {
+        window.renderCourseResults(columns, rows.slice(0, config.limit), rows.length > config.limit,
+          (kind, course, term) => {
+            const params = kind === "times" ? { ":course_id": course, ":term": term } : { ":course_id": course };
+            const detail = database.prepare(config.courseDetails[kind]);
+            try {
+              detail.bind(params);
+              const records = [];
+              while (detail.step()) records.push(detail.getAsObject());
+              return records;
+            } finally {
+              detail.free();
+            }
+          });
+        keepDatabase = true;
+        results.replaceChildren();
+      } else {
+        showTable(columns, rows, config.columnLabels, config.limit);
+      }
     } finally {
       statement.free();
     }
   } finally {
-    database.close();
+    if (!keepDatabase) database.close();
   }
 }
 

@@ -3,169 +3,89 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Exchange Student Course Browser</title>
-  <link rel="stylesheet" href="static/style.css?v=c8fd3053e0f9">
+  <title>Exchange Planner</title>
+  <link rel="stylesheet" href="static/style.css?v=d1cd50f2ade8">
 </head>
-<body>
-
-<header class="topbar">
-  <a class="brand" href="./" data-plan-link>Exchange Student Course Browser</a>
-
+<body id="exchange-planner">
+<header class="identity">
+  <a class="identity-link" href="./" data-plan-link>
+    <span class="school-badge" data-school="hku" aria-hidden="true">HKU</span>
+    <span>Exchange Planner</span>
+  </a>
 </header>
 <main>
-  <p class="plan-route" data-plan-route hidden></p>
 
-<section class="search-panel">
-  <h1>Plan your exchange from HKU</h1>
-  <p>Choose where and when you’re going to see courses, HKU equivalents and classes that fit your timetable.</p>
-  <form class="plan-form" method="get" action="./" id="exchange-plan">
-    <label>
-      <span class="label">Exchange university</span>
-      <select name="destination" required>
-        <option value="">Choose a university</option>
+
+<section class="setup" aria-labelledby="exchange-title">
+  <div class="setup-copy">
+    <h1 id="exchange-title">Plan your exchange</h1>
+    <p>Choose an exchange university and semester to start looking for courses.</p>
+    <form id="exchange-setup" method="get" action="feature/1/">
+      <label for="exchange-university">Exchange university</label>
+      <select id="exchange-university" name="destination" required>
 
         <option value="3">University College London</option>
 
-        <option value="2">University of Toronto</option>
+        <option value="2" selected>University of Toronto</option>
 
       </select>
-    </label>
-    <label>
-      <span class="label">Exchange semester</span>
-      <select name="semester" required>
-        <option value="">Choose a semester</option>
+      <label for="exchange-semester">Exchange semester</label>
+      <select id="exchange-semester" name="semester" required>
 
-        <option value="Sem 1">Sem 1</option>
+        <option value="Sem 1">Semester 1</option>
 
-        <option value="Sem 2">Sem 2</option>
+        <option value="Sem 2">Semester 2</option>
 
       </select>
-    </label>
-    <button type="submit">Set exchange plan</button>
-  </form>
+      <button class="main-action" type="submit">Start planning <span aria-hidden="true">→</span></button>
+    </form>
+  </div>
+  <aside class="route-panel" aria-label="Your exchange route">
+
+    <figure class="campus-figure">
+      <img data-campus-photo width="960" height="640"
+           src="static/campus/toronto.jpg?v=460c03004c10" alt="Entrance to University College at the University of Toronto">
+      <figcaption>
+        <span data-campus-place>Toronto, Canada</span>
+        <span class="photo-credit">
+          Photo by <a data-campus-credit href="https://commons.wikimedia.org/wiki/File:University_College_in_Toronto.jpg" target="_blank" rel="noopener noreferrer">City of Toronto</a>
+          · <a data-campus-license href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noopener noreferrer">CC BY 2.0</a>
+          · cropped
+        </span>
+      </figcaption>
+    </figure>
+    <template id="campus-images">
+
+      <img data-campus="2" src="static/campus/toronto.jpg?v=460c03004c10" alt="Entrance to University College at the University of Toronto">
+
+      <img data-campus="3" src="static/campus/ucl.jpg?v=e818f1b0f210" alt="Columns of the University College London portico">
+
+    </template>
+
+    <div class="journey">
+      <div class="stop">
+        <span class="school-badge" data-school="hku" aria-hidden="true">HKU</span>
+        <div><span class="caption">Home university</span><strong>The University of Hong Kong</strong></div>
+      </div>
+      <div class="stop">
+        <span class="school-badge" data-school="toronto"
+              data-destination-badge aria-hidden="true">U of T</span>
+        <div>
+          <span class="caption">Exchange university</span>
+          <strong data-destination-name>University of Toronto</strong>
+          <span class="route-term" data-semester-name>Semester 1</span>
+        </div>
+      </div>
+    </div>
+  </aside>
 </section>
-<section class="plan-search" data-plan-search hidden>
-  <h2>Search your destination’s courses</h2>
-  <form class="search-form" method="get" action="feature/1/" data-preserve-plan>
-    <input type="hidden" name="uni_id" data-plan-default>
-    <label for="keyword" class="sr-only">Course name keyword</label>
-    <input id="keyword" name="keyword" type="search" placeholder="Try database" required>
-    <button type="submit">Search courses</button>
-  </form>
-</section>
-<div class="cards">
-
-  <section class="feature-group">
-    <h2>Find courses</h2>
-    <ul>
-
-      <li>
-        <a href="feature/1/" data-plan-link>
-          <span>Search courses by name</span>
-          <small>Search course names and narrow the results to your exchange university.</small>
-        </a>
-      </li>
-
-      <li>
-        <a href="feature/2/" data-plan-link>
-          <span>Browse by university and department</span>
-          <small>Browse the course catalogue of an exchange university by department.</small>
-        </a>
-      </li>
-
-      <li>
-        <a href="feature/4/" data-plan-link>
-          <span>Find courses without a final exam</span>
-          <small>See exam-free classes actually offered in the selected semester.</small>
-        </a>
-      </li>
-
-    </ul>
-  </section>
-
-  <section class="feature-group">
-    <h2>Check HKU equivalents</h2>
-    <ul>
-
-      <li>
-        <a href="feature/5/" data-plan-link>
-          <span>Find HKU course equivalents</span>
-          <small>Look up recorded HKU equivalents and compare credits with your exchange university.</small>
-        </a>
-      </li>
-
-      <li>
-        <a href="feature/9/" data-plan-link>
-          <span>Find courses without HKU equivalents</span>
-          <small>See which courses have no recorded equivalent at HKU.</small>
-        </a>
-      </li>
-
-    </ul>
-  </section>
-
-  <section class="feature-group">
-    <h2>Plan your semester</h2>
-    <ul>
-
-      <li>
-        <a href="feature/3/" data-plan-link>
-          <span>Travel-friendly timetable</span>
-          <small>Find Monday to Wednesday classes that start at or after your chosen time.</small>
-        </a>
-      </li>
-
-      <li>
-        <a href="feature/11/" data-plan-link>
-          <span>Check timetable clashes</span>
-          <small>Find other classes at the same exchange university that overlap a selected class.</small>
-        </a>
-      </li>
-
-      <li>
-        <a href="feature/7/" data-plan-link>
-          <span>Check student progress</span>
-          <small>See a sample student’s credits, credit requirement and average grade by semester.</small>
-        </a>
-      </li>
-
-    </ul>
-  </section>
-
-  <section class="feature-group">
-    <h2>Explore course statistics</h2>
-    <ul>
-
-      <li>
-        <a href="feature/6/" data-plan-link>
-          <span>Compare teaching loads</span>
-          <small>See how many class offerings each teacher handles in the selected semester.</small>
-        </a>
-      </li>
-
-      <li>
-        <a href="feature/8/" data-plan-link>
-          <span>Compare course failure rates</span>
-          <small>See the share of graded enrollments with a mark below 50.</small>
-        </a>
-      </li>
-
-      <li>
-        <a href="feature/10/" data-plan-link>
-          <span>Find popular courses</span>
-          <small>See which courses reached a minimum number of enrollments in a semester.</small>
-        </a>
-      </li>
-
-    </ul>
-  </section>
-
-</div>
 
 </main>
 
 <script id="exchange-choices" type="application/json">{"destinations": [[3, "University College London"], [2, "University of Toronto"]], "semesters": ["Sem 1", "Sem 2"]}</script>
-<script src="static/plan.js?v=af92ba2f930c" defer></script>
+<script id="campus-photos" type="application/json">{"2": {"alt": "Entrance to University College at the University of Toronto", "badge": "U of T", "city": "Toronto, Canada", "credit": "City of Toronto", "file": "toronto.jpg", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0/", "source": "https://commons.wikimedia.org/wiki/File:University_College_in_Toronto.jpg", "theme": "toronto"}, "3": {"alt": "Columns of the University College London portico", "badge": "UCL", "city": "London, United Kingdom", "credit": "Raya Sharbain", "file": "ucl.jpg", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0/", "source": "https://commons.wikimedia.org/wiki/File:Portico_of_University_College_London.jpg", "theme": "ucl"}}</script>
+<script src="static/plan.js?v=c32ebdb7d291" defer></script>
+
 
 
 </body>

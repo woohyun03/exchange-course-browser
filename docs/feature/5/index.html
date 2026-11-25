@@ -3,63 +3,112 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Find HKU course equivalents · Exchange Student Course Browser</title>
-  <link rel="stylesheet" href="../../static/style.css?v=c8fd3053e0f9">
+  <title>Find HKU course equivalents · Exchange Planner</title>
+  <link rel="stylesheet" href="../../static/style.css?v=d1cd50f2ade8">
 </head>
-<body>
-
-<header class="topbar">
-  <a class="brand" href="../../" data-plan-link>Exchange Student Course Browser</a>
-
-  <nav aria-label="Main navigation"><a href="../../" data-plan-link>All tools</a></nav>
-
+<body id="exchange-planner">
+<header class="identity">
+  <a class="identity-link" href="../../" data-plan-link>
+    <span class="school-badge" data-school="hku" aria-hidden="true">HKU</span>
+    <span>Exchange Planner</span>
+  </a>
 </header>
 <main>
-  <p class="plan-route" data-plan-route hidden></p>
 
-<h1 class="feature-title">Find HKU course equivalents</h1>
-<p class="dim feature-description">Look up recorded HKU equivalents and compare credits with your exchange university.</p>
+  <div class="context" data-plan-route hidden>
+    <div class="context-text">
+      <span class="caption">Your exchange plan</span>
+      <div class="context-universities">
+        <span class="school-badge" data-school="hku">HKU</span>
+        <span class="subtle" aria-hidden="true">→</span>
+
+        <span class="school-badge" data-school=""
+              data-destination-badge aria-hidden="true"></span>
+        <strong data-destination-name></strong>
+        <span class="subtle" data-semester-name></span>
+      </div>
+    </div>
+    <a class="quiet-button" href="../../" data-plan-link>Change plan</a>
+  </div>
+  <nav class="workspace-nav" aria-label="Exchange tools">
+
+    <a href="../1/" data-plan-link
+       >Courses</a>
+
+    <a href="./" data-plan-link
+       aria-current="true">HKU Equivalents</a>
+
+    <a href="../3/" data-plan-link
+       >Timetable</a>
+
+    <a href="../7/" data-plan-link
+       >Insights</a>
+
+  </nav>
 
 
-<form class="block form" data-feature="5" method="get" action="./" data-preserve-plan>
+<div class="course-content">
+  <h1>Find HKU course equivalents</h1>
+  <p class="feature-description">Look up recorded HKU equivalents and compare credits with your exchange university.</p>
 
-  <label>
-    <span class="label">Exchange university</span>
+  <nav class="modes" aria-label="HKU Equivalents tools">
 
-      <select name="uni_id" required>
-        <option value="">— choose —</option>
+    <a href="./" data-plan-link
+       aria-current="page">With an HKU equivalent</a>
 
+    <a href="../9/" data-plan-link
+       >Without an HKU equivalent</a>
 
-
-        <option value="3"
-
-          >University College London</option>
-
-
-
-        <option value="2"
-
-          >University of Toronto</option>
-
-      </select>
-
-  </label>
-
-  <button type="submit">Find HKU equivalents</button>
-</form>
+  </nav>
 
 
-<div id="preview-result" aria-live="polite"></div>
 
+  <form class="form" data-feature="5" method="get"
+        action="./" data-preserve-plan>
+
+
+    <label>
+      <span class="label">Exchange university</span>
+
+        <select name="uni_id" required>
+          <option value="">Choose exchange university</option>
+
+
+
+          <option value="3"
+
+            >University College London</option>
+
+
+
+          <option value="2"
+
+            >University of Toronto</option>
+
+        </select>
+
+    </label>
+
+    <button type="submit" class="primary-button">Find HKU equivalents</button>
+  </form>
+
+
+
+
+  <div id="preview-result" aria-live="polite"></div>
+
+</div>
 
 </main>
 
 <script id="exchange-choices" type="application/json">{"destinations": [[3, "University College London"], [2, "University of Toronto"]], "semesters": ["Sem 1", "Sem 2"]}</script>
-<script src="../../static/plan.js?v=af92ba2f930c" defer></script>
+<script id="campus-photos" type="application/json">{"2": {"alt": "Entrance to University College at the University of Toronto", "badge": "U of T", "city": "Toronto, Canada", "credit": "City of Toronto", "file": "toronto.jpg", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0/", "source": "https://commons.wikimedia.org/wiki/File:University_College_in_Toronto.jpg", "theme": "toronto"}, "3": {"alt": "Columns of the University College London portico", "badge": "UCL", "city": "London, United Kingdom", "credit": "Raya Sharbain", "file": "ucl.jpg", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0/", "source": "https://commons.wikimedia.org/wiki/File:Portico_of_University_College_London.jpg", "theme": "ucl"}}</script>
+<script src="../../static/plan.js?v=c32ebdb7d291" defer></script>
+
 
 
 <script src="../../static/sql-wasm.js?v=d6a9cc234ef1" defer></script>
-<script src="../../static/preview.js?v=e29067605058" defer></script>
+<script src="../../static/preview.js?v=5a2b77b78af7" defer></script>
 
 </body>
 </html>
