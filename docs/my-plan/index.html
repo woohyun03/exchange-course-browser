@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Plan · Exchange Planner</title>
+  <link rel="stylesheet" href="../static/style.css?v=a92f95160fb0">
+</head>
+<body id="exchange-planner" class="tool-page">
+<header class="identity">
+  <a class="identity-link" href="../" data-plan-link>
+    <img class="campus-mark" width="40" height="40" alt=""
+     src="../static/campus/hku.svg?v=58170c6886a2"
+     >
+    <span>Exchange Planner</span>
+  </a>
+  <span class="project-label">COMP3278 student project</span>
+</header>
+<main>
+
+  <div class="context" data-plan-route hidden>
+    <div class="context-text">
+      <span class="caption visually-hidden">Your exchange plan</span>
+      <div class="context-universities">
+        <span class="plan-campus"><img class="campus-mark" width="40" height="40" alt=""
+     src="../static/campus/hku.svg?v=58170c6886a2"
+     > <strong>HKU</strong></span>
+        <span class="subtle" aria-hidden="true">→</span>
+
+        <span class="plan-campus">
+          <img class="campus-mark" width="40" height="40" alt=""
+     hidden
+     data-destination-mark>
+          <strong data-destination-name></strong>
+        </span>
+        <span class="subtle" data-semester-name></span>
+      </div>
+    </div>
+    <a class="quiet-button" href="../" data-plan-link>Change plan</a>
+  </div>
+  <nav class="workspace-nav" aria-label="Exchange tools">
+
+    <a href="../feature/1/" data-plan-link
+       >Courses</a>
+
+    <a href="../feature/5/" data-plan-link
+       >HKU Equivalents</a>
+
+    <a href="../feature/3/" data-plan-link
+       >Timetable</a>
+
+    <a href="../feature/10/" data-plan-link
+       >Insights</a>
+
+    <a href="./" data-plan-link
+       aria-current="true">My Plan</a>
+  </nav>
+
+
+<section class="course-content">
+  <h1>My Plan</h1>
+  <div data-plan-setup>
+    <p class="feature-description">Choose a university and semester to start adding courses.</p>
+    <a class="quiet-button plan-setup-link" href="../">Choose an exchange</a>
+  </div>
+
+  <div data-personal-plan hidden>
+    <p class="feature-description">Set your credit target for each semester and add courses from the catalogue. Your plan is saved in this browser.</p>
+    <div class="term-plans">
+
+      <section class="term-plan" data-term="Sem 1" aria-labelledby="plan-term-1">
+        <div class="term-plan-head">
+          <h2 id="plan-term-1">Semester 1</h2>
+          <a class="quiet-button" href="../feature/1/" data-plan-link
+             data-plan-semester="Sem 1">Browse courses</a>
+        </div>
+        <p class="term-total" data-credit-total></p>
+        <label class="credit-target">
+          <span>Target exchange credits</span>
+          <input type="number" inputmode="numeric" min="1" max="999" step="1" placeholder="Enter a target">
+        </label>
+        <p class="credit-status" role="status" data-credit-status></p>
+        <ul class="planned-courses" data-planned-courses></ul>
+      </section>
+
+      <section class="term-plan" data-term="Sem 2" aria-labelledby="plan-term-2">
+        <div class="term-plan-head">
+          <h2 id="plan-term-2">Semester 2</h2>
+          <a class="quiet-button" href="../feature/1/" data-plan-link
+             data-plan-semester="Sem 2">Browse courses</a>
+        </div>
+        <p class="term-total" data-credit-total></p>
+        <label class="credit-target">
+          <span>Target exchange credits</span>
+          <input type="number" inputmode="numeric" min="1" max="999" step="1" placeholder="Enter a target">
+        </label>
+        <p class="credit-status" role="status" data-credit-status></p>
+        <ul class="planned-courses" data-planned-courses></ul>
+      </section>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<template id="campus-marks">
+
+  <img data-campus="2" src="../static/campus/toronto.svg?v=8e8869192932" alt="">
+
+  <img data-campus="3" src="../static/campus/ucl.svg?v=b197e17c76cd" alt="">
+
+</template>
+<script id="exchange-choices" type="application/json">{"destinations": [[3, "University College London"], [2, "University of Toronto"]], "semesters": ["Sem 1", "Sem 2"]}</script>
+<script id="campus-photos" type="application/json">{"2": {"alt": "Entrance to University College at the University of Toronto", "city": "Toronto, Canada", "credit": "City of Toronto", "file": "toronto.jpg", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0/", "mark": "toronto", "source": "https://commons.wikimedia.org/wiki/File:University_College_in_Toronto.jpg"}, "3": {"alt": "Columns of the University College London portico", "city": "London, United Kingdom", "credit": "Raya Sharbain", "file": "ucl.jpg", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0/", "mark": "ucl", "source": "https://commons.wikimedia.org/wiki/File:Portico_of_University_College_London.jpg"}}</script>
+<script src="../static/plan.js?v=7d77d151b93d" defer></script>
+
+
+<script src="../static/my-plan.js?v=ae7fbc4184c1" defer></script>
+
+
+
+
+</body>
+</html>

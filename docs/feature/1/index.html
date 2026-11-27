@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Search courses by name · Exchange Planner</title>
-  <link rel="stylesheet" href="../../static/style.css?v=1c4aeadb5232">
+  <link rel="stylesheet" href="../../static/style.css?v=a92f95160fb0">
 </head>
 <body id="exchange-planner" class="tool-page">
 <header class="identity">
@@ -52,6 +52,8 @@
     <a href="../10/" data-plan-link
        >Insights</a>
 
+    <a href="../../my-plan/" data-plan-link
+       >My Plan</a>
   </nav>
 
 
@@ -161,6 +163,7 @@
         <span class="exam-status"></span>
       </div>
       <div class="course-actions">
+        <button type="button" class="save-course" data-save-course aria-pressed="false" hidden>Add to My Plan</button>
         <button type="button" class="row-action" data-detail="equivalent" aria-expanded="false">Check HKU equivalent</button>
         <button type="button" class="row-action" data-detail="times" aria-expanded="false">View class times</button>
       </div>
@@ -196,10 +199,13 @@
 </template>
 <script id="exchange-choices" type="application/json">{"destinations": [[3, "University College London"], [2, "University of Toronto"]], "semesters": ["Sem 1", "Sem 2"]}</script>
 <script id="campus-photos" type="application/json">{"2": {"alt": "Entrance to University College at the University of Toronto", "city": "Toronto, Canada", "credit": "City of Toronto", "file": "toronto.jpg", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0/", "mark": "toronto", "source": "https://commons.wikimedia.org/wiki/File:University_College_in_Toronto.jpg"}, "3": {"alt": "Columns of the University College London portico", "city": "London, United Kingdom", "credit": "Raya Sharbain", "file": "ucl.jpg", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0/", "mark": "ucl", "source": "https://commons.wikimedia.org/wiki/File:Portico_of_University_College_London.jpg"}}</script>
-<script src="../../static/plan.js?v=1dd0953d48ae" defer></script>
+<script src="../../static/plan.js?v=7d77d151b93d" defer></script>
 
 
-<script src="../../static/course-results.js?v=c1664f0f84ed" defer></script>
+<script src="../../static/my-plan.js?v=ae7fbc4184c1" defer></script>
+
+
+<script src="../../static/course-results.js?v=c1f792d8a99b" defer></script>
 
 
 

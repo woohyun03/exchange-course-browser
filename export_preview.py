@@ -57,7 +57,7 @@ def make_preview_database(path):
 
 def export_url(endpoint, **values):
     target = url_for(endpoint, **values)
-    if endpoint == "feature_page":
+    if endpoint in ("feature_page", "my_plan"):
         target += "/"
     current_directory = request.path if request.path == "/" else request.path + "/"
     relative = posixpath.relpath(target, start=current_directory)
@@ -71,7 +71,7 @@ def main():
     SITE.mkdir(exist_ok=True)
     static = SITE / "static"
     static.mkdir(exist_ok=True)
-    for asset in ("style.css", "plan.js", "course-results.js", "feature-results.js"):
+    for asset in ("style.css", "plan.js", "course-results.js", "feature-results.js", "my-plan.js"):
         shutil.copyfile(PROJECT / "app/static" / asset, static / asset)
     shutil.copytree(PROJECT / "app/static/campus", static / "campus", dirs_exist_ok=True)
     (SITE / ".nojekyll").touch()
@@ -89,7 +89,7 @@ def main():
         raise ValueError(settings.error)
     app.jinja_env.globals.update(url_for=export_url, preview_mode=True)
     client = app.test_client()
-    routes = [("/", SITE / "index.html")]
+    routes = [("/", SITE / "index.html"), ("/my-plan", SITE / "my-plan" / "index.html")]
     routes.extend(
         (f"/feature/{number}", SITE / f"feature/{number}/index.html")
         for number in range(1, len(settings.features) + 1)

@@ -86,6 +86,11 @@
       const badge = row.querySelector(".exam-status");
       badge.textContent = course.hasExam === "Yes" ? "Final exam" : "No final exam";
       badge.dataset.noExam = String(course.hasExam === "No");
+      const campus = [...(form.elements.namedItem("uni_id")?.options ?? [])]
+        .find(option => option.textContent.trim() === course.university);
+      if (campus?.value && semester) {
+        window.exchangePlan?.bindCourse(row.querySelector("[data-save-course]"), campus.value, semester, course);
+      }
       for (const action of row.querySelectorAll("[data-detail]")) {
         const kind = action.dataset.detail;
         const detail = row.querySelector(`[data-panel="${kind}"]`);

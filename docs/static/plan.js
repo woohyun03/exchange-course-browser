@@ -48,18 +48,23 @@
     updateRoute();
   }
 
-  if (!chosenCampus || !semesters.includes(semester) || !mainForm) return;
+  if (!chosenCampus || !semesters.includes(semester)) return;
+  const route = document.querySelector("[data-plan-route]");
+  if (!route) return;
   const [id] = chosenCampus;
   const destination = String(id);
   const context = { destination, semester };
   showPlan(chosenCampus, semester);
-  document.querySelector("[data-plan-route]").hidden = false;
+  route.hidden = false;
 
   for (const link of document.querySelectorAll("[data-plan-link]")) {
     const url = new URL(link.href);
     for (const [name, value] of Object.entries(context)) url.searchParams.set(name, value);
+    if (link.dataset.planSemester) url.searchParams.set("semester", link.dataset.planSemester);
     link.href = url.href;
   }
+
+  if (!mainForm) return;
 
   for (const [name, value] of Object.entries(context)) {
     const input = document.createElement("input");

@@ -155,7 +155,39 @@
 #exchange-planner .identity-link { display: inline-flex; gap: 11px; align-items: center; color: var(--ink); text-decoration: none; }
 #exchange-planner .workspace-nav a, #exchange-planner .modes a { color: var(--quiet); text-decoration: none; }
 #exchange-planner .quiet-button { display: inline-flex; align-items: center; text-decoration: none; }
-#exchange-planner :is(.primary-button,.main-action,.row-action) { cursor: pointer; }
+#exchange-planner :is(.primary-button,.main-action,.row-action,.save-course) { cursor: pointer; }
+#exchange-planner .save-course {
+  min-height: 34px; padding: 4px 9px; border: 1px solid var(--rule);
+  border-radius: 6px; background: var(--sheet); color: var(--blue); font-weight: 650;
+}
+#exchange-planner .save-course[aria-pressed="true"] {
+  border-color: var(--match); background: var(--match-wash); color: var(--match);
+}
+#exchange-planner .plan-setup-link { margin-top: 12px; }
+#exchange-planner .term-plans {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 16px;
+}
+#exchange-planner .term-plan {
+  padding: 15px; border: 1px solid var(--rule); border-radius: 10px;
+}
+#exchange-planner .term-plan-head {
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+  margin-bottom: 12px;
+}
+#exchange-planner .term-plan-head h2 { font-size: 18px; }
+#exchange-planner .term-total { font-size: 23px; font-weight: 700; }
+#exchange-planner .credit-target {
+  display: block; margin-top: 9px; max-width: 210px; font-weight: 550;
+}
+#exchange-planner .credit-target input { margin-top: 4px; }
+#exchange-planner .credit-status { margin-top: 6px; color: var(--quiet); }
+#exchange-planner .credit-status[data-met="true"] { color: var(--match); font-weight: 650; }
+#exchange-planner .planned-courses { margin: 12px 0 0; padding: 0; list-style: none; }
+#exchange-planner .planned-courses li {
+  display: flex; justify-content: space-between; align-items: center; gap: 8px;
+  padding: 8px 0; border-top: 1px solid var(--rule);
+}
+#exchange-planner .planned-courses li strong { display: block; }
 #exchange-planner .feature-description { margin-top: 9px; color: var(--quiet); }
 #exchange-planner .form {
   display: flex; gap: 10px; align-items: end; flex-wrap: wrap; margin-top: 14px;
@@ -219,6 +251,7 @@
 #exchange-planner pre { white-space: pre-wrap; }
 
 @media (max-width: 720px) {
+  #exchange-planner .term-plans { grid-template-columns: minmax(0, 1fr); }
   #exchange-planner.tool-page .identity { min-height: 52px; padding-block: 8px; }
   #exchange-planner.tool-page .identity .campus-mark { width: 28px; height: 28px; }
   #exchange-planner .context-text strong { font-size: 14px; }
@@ -239,6 +272,9 @@
     content: attr(data-label) / "";
     display: block; color: var(--quiet); font-size: 12px;
   }
+}
+@media (pointer: coarse) {
+  #exchange-planner .save-course { min-height: 44px; }
 }
 @media (max-width: 430px) {
   #exchange-planner .form label { max-width: none; }
