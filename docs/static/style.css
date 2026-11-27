@@ -188,6 +188,13 @@
   padding: 8px 0; border-top: 1px solid var(--rule);
 }
 #exchange-planner .planned-courses li strong { display: block; }
+#exchange-planner .plan-course-picker { margin-top: 14px; border-top: 1px solid var(--rule); }
+#exchange-planner .plan-course-picker summary {
+  padding: 8px 0; color: var(--blue); cursor: pointer; font-weight: 650;
+}
+#exchange-planner .plan-course-picker [data-search-status] { margin-top: 5px; }
+#exchange-planner .plan-course-picker .save-course { flex: none; }
+#exchange-planner .selected-offering .save-course { margin-top: 6px; }
 #exchange-planner .feature-description { margin-top: 9px; color: var(--quiet); }
 #exchange-planner .form {
   display: flex; gap: 10px; align-items: end; flex-wrap: wrap; margin-top: 14px;
@@ -221,7 +228,7 @@
   margin: 0; padding: 7px 14px; background: var(--page); font-size: 13px; border-top: 1px solid var(--rule);
 }
 #exchange-planner .schedule-row {
-  display: grid; grid-template-columns: minmax(160px, 1fr) auto auto; align-items: center; gap: 4px 12px;
+  display: grid; grid-template-columns: minmax(160px, 1fr) auto auto auto; align-items: center; gap: 4px 12px;
   padding: 10px 14px; border-top: 1px solid var(--rule);
 }
 #exchange-planner .overlap-time { color: var(--match); font-weight: 650; }
@@ -258,6 +265,7 @@
   #exchange-planner .context-universities .campus-mark { width: 21px; height: 21px; }
   #exchange-planner .course-content { padding-top: 16px; }
   #exchange-planner .schedule-row { grid-template-columns: 1fr; }
+  #exchange-planner .schedule-row .save-course { justify-self: start; }
   #exchange-planner .data, #exchange-planner .data tbody { display: block; }
   #exchange-planner .data thead {
     position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%);

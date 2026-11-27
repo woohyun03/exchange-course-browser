@@ -21,6 +21,38 @@ async function fetchAsset(path) {
   return response;
 }
 
+let previewAssets;
+function loadAssets() {
+  previewAssets ??= Promise.all([
+    initSqlJs({ locateFile: (filename) => new URL(`static/${filename}`, root).href }),
+    fetchAsset("static/features.json").then(response => response.json()),
+    fetchAsset("app.db").then(response => response.arrayBuffer()),
+  ]).catch(error => {
+    previewAssets = null;
+    throw error;
+  });
+  return previewAssets;
+}
+
+window.loadPreviewPlanCatalogue = async function (destination) {
+  const [SQL, config, data] = await loadAssets();
+  const database = new SQL.Database(new Uint8Array(data));
+  try {
+    database.run("PRAGMA query_only = ON");
+    const statement = database.prepare(config.courseDetails.plan_catalogue);
+    try {
+      statement.bind({ ":destination": Number(destination) });
+      const rows = [];
+      while (statement.step()) rows.push(statement.getAsObject());
+      return rows;
+    } finally {
+      statement.free();
+    }
+  } finally {
+    database.close();
+  }
+};
+
 async function displayResults() {
   const fields = [...form.querySelectorAll("[name]:not([data-plan-context])")];
   const number = Number(form.dataset.feature);
@@ -43,11 +75,7 @@ async function displayResults() {
   }
 
   message("Loading results…");
-  const [SQL, config, data] = await Promise.all([
-    initSqlJs({ locateFile: (filename) => new URL(`static/${filename}`, root).href }),
-    fetchAsset("static/features.json").then((response) => response.json()),
-    fetchAsset("app.db").then((response) => response.arrayBuffer()),
-  ]);
+  const [SQL, config, data] = await loadAssets();
   const database = new SQL.Database(new Uint8Array(data));
   let keepDatabase = false;
   try {
@@ -86,7 +114,9 @@ async function displayResults() {
   }
 }
 
-displayResults().catch((error) => {
-  console.error(error);
-  message("Could not load the results. Refresh and try again.");
-});
+if (form) {
+  displayResults().catch((error) => {
+    console.error(error);
+    message("Could not load the results. Refresh and try again.");
+  });
+}

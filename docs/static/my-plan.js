@@ -3,6 +3,25 @@
 (() => {
   const storageKey = "comp3278-exchange-planner:plans:v1";
   const buttons = new Map();
+  const catalogues = new Map();
+
+  function loadCatalogue(destination) {
+    if (!catalogues.has(destination)) {
+      const path = JSON.parse(document.getElementById("plan-catalogue-url").textContent);
+      const request = path ? (async () => {
+        const url = new URL(path, window.location.href);
+        url.searchParams.set("destination", destination);
+        const response = await fetch(url);
+        if (!response.ok) throw new Error("Course list unavailable");
+        return response.json();
+      })() : window.loadPreviewPlanCatalogue(destination);
+      catalogues.set(destination, request.catch(error => {
+        catalogues.delete(destination);
+        throw error;
+      }));
+    }
+    return catalogues.get(destination);
+  }
 
   function readPlans() {
     const plans = JSON.parse(localStorage.getItem(storageKey) || "{}");
@@ -47,7 +66,8 @@
   }
 
   window.exchangePlan = {
-    bindCourse(button, destination, term, course) {
+    loadCatalogue,
+    bindCourse(button, destination, term, course, onChange) {
       const item = { id: course.courseID, name: course.courseName, credits: course.credits };
       try {
         const entry = termPlan(readPlans(), destination, term);
@@ -66,7 +86,8 @@
               : [...entry.courses, item];
             return entry;
           });
-          setButton(button, saved.courses.some(course => course.id === item.id));
+          refreshButtons();
+          onChange?.(saved);
         } catch {
           button.textContent = "Could not save in this browser";
         }
@@ -93,10 +114,58 @@
   const renderers = [];
   for (const panel of page.querySelectorAll("[data-term]")) {
     const term = panel.dataset.term;
-    const field = panel.querySelector("input");
+    const field = panel.querySelector("[data-credit-target]");
     const total = panel.querySelector("[data-credit-total]");
     const status = panel.querySelector("[data-credit-status]");
     const list = panel.querySelector("[data-planned-courses]");
+    const picker = panel.querySelector(".plan-course-picker");
+    const search = picker.querySelector('input[type="search"]');
+    const searchStatus = picker.querySelector("[data-search-status]");
+    const matches = picker.querySelector("[data-course-matches]");
+    let available;
+    let loading = false;
+
+    function showMatches() {
+      matches.replaceChildren();
+      if (!available) return;
+      const keyword = search.value.trim().toLowerCase();
+      const results = available.filter(course => course.courseName.toLowerCase().includes(keyword));
+      searchStatus.textContent = results.length === 0 ? "No matching courses in this semester."
+        : results.length > 8 ? `Showing 8 of ${results.length} courses. Search to narrow the list.` : "";
+      for (const course of results.slice(0, 8)) {
+        const row = document.createElement("li");
+        const label = document.createElement("span");
+        label.textContent = `${course.courseName} · ${course.credits} credits`;
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "save-course";
+        button.hidden = true;
+        window.exchangePlan.bindCourse(button, destination, term, course, entry => render(entry));
+        row.append(label, button);
+        matches.append(row);
+      }
+      refreshButtons();
+    }
+
+    picker.addEventListener("toggle", async () => {
+      if (!picker.open || loading || available) return;
+      loading = true;
+      searchStatus.textContent = "Loading courses…";
+      try {
+        const rows = await loadCatalogue(destination);
+        const unique = new Map();
+        for (const course of rows) {
+          if (course.term === term) unique.set(course.courseID, course);
+        }
+        available = [...unique.values()];
+        showMatches();
+      } catch {
+        searchStatus.textContent = "Could not load courses. Close and reopen to retry.";
+      } finally {
+        loading = false;
+      }
+    });
+    search.addEventListener("input", showMatches);
 
     function render(entry, restoreTarget = true) {
       const sum = entry.courses.reduce((value, course) => value + course.credits, 0);
@@ -134,7 +203,8 @@
             render(saveTerm(destination, term, old => ({
               ...old, courses: old.courses.filter(course => course.id !== item.id),
             })));
-            panel.querySelector("a").focus();
+            refreshButtons();
+            picker.querySelector("summary").focus();
           } catch {
             status.textContent = "Could not save changes in this browser.";
           }

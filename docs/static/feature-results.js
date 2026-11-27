@@ -13,7 +13,7 @@
     return node;
   }
 
-  function scheduleList(rows, selected) {
+  function scheduleList(rows, selected, saveOptions) {
     const schedule = element("div", "schedule-list");
     const sortDays = [...new Set(rows.map(row => row.day))];
     sortDays.sort((a, b) => Object.keys(days).indexOf(a) - Object.keys(days).indexOf(b));
@@ -31,11 +31,42 @@
           const end = row.endTime < selected.end ? row.endTime : selected.end;
           item.append(element("span", "overlap-time", `Overlaps ${start}–${end}`));
         }
+        saveOptions.push({ container: item, row });
         list.append(item);
       }
       schedule.append(list);
     }
     return schedule;
+  }
+
+  async function addScheduleControls(destination, options) {
+    if (!destination || !window.exchangePlan || options.length === 0) return;
+    let catalogue;
+    try {
+      catalogue = await window.exchangePlan.loadCatalogue(destination);
+    } catch {
+      const schedule = target.querySelector(".schedule-list");
+      if (schedule) {
+        schedule.before(element("p", "result-scope", "Could not load course actions. Refresh to try again."));
+      }
+      return;
+    }
+    const byOffering = new Map(catalogue.map(course => [course.offeringID, course]));
+    for (const { container, row } of options) {
+      let course = byOffering.get(row.offeringID);
+      if (!course && !row.offeringID) {
+        const matches = catalogue.filter(candidate => candidate.courseName === row.courseName
+          && candidate.term === row.term && candidate.day === row.day && candidate.credits === row.credits
+          && candidate.startTime === row.startTime && candidate.endTime === row.endTime);
+        if (new Set(matches.map(candidate => candidate.courseID)).size === 1) course = matches[0];
+      }
+      if (!course) continue;
+      const save = element("button", "save-course");
+      save.type = "button";
+      save.hidden = true;
+      window.exchangePlan.bindCourse(save, destination, course.term, course);
+      container.append(save);
+    }
   }
 
   function resultTable(columns, rows, labels) {
@@ -102,6 +133,11 @@
 
   window.renderFeatureResults = function (columns, values, labels, more) {
     const selected = number === 11 ? showSelectedOffering() : null;
+    const saveOptions = [];
+    if (selected) {
+      const value = form.elements.namedItem("offering_id").value;
+      saveOptions.push({ container: document.querySelector("[data-selected-offering]"), row: { offeringID: Number(value) } });
+    }
     const rows = values.map(row => Object.fromEntries(columns.map((key, i) => [key, row[i]])));
     const section = element("section", "block flat");
     section.setAttribute("aria-labelledby", "results-heading");
@@ -122,9 +158,13 @@
     if (rows.length === 0) {
       section.append(element("p", "empty", target.dataset.emptyMessage));
     } else {
-      section.append(number === 3 || selected ? scheduleList(rows, selected) : resultTable(columns, rows, labels));
+      section.append(number === 3 || selected ? scheduleList(rows, selected, saveOptions) : resultTable(columns, rows, labels));
     }
     target.replaceChildren(section);
+    if (saveOptions.length) {
+      const destination = selected?.destination ?? form.elements.namedItem("uni_id")?.value;
+      void addScheduleControls(destination, saveOptions);
+    }
   };
 
   const server = document.getElementById("server-feature-results");

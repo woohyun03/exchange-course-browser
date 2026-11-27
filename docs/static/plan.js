@@ -60,7 +60,6 @@
   for (const link of document.querySelectorAll("[data-plan-link]")) {
     const url = new URL(link.href);
     for (const [name, value] of Object.entries(context)) url.searchParams.set(name, value);
-    if (link.dataset.planSemester) url.searchParams.set("semester", link.dataset.planSemester);
     link.href = url.href;
   }
 

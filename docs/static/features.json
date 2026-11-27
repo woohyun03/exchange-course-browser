@@ -14,7 +14,8 @@
   ],
   "courseDetails": {
     "equivalent": "\n        SELECT h.name AS equivalent, h.credits\n        FROM courseEquivalences AS e\n        JOIN courses AS h ON h.courseID = e.homeCourseID\n        WHERE e.hostCourseID = :course_id AND h.uniID = 1\n        ORDER BY h.name\n    ",
-    "times": "\n        SELECT offeringID, term, day, startTime, endTime\n        FROM courseOfferings\n        WHERE courseID = :course_id AND (:term IS NULL OR term = :term)\n        ORDER BY term, CASE day WHEN 'Mon' THEN 1 WHEN 'Tue' THEN 2 WHEN 'Wed' THEN 3\n                                WHEN 'Thu' THEN 4 WHEN 'Fri' THEN 5 ELSE 6 END, startTime\n    "
+    "times": "\n        SELECT offeringID, term, day, startTime, endTime\n        FROM courseOfferings\n        WHERE courseID = :course_id AND (:term IS NULL OR term = :term)\n        ORDER BY term, CASE day WHEN 'Mon' THEN 1 WHEN 'Tue' THEN 2 WHEN 'Wed' THEN 3\n                                WHEN 'Thu' THEN 4 WHEN 'Fri' THEN 5 ELSE 6 END, startTime\n    ",
+    "plan_catalogue": "\n        SELECT c.courseID, c.name AS courseName, c.credits, o.offeringID,\n               o.term, o.day, o.startTime, o.endTime\n        FROM courses AS c\n        JOIN courseOfferings AS o ON o.courseID = c.courseID\n        WHERE c.uniID = :destination AND c.uniID <> 1\n        ORDER BY c.name, c.courseID, o.offeringID\n    "
   },
   "columnLabels": {
     "courseID": "Course ID",
