@@ -42,14 +42,35 @@
   }
 
   window.renderCourseResults = function (columns, rows, more, runDetail) {
+    const summary = document.createElement("div");
+    summary.className = "course-summary";
     const count = document.createElement("p");
     count.className = "results-count";
     count.textContent = `${more ? "First " : ""}${rows.length} ${rows.length === 1 ? "course" : "courses"}`;
-    results.replaceChildren(count);
+    summary.append(count);
+    const keyword = form.elements.namedItem("keyword")?.value.trim();
+    const department = form.elements.namedItem("dept_id")?.selectedOptions[0];
+    const condition = keyword ? `“${keyword}”` : department?.value ? department.textContent :
+      form.dataset.feature === "4" ? "No final exam" : "";
+    if (condition) {
+      const applied = document.createElement("span");
+      applied.className = "applied-filter";
+      applied.textContent = condition;
+      const reset = document.createElement("a");
+      reset.className = "filter-reset";
+      const url = new URL(results.dataset.resetUrl, window.location.href);
+      for (const field of form.querySelectorAll("[data-plan-context]")) {
+        url.searchParams.set(field.name, field.value);
+      }
+      reset.href = url.href;
+      reset.textContent = "Reset filters";
+      summary.append(applied, reset);
+    }
+    results.replaceChildren(summary);
     if (rows.length === 0) {
       const empty = document.createElement("p");
       empty.className = "empty-message";
-      empty.textContent = "No courses match these filters.";
+      empty.textContent = "No courses match these filters. Try a shorter search or reset your filters.";
       results.append(empty);
       return;
     }
@@ -65,22 +86,20 @@
       const badge = row.querySelector(".exam-status");
       badge.textContent = course.hasExam === "Yes" ? "Final exam" : "No final exam";
       badge.dataset.noExam = String(course.hasExam === "No");
-      const detail = row.querySelector(".course-detail");
-      const content = detail.querySelector(".detail-content");
-      const actions = [...row.querySelectorAll("[data-detail]")];
-      let sequence = 0;
-
-      for (const action of actions) {
+      for (const action of row.querySelectorAll("[data-detail]")) {
+        const kind = action.dataset.detail;
+        const detail = row.querySelector(`[data-panel="${kind}"]`);
+        detail.id = `course-${course.courseID}-${kind}`;
+        action.setAttribute("aria-controls", detail.id);
+        const content = detail.querySelector(".detail-content");
+        let sequence = 0;
         action.addEventListener("click", async () => {
           const current = ++sequence;
           const expand = action.getAttribute("aria-expanded") !== "true";
-          for (const other of actions) other.setAttribute("aria-expanded", String(other === action && expand));
+          action.setAttribute("aria-expanded", String(expand));
           detail.hidden = !expand;
           if (!expand) return;
 
-          const kind = action.dataset.detail;
-          detail.querySelector(".caption").textContent = kind === "equivalent"
-            ? "HKU equivalent" : (semester?.replace("Sem ", "Semester ") ?? "Class times");
           content.textContent = "Loading…";
           try {
             const records = await runDetail(kind, course.courseID, semester);

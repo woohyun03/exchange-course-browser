@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Travel-friendly timetable · Exchange Planner</title>
-  <link rel="stylesheet" href="../../static/style.css?v=3cb58a5b8d0e">
+  <link rel="stylesheet" href="../../static/style.css?v=1c4aeadb5232">
 </head>
-<body id="exchange-planner">
+<body id="exchange-planner" class="tool-page">
 <header class="identity">
   <a class="identity-link" href="../../" data-plan-link>
     <img class="campus-mark" width="40" height="40" alt=""
@@ -20,7 +20,7 @@
 
   <div class="context" data-plan-route hidden>
     <div class="context-text">
-      <span class="caption">Your exchange plan</span>
+      <span class="caption visually-hidden">Your exchange plan</span>
       <div class="context-universities">
         <span class="plan-campus"><img class="campus-mark" width="40" height="40" alt=""
      src="../../static/campus/hku.svg?v=58170c6886a2"
@@ -62,6 +62,7 @@
   <h1>Travel-friendly timetable</h1>
   <p class="feature-description">Find Monday to Wednesday classes that start at or after your chosen time.</p>
 
+
   <nav class="modes" aria-label="Timetable tools">
 
     <a href="./" data-plan-link
@@ -71,6 +72,7 @@
        >Check clashes</a>
 
   </nav>
+
 
 
 
@@ -89,11 +91,13 @@
 
           <option value="3"
 
+
             >University College London</option>
 
 
 
           <option value="2"
+
 
             >University of Toronto</option>
 
@@ -112,11 +116,13 @@
 
           <option value="Sem 1"
 
+
             >Sem 1</option>
 
 
 
           <option value="Sem 2"
+
 
             >Sem 2</option>
 
@@ -141,8 +147,11 @@
 
 
 
+
+
   <div id="preview-result" aria-live="polite" data-empty-message="No Monday to Wednesday classes match. Try an earlier start time."
        data-hidden-columns=""></div>
+
 
 
 
@@ -163,8 +172,11 @@
 
 
 
+<script src="../../static/feature-results.js?v=6beabffcf631" defer></script>
+
+
 <script src="../../static/sql-wasm.js?v=d6a9cc234ef1" defer></script>
-<script src="../../static/preview.js?v=66158257ca14" defer></script>
+<script src="../../static/preview.js?v=d5debc08cf63" defer></script>
 
 </body>
 </html>

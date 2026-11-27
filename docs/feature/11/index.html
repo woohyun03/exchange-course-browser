@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Check timetable clashes · Exchange Planner</title>
-  <link rel="stylesheet" href="../../static/style.css?v=3cb58a5b8d0e">
+  <link rel="stylesheet" href="../../static/style.css?v=1c4aeadb5232">
 </head>
-<body id="exchange-planner">
+<body id="exchange-planner" class="tool-page">
 <header class="identity">
   <a class="identity-link" href="../../" data-plan-link>
     <img class="campus-mark" width="40" height="40" alt=""
@@ -20,7 +20,7 @@
 
   <div class="context" data-plan-route hidden>
     <div class="context-text">
-      <span class="caption">Your exchange plan</span>
+      <span class="caption visually-hidden">Your exchange plan</span>
       <div class="context-universities">
         <span class="plan-campus"><img class="campus-mark" width="40" height="40" alt=""
      src="../../static/campus/hku.svg?v=58170c6886a2"
@@ -62,6 +62,7 @@
   <h1>Check timetable clashes</h1>
   <p class="feature-description">Find other classes at the same exchange university that overlap a selected class.</p>
 
+
   <nav class="modes" aria-label="Timetable tools">
 
     <a href="../3/" data-plan-link
@@ -73,6 +74,11 @@
   </nav>
 
 
+
+
+  <div class="selected-offering" data-selected-offering hidden></div>
+  <details class="offering-filter" data-offering-filter open>
+    <summary>Choose a class</summary>
 
 
   <form class="form" data-feature="11" method="get"
@@ -89,907 +95,1360 @@
 
           <option value="109"
             data-destination="3"
-            data-semester="Sem 1">Abnormal Psychology - University College London - Sem 1, Mon 14:30-17:30 (#109)</option>
+            data-semester="Sem 1"
+
+            data-course="Abnormal Psychology" data-day="Mon" data-start="14:30" data-end="17:30"
+            >Abnormal Psychology - University College London - Sem 1, Mon 14:30-17:30 (#109)</option>
 
 
 
           <option value="110"
             data-destination="3"
-            data-semester="Sem 2">Abnormal Psychology - University College London - Sem 2, Tue 09:30-10:30 (#110)</option>
+            data-semester="Sem 2"
+
+            data-course="Abnormal Psychology" data-day="Tue" data-start="09:30" data-end="10:30"
+            >Abnormal Psychology - University College London - Sem 2, Tue 09:30-10:30 (#110)</option>
 
 
 
           <option value="35"
             data-destination="2"
-            data-semester="Sem 1">Abnormal Psychology - University of Toronto - Sem 1, Wed 09:00-10:00 (#35)</option>
+            data-semester="Sem 1"
+
+            data-course="Abnormal Psychology" data-day="Wed" data-start="09:00" data-end="10:00"
+            >Abnormal Psychology - University of Toronto - Sem 1, Wed 09:00-10:00 (#35)</option>
 
 
 
           <option value="36"
             data-destination="2"
-            data-semester="Sem 2">Abnormal Psychology - University of Toronto - Sem 2, Mon 12:00-14:00 (#36)</option>
+            data-semester="Sem 2"
+
+            data-course="Abnormal Psychology" data-day="Mon" data-start="12:00" data-end="14:00"
+            >Abnormal Psychology - University of Toronto - Sem 2, Mon 12:00-14:00 (#36)</option>
 
 
 
           <option value="86"
             data-destination="3"
-            data-semester="Sem 1">Advanced Calculus - University College London - Sem 1, Mon 11:30-14:30 (#86)</option>
+            data-semester="Sem 1"
+
+            data-course="Advanced Calculus" data-day="Mon" data-start="11:30" data-end="14:30"
+            >Advanced Calculus - University College London - Sem 1, Mon 11:30-14:30 (#86)</option>
 
 
 
           <option value="87"
             data-destination="3"
-            data-semester="Sem 2">Advanced Calculus - University College London - Sem 2, Thu 10:30-12:30 (#87)</option>
+            data-semester="Sem 2"
+
+            data-course="Advanced Calculus" data-day="Thu" data-start="10:30" data-end="12:30"
+            >Advanced Calculus - University College London - Sem 2, Thu 10:30-12:30 (#87)</option>
 
 
 
           <option value="10"
             data-destination="2"
-            data-semester="Sem 2">Advanced Calculus - University of Toronto - Sem 2, Wed 10:30-12:30 (#10)</option>
+            data-semester="Sem 2"
+
+            data-course="Advanced Calculus" data-day="Wed" data-start="10:30" data-end="12:30"
+            >Advanced Calculus - University of Toronto - Sem 2, Wed 10:30-12:30 (#10)</option>
 
 
 
           <option value="11"
             data-destination="2"
-            data-semester="Sem 2">Algebra I - University of Toronto - Sem 2, Fri 16:00-17:00 (#11)</option>
+            data-semester="Sem 2"
+
+            data-course="Algebra I" data-day="Fri" data-start="16:00" data-end="17:00"
+            >Algebra I - University of Toronto - Sem 2, Fri 16:00-17:00 (#11)</option>
 
 
 
           <option value="116"
             data-destination="3"
-            data-semester="Sem 1">Analytical Mechanics - University College London - Sem 1, Tue 09:00-11:00 (#116)</option>
+            data-semester="Sem 1"
+
+            data-course="Analytical Mechanics" data-day="Tue" data-start="09:00" data-end="11:00"
+            >Analytical Mechanics - University College London - Sem 1, Tue 09:00-11:00 (#116)</option>
 
 
 
           <option value="93"
             data-destination="3"
-            data-semester="Sem 1">Applied Econometrics - University College London - Sem 1, Mon 16:30-19:30 (#93)</option>
+            data-semester="Sem 1"
+
+            data-course="Applied Econometrics" data-day="Mon" data-start="16:30" data-end="19:30"
+            >Applied Econometrics - University College London - Sem 1, Mon 16:30-19:30 (#93)</option>
 
 
 
           <option value="17"
             data-destination="2"
-            data-semester="Sem 1">Applied Econometrics - University of Toronto - Sem 1, Wed 14:00-15:00 (#17)</option>
+            data-semester="Sem 1"
+
+            data-course="Applied Econometrics" data-day="Wed" data-start="14:00" data-end="15:00"
+            >Applied Econometrics - University of Toronto - Sem 1, Wed 14:00-15:00 (#17)</option>
 
 
 
           <option value="18"
             data-destination="2"
-            data-semester="Sem 2">Applied Econometrics - University of Toronto - Sem 2, Mon 16:30-18:30 (#18)</option>
+            data-semester="Sem 2"
+
+            data-course="Applied Econometrics" data-day="Mon" data-start="16:30" data-end="18:30"
+            >Applied Econometrics - University of Toronto - Sem 2, Mon 16:30-18:30 (#18)</option>
 
 
 
           <option value="84"
             data-destination="3"
-            data-semester="Sem 2">Applied Linear Algebra - University College London - Sem 2, Fri 13:00-14:00 (#84)</option>
+            data-semester="Sem 2"
+
+            data-course="Applied Linear Algebra" data-day="Fri" data-start="13:00" data-end="14:00"
+            >Applied Linear Algebra - University College London - Sem 2, Fri 13:00-14:00 (#84)</option>
 
 
 
           <option value="118"
             data-destination="3"
-            data-semester="Sem 1">Astrophysics - University College London - Sem 1, Wed 14:00-16:00 (#118)</option>
+            data-semester="Sem 1"
+
+            data-course="Astrophysics" data-day="Wed" data-start="14:00" data-end="16:00"
+            >Astrophysics - University College London - Sem 1, Wed 14:00-16:00 (#118)</option>
 
 
 
           <option value="119"
             data-destination="3"
-            data-semester="Sem 2">Astrophysics - University College London - Sem 2, Wed 12:30-13:30 (#119)</option>
+            data-semester="Sem 2"
+
+            data-course="Astrophysics" data-day="Wed" data-start="12:30" data-end="13:30"
+            >Astrophysics - University College London - Sem 2, Wed 12:30-13:30 (#119)</option>
 
 
 
           <option value="103"
             data-destination="3"
-            data-semester="Sem 2">Behavioural Finance - University College London - Sem 2, Thu 09:30-11:30 (#103)</option>
+            data-semester="Sem 2"
+
+            data-course="Behavioural Finance" data-day="Thu" data-start="09:30" data-end="11:30"
+            >Behavioural Finance - University College London - Sem 2, Thu 09:30-11:30 (#103)</option>
 
 
 
           <option value="28"
             data-destination="2"
-            data-semester="Sem 2">Behavioural Finance - University of Toronto - Sem 2, Mon 16:30-17:30 (#28)</option>
+            data-semester="Sem 2"
+
+            data-course="Behavioural Finance" data-day="Mon" data-start="16:30" data-end="17:30"
+            >Behavioural Finance - University of Toronto - Sem 2, Mon 16:30-17:30 (#28)</option>
 
 
 
           <option value="104"
             data-destination="3"
-            data-semester="Sem 2">Biopsychology - University College London - Sem 2, Mon 16:30-18:30 (#104)</option>
+            data-semester="Sem 2"
+
+            data-course="Biopsychology" data-day="Mon" data-start="16:30" data-end="18:30"
+            >Biopsychology - University College London - Sem 2, Mon 16:30-18:30 (#104)</option>
 
 
 
           <option value="30"
             data-destination="2"
-            data-semester="Sem 2">Brain and Behaviour - University of Toronto - Sem 2, Fri 13:30-14:30 (#30)</option>
+            data-semester="Sem 2"
+
+            data-course="Brain and Behaviour" data-day="Fri" data-start="13:30" data-end="14:30"
+            >Brain and Behaviour - University of Toronto - Sem 2, Fri 13:30-14:30 (#30)</option>
 
 
 
           <option value="139"
             data-destination="3"
-            data-semester="Sem 1">Brand Management - University College London - Sem 1, Mon 11:00-12:00 (#139)</option>
+            data-semester="Sem 1"
+
+            data-course="Brand Management" data-day="Mon" data-start="11:00" data-end="12:00"
+            >Brand Management - University College London - Sem 1, Mon 11:00-12:00 (#139)</option>
 
 
 
           <option value="64"
             data-destination="2"
-            data-semester="Sem 2">Brand Management - University of Toronto - Sem 2, Tue 12:30-13:30 (#64)</option>
+            data-semester="Sem 2"
+
+            data-course="Brand Management" data-day="Tue" data-start="12:30" data-end="13:30"
+            >Brand Management - University of Toronto - Sem 2, Tue 12:30-13:30 (#64)</option>
 
 
 
           <option value="100"
             data-destination="3"
-            data-semester="Sem 1">Business Finance - University College London - Sem 1, Fri 10:00-11:00 (#100)</option>
+            data-semester="Sem 1"
+
+            data-course="Business Finance" data-day="Fri" data-start="10:00" data-end="11:00"
+            >Business Finance - University College London - Sem 1, Fri 10:00-11:00 (#100)</option>
 
 
 
           <option value="75"
             data-destination="2"
-            data-semester="Sem 2">Buyer Behaviour - University of Toronto - Sem 2, Fri 13:30-15:30 (#75)</option>
+            data-semester="Sem 2"
+
+            data-course="Buyer Behaviour" data-day="Fri" data-start="13:30" data-end="15:30"
+            >Buyer Behaviour - University of Toronto - Sem 2, Fri 13:30-15:30 (#75)</option>
 
 
 
           <option value="130"
             data-destination="3"
-            data-semester="Sem 2">Classical Civilisations - University College London - Sem 2, Mon 09:30-12:30 (#130)</option>
+            data-semester="Sem 2"
+
+            data-course="Classical Civilisations" data-day="Mon" data-start="09:30" data-end="12:30"
+            >Classical Civilisations - University College London - Sem 2, Mon 09:30-12:30 (#130)</option>
 
 
 
           <option value="31"
             data-destination="2"
-            data-semester="Sem 1">Cognition - University of Toronto - Sem 1, Fri 09:00-11:00 (#31)</option>
+            data-semester="Sem 1"
+
+            data-course="Cognition" data-day="Fri" data-start="09:00" data-end="11:00"
+            >Cognition - University of Toronto - Sem 1, Fri 09:00-11:00 (#31)</option>
 
 
 
           <option value="32"
             data-destination="2"
-            data-semester="Sem 2">Cognition - University of Toronto - Sem 2, Wed 14:00-16:00 (#32)</option>
+            data-semester="Sem 2"
+
+            data-course="Cognition" data-day="Wed" data-start="14:00" data-end="16:00"
+            >Cognition - University of Toronto - Sem 2, Wed 14:00-16:00 (#32)</option>
 
 
 
           <option value="128"
             data-destination="3"
-            data-semester="Sem 2">Cold War Politics - University College London - Sem 2, Wed 10:00-12:00 (#128)</option>
+            data-semester="Sem 2"
+
+            data-course="Cold War Politics" data-day="Wed" data-start="10:00" data-end="12:00"
+            >Cold War Politics - University College London - Sem 2, Wed 10:00-12:00 (#128)</option>
 
 
 
           <option value="52"
             data-destination="2"
-            data-semester="Sem 1">Cold War Politics - University of Toronto - Sem 1, Fri 09:00-11:00 (#52)</option>
+            data-semester="Sem 1"
+
+            data-course="Cold War Politics" data-day="Fri" data-start="09:00" data-end="11:00"
+            >Cold War Politics - University of Toronto - Sem 1, Fri 09:00-11:00 (#52)</option>
 
 
 
           <option value="58"
             data-destination="2"
-            data-semester="Sem 2">Colonialism and Empire - University of Toronto - Sem 2, Fri 09:30-12:30 (#58)</option>
+            data-semester="Sem 2"
+
+            data-course="Colonialism and Empire" data-day="Fri" data-start="09:30" data-end="12:30"
+            >Colonialism and Empire - University of Toronto - Sem 2, Fri 09:30-12:30 (#58)</option>
 
 
 
           <option value="9"
             data-destination="2"
-            data-semester="Sem 2">Combinatorics and Graph Theory - University of Toronto - Sem 2, Fri 16:00-18:00 (#9)</option>
+            data-semester="Sem 2"
+
+            data-course="Combinatorics and Graph Theory" data-day="Fri" data-start="16:00" data-end="18:00"
+            >Combinatorics and Graph Theory - University of Toronto - Sem 2, Fri 16:00-18:00 (#9)</option>
 
 
 
           <option value="89"
             data-destination="3"
-            data-semester="Sem 1">Complex Analysis - University College London - Sem 1, Wed 13:30-14:30 (#89)</option>
+            data-semester="Sem 1"
+
+            data-course="Complex Analysis" data-day="Wed" data-start="13:30" data-end="14:30"
+            >Complex Analysis - University College London - Sem 1, Wed 13:30-14:30 (#89)</option>
 
 
 
           <option value="80"
             data-destination="3"
-            data-semester="Sem 1">Computer Graphics - University College London - Sem 1, Tue 12:00-14:00 (#80)</option>
+            data-semester="Sem 1"
+
+            data-course="Computer Graphics" data-day="Tue" data-start="12:00" data-end="14:00"
+            >Computer Graphics - University College London - Sem 1, Tue 12:00-14:00 (#80)</option>
 
 
 
           <option value="81"
             data-destination="3"
-            data-semester="Sem 2">Computer Graphics - University College London - Sem 2, Fri 12:30-13:30 (#81)</option>
+            data-semester="Sem 2"
+
+            data-course="Computer Graphics" data-day="Fri" data-start="12:30" data-end="13:30"
+            >Computer Graphics - University College London - Sem 2, Fri 12:30-13:30 (#81)</option>
 
 
 
           <option value="6"
             data-destination="2"
-            data-semester="Sem 1">Computer Graphics - University of Toronto - Sem 1, Tue 16:00-18:00 (#6)</option>
+            data-semester="Sem 1"
+
+            data-course="Computer Graphics" data-day="Tue" data-start="16:00" data-end="18:00"
+            >Computer Graphics - University of Toronto - Sem 1, Tue 16:00-18:00 (#6)</option>
 
 
 
           <option value="79"
             data-destination="3"
-            data-semester="Sem 2">Computer Networking - University College London - Sem 2, Fri 14:00-16:00 (#79)</option>
+            data-semester="Sem 2"
+
+            data-course="Computer Networking" data-day="Fri" data-start="14:00" data-end="16:00"
+            >Computer Networking - University College London - Sem 2, Fri 14:00-16:00 (#79)</option>
 
 
 
           <option value="82"
             data-destination="3"
-            data-semester="Sem 2">Computer Security - University College London - Sem 2, Tue 13:30-16:30 (#82)</option>
+            data-semester="Sem 2"
+
+            data-course="Computer Security" data-day="Tue" data-start="13:30" data-end="16:30"
+            >Computer Security - University College London - Sem 2, Tue 13:30-16:30 (#82)</option>
 
 
 
           <option value="7"
             data-destination="2"
-            data-semester="Sem 2">Computer Security - University of Toronto - Sem 2, Wed 17:00-18:00 (#7)</option>
+            data-semester="Sem 2"
+
+            data-course="Computer Security" data-day="Wed" data-start="17:00" data-end="18:00"
+            >Computer Security - University of Toronto - Sem 2, Wed 17:00-18:00 (#7)</option>
 
 
 
           <option value="77"
             data-destination="3"
-            data-semester="Sem 1">Database Systems - University College London - Sem 1, Fri 15:30-16:30 (#77)</option>
+            data-semester="Sem 1"
+
+            data-course="Database Systems" data-day="Fri" data-start="15:30" data-end="16:30"
+            >Database Systems - University College London - Sem 1, Fri 15:30-16:30 (#77)</option>
 
 
 
           <option value="4"
             data-destination="2"
-            data-semester="Sem 1">Database Systems - University of Toronto - Sem 1, Mon 16:30-18:30 (#4)</option>
+            data-semester="Sem 1"
+
+            data-course="Database Systems" data-day="Mon" data-start="16:30" data-end="18:30"
+            >Database Systems - University of Toronto - Sem 1, Mon 16:30-18:30 (#4)</option>
 
 
 
           <option value="5"
             data-destination="2"
-            data-semester="Sem 2">Database Systems - University of Toronto - Sem 2, Tue 12:30-15:30 (#5)</option>
+            data-semester="Sem 2"
+
+            data-course="Database Systems" data-day="Tue" data-start="12:30" data-end="15:30"
+            >Database Systems - University of Toronto - Sem 2, Tue 12:30-15:30 (#5)</option>
 
 
 
           <option value="97"
             data-destination="3"
-            data-semester="Sem 2">Development Economics - University College London - Sem 2, Wed 12:30-14:30 (#97)</option>
+            data-semester="Sem 2"
+
+            data-course="Development Economics" data-day="Wed" data-start="12:30" data-end="14:30"
+            >Development Economics - University College London - Sem 2, Wed 12:30-14:30 (#97)</option>
 
 
 
           <option value="21"
             data-destination="2"
-            data-semester="Sem 1">Development Economics - University of Toronto - Sem 1, Wed 08:00-09:00 (#21)</option>
+            data-semester="Sem 1"
+
+            data-course="Development Economics" data-day="Wed" data-start="08:00" data-end="09:00"
+            >Development Economics - University of Toronto - Sem 1, Wed 08:00-09:00 (#21)</option>
 
 
 
           <option value="22"
             data-destination="2"
-            data-semester="Sem 2">Development Economics - University of Toronto - Sem 2, Wed 16:30-19:30 (#22)</option>
+            data-semester="Sem 2"
+
+            data-course="Development Economics" data-day="Wed" data-start="16:30" data-end="19:30"
+            >Development Economics - University of Toronto - Sem 2, Wed 16:30-19:30 (#22)</option>
 
 
 
           <option value="37"
             data-destination="2"
-            data-semester="Sem 2">Developmental Psychology - University of Toronto - Sem 2, Mon 08:30-10:30 (#37)</option>
+            data-semester="Sem 2"
+
+            data-course="Developmental Psychology" data-day="Mon" data-start="08:30" data-end="10:30"
+            >Developmental Psychology - University of Toronto - Sem 2, Mon 08:30-10:30 (#37)</option>
 
 
 
           <option value="83"
             data-destination="3"
-            data-semester="Sem 2">Differential Equations - University College London - Sem 2, Thu 17:30-20:30 (#83)</option>
+            data-semester="Sem 2"
+
+            data-course="Differential Equations" data-day="Thu" data-start="17:30" data-end="20:30"
+            >Differential Equations - University College London - Sem 2, Thu 17:30-20:30 (#83)</option>
 
 
 
           <option value="60"
             data-destination="2"
-            data-semester="Sem 2">E-Marketing Strategy - University of Toronto - Sem 2, Fri 09:30-12:30 (#60)</option>
+            data-semester="Sem 2"
+
+            data-course="E-Marketing Strategy" data-day="Fri" data-start="09:30" data-end="12:30"
+            >E-Marketing Strategy - University of Toronto - Sem 2, Fri 09:30-12:30 (#60)</option>
 
 
 
           <option value="127"
             data-destination="3"
-            data-semester="Sem 1">East Asia since 1800 - University College London - Sem 1, Mon 08:30-10:30 (#127)</option>
+            data-semester="Sem 1"
+
+            data-course="East Asia since 1800" data-day="Mon" data-start="08:30" data-end="10:30"
+            >East Asia since 1800 - University College London - Sem 1, Mon 08:30-10:30 (#127)</option>
 
 
 
           <option value="39"
             data-destination="2"
-            data-semester="Sem 1">Electrodynamics - University of Toronto - Sem 1, Wed 15:30-18:30 (#39)</option>
+            data-semester="Sem 1"
+
+            data-course="Electrodynamics" data-day="Wed" data-start="15:30" data-end="18:30"
+            >Electrodynamics - University of Toronto - Sem 1, Wed 15:30-18:30 (#39)</option>
 
 
 
           <option value="115"
             data-destination="3"
-            data-semester="Sem 2">Electromagnetic Theory - University College London - Sem 2, Mon 11:30-13:30 (#115)</option>
+            data-semester="Sem 2"
+
+            data-course="Electromagnetic Theory" data-day="Mon" data-start="11:30" data-end="13:30"
+            >Electromagnetic Theory - University College London - Sem 2, Mon 11:30-13:30 (#115)</option>
 
 
 
           <option value="132"
             data-destination="3"
-            data-semester="Sem 1">Environmental History - University College London - Sem 1, Mon 08:30-11:30 (#132)</option>
+            data-semester="Sem 1"
+
+            data-course="Environmental History" data-day="Mon" data-start="08:30" data-end="11:30"
+            >Environmental History - University College London - Sem 1, Mon 08:30-11:30 (#132)</option>
 
 
 
           <option value="133"
             data-destination="3"
-            data-semester="Sem 2">Environmental History - University College London - Sem 2, Thu 09:00-11:00 (#133)</option>
+            data-semester="Sem 2"
+
+            data-course="Environmental History" data-day="Thu" data-start="09:00" data-end="11:00"
+            >Environmental History - University College London - Sem 2, Thu 09:00-11:00 (#133)</option>
 
 
 
           <option value="105"
             data-destination="3"
-            data-semester="Sem 1">Experimental Design in Psychology - University College London - Sem 1, Wed 16:00-18:00 (#105)</option>
+            data-semester="Sem 1"
+
+            data-course="Experimental Design in Psychology" data-day="Wed" data-start="16:00" data-end="18:00"
+            >Experimental Design in Psychology - University College London - Sem 1, Wed 16:00-18:00 (#105)</option>
 
 
 
           <option value="34"
             data-destination="2"
-            data-semester="Sem 1">Experimental Design in Psychology - University of Toronto - Sem 1, Tue 08:00-10:00 (#34)</option>
+            data-semester="Sem 1"
+
+            data-course="Experimental Design in Psychology" data-day="Tue" data-start="08:00" data-end="10:00"
+            >Experimental Design in Psychology - University of Toronto - Sem 1, Tue 08:00-10:00 (#34)</option>
 
 
 
           <option value="98"
             data-destination="3"
-            data-semester="Sem 2">Financial Derivatives - University College London - Sem 2, Tue 09:30-11:30 (#98)</option>
+            data-semester="Sem 2"
+
+            data-course="Financial Derivatives" data-day="Tue" data-start="09:30" data-end="11:30"
+            >Financial Derivatives - University College London - Sem 2, Tue 09:30-11:30 (#98)</option>
 
 
 
           <option value="25"
             data-destination="2"
-            data-semester="Sem 1">Financial Derivatives - University of Toronto - Sem 1, Wed 10:30-12:30 (#25)</option>
+            data-semester="Sem 1"
+
+            data-course="Financial Derivatives" data-day="Wed" data-start="10:30" data-end="12:30"
+            >Financial Derivatives - University of Toronto - Sem 1, Wed 10:30-12:30 (#25)</option>
 
 
 
           <option value="26"
             data-destination="2"
-            data-semester="Sem 2">Financial Derivatives - University of Toronto - Sem 2, Wed 08:30-10:30 (#26)</option>
+            data-semester="Sem 2"
+
+            data-course="Financial Derivatives" data-day="Wed" data-start="08:30" data-end="10:30"
+            >Financial Derivatives - University of Toronto - Sem 2, Wed 08:30-10:30 (#26)</option>
 
 
 
           <option value="23"
             data-destination="2"
-            data-semester="Sem 1">Financial Management - University of Toronto - Sem 1, Thu 09:30-11:30 (#23)</option>
+            data-semester="Sem 1"
+
+            data-course="Financial Management" data-day="Thu" data-start="09:30" data-end="11:30"
+            >Financial Management - University of Toronto - Sem 1, Thu 09:30-11:30 (#23)</option>
 
 
 
           <option value="102"
             data-destination="3"
-            data-semester="Sem 1">Fintech and Digital Banking - University College London - Sem 1, Wed 09:00-11:00 (#102)</option>
+            data-semester="Sem 1"
+
+            data-course="Fintech and Digital Banking" data-day="Wed" data-start="09:00" data-end="11:00"
+            >Fintech and Digital Banking - University College London - Sem 1, Wed 09:00-11:00 (#102)</option>
 
 
 
           <option value="107"
             data-destination="3"
-            data-semester="Sem 1">General Psychology - University College London - Sem 1, Tue 13:30-16:30 (#107)</option>
+            data-semester="Sem 1"
+
+            data-course="General Psychology" data-day="Tue" data-start="13:30" data-end="16:30"
+            >General Psychology - University College London - Sem 1, Tue 13:30-16:30 (#107)</option>
 
 
 
           <option value="53"
             data-destination="2"
-            data-semester="Sem 1">Global History - University of Toronto - Sem 1, Fri 16:30-19:30 (#53)</option>
+            data-semester="Sem 1"
+
+            data-course="Global History" data-day="Fri" data-start="16:30" data-end="19:30"
+            >Global History - University of Toronto - Sem 1, Fri 16:30-19:30 (#53)</option>
 
 
 
           <option value="54"
             data-destination="2"
-            data-semester="Sem 2">Global History - University of Toronto - Sem 2, Mon 10:00-13:00 (#54)</option>
+            data-semester="Sem 2"
+
+            data-course="Global History" data-day="Mon" data-start="10:00" data-end="13:00"
+            >Global History - University of Toronto - Sem 2, Mon 10:00-13:00 (#54)</option>
 
 
 
           <option value="94"
             data-destination="3"
-            data-semester="Sem 1">Global Trade and Finance - University College London - Sem 1, Wed 14:30-16:30 (#94)</option>
+            data-semester="Sem 1"
+
+            data-course="Global Trade and Finance" data-day="Wed" data-start="14:30" data-end="16:30"
+            >Global Trade and Finance - University College London - Sem 1, Wed 14:30-16:30 (#94)</option>
 
 
 
           <option value="14"
             data-destination="2"
-            data-semester="Sem 1">Global Trade and Finance - University of Toronto - Sem 1, Wed 08:30-10:30 (#14)</option>
+            data-semester="Sem 1"
+
+            data-course="Global Trade and Finance" data-day="Wed" data-start="08:30" data-end="10:30"
+            >Global Trade and Finance - University of Toronto - Sem 1, Wed 08:30-10:30 (#14)</option>
 
 
 
           <option value="15"
             data-destination="2"
-            data-semester="Sem 2">Global Trade and Finance - University of Toronto - Sem 2, Mon 09:30-10:30 (#15)</option>
+            data-semester="Sem 2"
+
+            data-course="Global Trade and Finance" data-day="Mon" data-start="09:30" data-end="10:30"
+            >Global Trade and Finance - University of Toronto - Sem 2, Mon 09:30-10:30 (#15)</option>
 
 
 
           <option value="108"
             data-destination="3"
-            data-semester="Sem 1">Health Psychology - University College London - Sem 1, Tue 13:30-15:30 (#108)</option>
+            data-semester="Sem 1"
+
+            data-course="Health Psychology" data-day="Tue" data-start="13:30" data-end="15:30"
+            >Health Psychology - University College London - Sem 1, Tue 13:30-15:30 (#108)</option>
 
 
 
           <option value="50"
             data-destination="2"
-            data-semester="Sem 1">Historical Linguistics - University of Toronto - Sem 1, Fri 13:00-15:00 (#50)</option>
+            data-semester="Sem 1"
+
+            data-course="Historical Linguistics" data-day="Fri" data-start="13:00" data-end="15:00"
+            >Historical Linguistics - University of Toronto - Sem 1, Fri 13:00-15:00 (#50)</option>
 
 
 
           <option value="131"
             data-destination="3"
-            data-semester="Sem 1">History of Science - University College London - Sem 1, Fri 08:00-10:00 (#131)</option>
+            data-semester="Sem 1"
+
+            data-course="History of Science" data-day="Fri" data-start="08:00" data-end="10:00"
+            >History of Science - University College London - Sem 1, Fri 08:00-10:00 (#131)</option>
 
 
 
           <option value="56"
             data-destination="2"
-            data-semester="Sem 1">History of Science - University of Toronto - Sem 1, Wed 13:30-16:30 (#56)</option>
+            data-semester="Sem 1"
+
+            data-course="History of Science" data-day="Wed" data-start="13:30" data-end="16:30"
+            >History of Science - University of Toronto - Sem 1, Wed 13:30-16:30 (#56)</option>
 
 
 
           <option value="57"
             data-destination="2"
-            data-semester="Sem 2">History of Science - University of Toronto - Sem 2, Fri 08:30-11:30 (#57)</option>
+            data-semester="Sem 2"
+
+            data-course="History of Science" data-day="Fri" data-start="08:30" data-end="11:30"
+            >History of Science - University of Toronto - Sem 2, Fri 08:30-11:30 (#57)</option>
 
 
 
           <option value="129"
             data-destination="3"
-            data-semester="Sem 1">History of the European Union - University College London - Sem 1, Mon 09:00-11:00 (#129)</option>
+            data-semester="Sem 1"
+
+            data-course="History of the European Union" data-day="Mon" data-start="09:00" data-end="11:00"
+            >History of the European Union - University College London - Sem 1, Mon 09:00-11:00 (#129)</option>
 
 
 
           <option value="51"
             data-destination="2"
-            data-semester="Sem 1">History of the European Union - University of Toronto - Sem 1, Mon 13:30-15:30 (#51)</option>
+            data-semester="Sem 1"
+
+            data-course="History of the European Union" data-day="Mon" data-start="13:30" data-end="15:30"
+            >History of the European Union - University of Toronto - Sem 1, Mon 13:30-15:30 (#51)</option>
 
 
 
           <option value="85"
             data-destination="3"
-            data-semester="Sem 2">Introduction to Abstract Algebra - University College London - Sem 2, Wed 08:30-09:30 (#85)</option>
+            data-semester="Sem 2"
+
+            data-course="Introduction to Abstract Algebra" data-day="Wed" data-start="08:30" data-end="09:30"
+            >Introduction to Abstract Algebra - University College London - Sem 2, Wed 08:30-09:30 (#85)</option>
 
 
 
           <option value="101"
             data-destination="3"
-            data-semester="Sem 1">Introduction to Accounting - University College London - Sem 1, Fri 11:30-13:30 (#101)</option>
+            data-semester="Sem 1"
+
+            data-course="Introduction to Accounting" data-day="Fri" data-start="11:30" data-end="13:30"
+            >Introduction to Accounting - University College London - Sem 1, Fri 11:30-13:30 (#101)</option>
 
 
 
           <option value="24"
             data-destination="2"
-            data-semester="Sem 1">Introduction to Accounting - University of Toronto - Sem 1, Wed 14:30-16:30 (#24)</option>
+            data-semester="Sem 1"
+
+            data-course="Introduction to Accounting" data-day="Wed" data-start="14:30" data-end="16:30"
+            >Introduction to Accounting - University of Toronto - Sem 1, Wed 14:30-16:30 (#24)</option>
 
 
 
           <option value="141"
             data-destination="3"
-            data-semester="Sem 1">Introduction to Data Science - University College London - Sem 1, Fri 14:30-15:30 (#141)</option>
+            data-semester="Sem 1"
+
+            data-course="Introduction to Data Science" data-day="Fri" data-start="14:30" data-end="15:30"
+            >Introduction to Data Science - University College London - Sem 1, Fri 14:30-15:30 (#141)</option>
 
 
 
           <option value="1"
             data-destination="2"
-            data-semester="Sem 1">Introduction to Machine Learning - University of Toronto - Sem 1, Wed 14:30-16:30 (#1)</option>
+            data-semester="Sem 1"
+
+            data-course="Introduction to Machine Learning" data-day="Wed" data-start="14:30" data-end="16:30"
+            >Introduction to Machine Learning - University of Toronto - Sem 1, Wed 14:30-16:30 (#1)</option>
 
 
 
           <option value="62"
             data-destination="2"
-            data-semester="Sem 1">Introduction to Marketing - University of Toronto - Sem 1, Tue 08:30-11:30 (#62)</option>
+            data-semester="Sem 1"
+
+            data-course="Introduction to Marketing" data-day="Tue" data-start="08:30" data-end="11:30"
+            >Introduction to Marketing - University of Toronto - Sem 1, Tue 08:30-11:30 (#62)</option>
 
 
 
           <option value="69"
             data-destination="2"
-            data-semester="Sem 1">Introduction to Probability - University of Toronto - Sem 1, Thu 17:30-20:30 (#69)</option>
+            data-semester="Sem 1"
+
+            data-course="Introduction to Probability" data-day="Thu" data-start="17:30" data-end="20:30"
+            >Introduction to Probability - University of Toronto - Sem 1, Thu 17:30-20:30 (#69)</option>
 
 
 
           <option value="70"
             data-destination="2"
-            data-semester="Sem 2">Introduction to Probability - University of Toronto - Sem 2, Fri 13:30-15:30 (#70)</option>
+            data-semester="Sem 2"
+
+            data-course="Introduction to Probability" data-day="Fri" data-start="13:30" data-end="15:30"
+            >Introduction to Probability - University of Toronto - Sem 2, Fri 13:30-15:30 (#70)</option>
 
 
 
           <option value="46"
             data-destination="2"
-            data-semester="Sem 2">Introduction to Semantics - University of Toronto - Sem 2, Mon 12:00-14:00 (#46)</option>
+            data-semester="Sem 2"
+
+            data-course="Introduction to Semantics" data-day="Mon" data-start="12:00" data-end="14:00"
+            >Introduction to Semantics - University of Toronto - Sem 2, Mon 12:00-14:00 (#46)</option>
 
 
 
           <option value="122"
             data-destination="3"
-            data-semester="Sem 2">Introduction to Syntax - University College London - Sem 2, Thu 14:00-15:00 (#122)</option>
+            data-semester="Sem 2"
+
+            data-course="Introduction to Syntax" data-day="Thu" data-start="14:00" data-end="15:00"
+            >Introduction to Syntax - University College London - Sem 2, Thu 14:00-15:00 (#122)</option>
 
 
 
           <option value="95"
             data-destination="3"
-            data-semester="Sem 1">Labour Economics - University College London - Sem 1, Fri 12:00-14:00 (#95)</option>
+            data-semester="Sem 1"
+
+            data-course="Labour Economics" data-day="Fri" data-start="12:00" data-end="14:00"
+            >Labour Economics - University College London - Sem 1, Fri 12:00-14:00 (#95)</option>
 
 
 
           <option value="96"
             data-destination="3"
-            data-semester="Sem 2">Labour Economics - University College London - Sem 2, Fri 14:30-16:30 (#96)</option>
+            data-semester="Sem 2"
+
+            data-course="Labour Economics" data-day="Fri" data-start="14:30" data-end="16:30"
+            >Labour Economics - University College London - Sem 2, Fri 14:30-16:30 (#96)</option>
 
 
 
           <option value="20"
             data-destination="2"
-            data-semester="Sem 1">Labour Economics - University of Toronto - Sem 1, Thu 14:00-16:00 (#20)</option>
+            data-semester="Sem 1"
+
+            data-course="Labour Economics" data-day="Thu" data-start="14:00" data-end="16:00"
+            >Labour Economics - University of Toronto - Sem 1, Thu 14:00-16:00 (#20)</option>
 
 
 
           <option value="120"
             data-destination="3"
-            data-semester="Sem 1">Language and Identity - University College London - Sem 1, Tue 11:30-13:30 (#120)</option>
+            data-semester="Sem 1"
+
+            data-course="Language and Identity" data-day="Tue" data-start="11:30" data-end="13:30"
+            >Language and Identity - University College London - Sem 1, Tue 11:30-13:30 (#120)</option>
 
 
 
           <option value="48"
             data-destination="2"
-            data-semester="Sem 2">Language and Identity - University of Toronto - Sem 2, Fri 15:30-18:30 (#48)</option>
+            data-semester="Sem 2"
+
+            data-course="Language and Identity" data-day="Fri" data-start="15:30" data-end="18:30"
+            >Language and Identity - University of Toronto - Sem 2, Fri 15:30-18:30 (#48)</option>
 
 
 
           <option value="47"
             data-destination="2"
-            data-semester="Sem 2">Language and Mind - University of Toronto - Sem 2, Mon 10:00-11:00 (#47)</option>
+            data-semester="Sem 2"
+
+            data-course="Language and Mind" data-day="Mon" data-start="10:00" data-end="11:00"
+            >Language and Mind - University of Toronto - Sem 2, Mon 10:00-11:00 (#47)</option>
 
 
 
           <option value="143"
             data-destination="3"
-            data-semester="Sem 1">Linear Models - University College London - Sem 1, Mon 17:00-18:00 (#143)</option>
+            data-semester="Sem 1"
+
+            data-course="Linear Models" data-day="Mon" data-start="17:00" data-end="18:00"
+            >Linear Models - University College London - Sem 1, Mon 17:00-18:00 (#143)</option>
 
 
 
           <option value="65"
             data-destination="2"
-            data-semester="Sem 1">Linear Models - University of Toronto - Sem 1, Fri 12:00-14:00 (#65)</option>
+            data-semester="Sem 1"
+
+            data-course="Linear Models" data-day="Fri" data-start="12:00" data-end="14:00"
+            >Linear Models - University of Toronto - Sem 1, Fri 12:00-14:00 (#65)</option>
 
 
 
           <option value="66"
             data-destination="2"
-            data-semester="Sem 2">Linear Models - University of Toronto - Sem 2, Thu 12:00-15:00 (#66)</option>
+            data-semester="Sem 2"
+
+            data-course="Linear Models" data-day="Thu" data-start="12:00" data-end="15:00"
+            >Linear Models - University of Toronto - Sem 2, Thu 12:00-15:00 (#66)</option>
 
 
 
           <option value="27"
             data-destination="2"
-            data-semester="Sem 1">Managing Financial Risk - University of Toronto - Sem 1, Tue 12:30-13:30 (#27)</option>
+            data-semester="Sem 1"
+
+            data-course="Managing Financial Risk" data-day="Tue" data-start="12:30" data-end="13:30"
+            >Managing Financial Risk - University of Toronto - Sem 1, Tue 12:30-13:30 (#27)</option>
 
 
 
           <option value="135"
             data-destination="3"
-            data-semester="Sem 2">Market Research Methods - University College London - Sem 2, Mon 09:30-11:30 (#135)</option>
+            data-semester="Sem 2"
+
+            data-course="Market Research Methods" data-day="Mon" data-start="09:30" data-end="11:30"
+            >Market Research Methods - University College London - Sem 2, Mon 09:30-11:30 (#135)</option>
 
 
 
           <option value="138"
             data-destination="3"
-            data-semester="Sem 2">Marketing Management - University College London - Sem 2, Tue 16:30-18:30 (#138)</option>
+            data-semester="Sem 2"
+
+            data-course="Marketing Management" data-day="Tue" data-start="16:30" data-end="18:30"
+            >Marketing Management - University College London - Sem 2, Tue 16:30-18:30 (#138)</option>
 
 
 
           <option value="134"
             data-destination="3"
-            data-semester="Sem 2">Marketing of Services - University College London - Sem 2, Thu 17:30-19:30 (#134)</option>
+            data-semester="Sem 2"
+
+            data-course="Marketing of Services" data-day="Thu" data-start="17:30" data-end="19:30"
+            >Marketing of Services - University College London - Sem 2, Thu 17:30-19:30 (#134)</option>
 
 
 
           <option value="59"
             data-destination="2"
-            data-semester="Sem 1">Marketing of Services - University of Toronto - Sem 1, Mon 13:30-14:30 (#59)</option>
+            data-semester="Sem 1"
+
+            data-course="Marketing of Services" data-day="Mon" data-start="13:30" data-end="14:30"
+            >Marketing of Services - University of Toronto - Sem 1, Mon 13:30-14:30 (#59)</option>
 
 
 
           <option value="142"
             data-destination="3"
-            data-semester="Sem 2">Mathematical Statistics - University College London - Sem 2, Thu 15:30-17:30 (#142)</option>
+            data-semester="Sem 2"
+
+            data-course="Mathematical Statistics" data-day="Thu" data-start="15:30" data-end="17:30"
+            >Mathematical Statistics - University College London - Sem 2, Thu 15:30-17:30 (#142)</option>
 
 
 
           <option value="150"
             data-destination="3"
-            data-semester="Sem 1">Mathematics for Physicists - University College London - Sem 1, Wed 15:30-16:30 (#150)</option>
+            data-semester="Sem 1"
+
+            data-course="Mathematics for Physicists" data-day="Wed" data-start="15:30" data-end="16:30"
+            >Mathematics for Physicists - University College London - Sem 1, Wed 15:30-16:30 (#150)</option>
 
 
 
           <option value="151"
             data-destination="3"
-            data-semester="Sem 2">Mathematics for Physicists - University College London - Sem 2, Fri 15:30-16:30 (#151)</option>
+            data-semester="Sem 2"
+
+            data-course="Mathematics for Physicists" data-day="Fri" data-start="15:30" data-end="16:30"
+            >Mathematics for Physicists - University College London - Sem 2, Fri 15:30-16:30 (#151)</option>
 
 
 
           <option value="8"
             data-destination="2"
-            data-semester="Sem 1">Matrices and Linear Algebra - University of Toronto - Sem 1, Fri 12:00-14:00 (#8)</option>
+            data-semester="Sem 1"
+
+            data-course="Matrices and Linear Algebra" data-day="Fri" data-start="12:00" data-end="14:00"
+            >Matrices and Linear Algebra - University of Toronto - Sem 1, Fri 12:00-14:00 (#8)</option>
 
 
 
           <option value="123"
             data-destination="3"
-            data-semester="Sem 1">Meaning in Language - University College London - Sem 1, Wed 12:00-15:00 (#123)</option>
+            data-semester="Sem 1"
+
+            data-course="Meaning in Language" data-day="Wed" data-start="12:00" data-end="15:00"
+            >Meaning in Language - University College London - Sem 1, Wed 12:00-15:00 (#123)</option>
 
 
 
           <option value="124"
             data-destination="3"
-            data-semester="Sem 2">Meaning in Language - University College London - Sem 2, Wed 10:00-13:00 (#124)</option>
+            data-semester="Sem 2"
+
+            data-course="Meaning in Language" data-day="Wed" data-start="10:00" data-end="13:00"
+            >Meaning in Language - University College London - Sem 2, Wed 10:00-13:00 (#124)</option>
 
 
 
           <option value="40"
             data-destination="2"
-            data-semester="Sem 2">Mechanics - University of Toronto - Sem 2, Wed 16:30-17:30 (#40)</option>
+            data-semester="Sem 2"
+
+            data-course="Mechanics" data-day="Wed" data-start="16:30" data-end="17:30"
+            >Mechanics - University of Toronto - Sem 2, Wed 16:30-17:30 (#40)</option>
 
 
 
           <option value="106"
             data-destination="3"
-            data-semester="Sem 2">Memory and Cognition - University College London - Sem 2, Wed 11:30-14:30 (#106)</option>
+            data-semester="Sem 2"
+
+            data-course="Memory and Cognition" data-day="Wed" data-start="11:30" data-end="14:30"
+            >Memory and Cognition - University College London - Sem 2, Wed 11:30-14:30 (#106)</option>
 
 
 
           <option value="16"
             data-destination="2"
-            data-semester="Sem 2">Microeconomic Theory - University of Toronto - Sem 2, Fri 10:30-11:30 (#16)</option>
+            data-semester="Sem 2"
+
+            data-course="Microeconomic Theory" data-day="Fri" data-start="10:30" data-end="11:30"
+            >Microeconomic Theory - University of Toronto - Sem 2, Fri 10:30-11:30 (#16)</option>
 
 
 
           <option value="33"
             data-destination="2"
-            data-semester="Sem 1">Mind and Behaviour - University of Toronto - Sem 1, Tue 08:30-10:30 (#33)</option>
+            data-semester="Sem 1"
+
+            data-course="Mind and Behaviour" data-day="Tue" data-start="08:30" data-end="10:30"
+            >Mind and Behaviour - University of Toronto - Sem 1, Tue 08:30-10:30 (#33)</option>
 
 
 
           <option value="55"
             data-destination="2"
-            data-semester="Sem 2">Modern China and Japan - University of Toronto - Sem 2, Thu 10:00-12:00 (#55)</option>
+            data-semester="Sem 2"
+
+            data-course="Modern China and Japan" data-day="Thu" data-start="10:00" data-end="12:00"
+            >Modern China and Japan - University of Toronto - Sem 2, Thu 10:00-12:00 (#55)</option>
 
 
 
           <option value="38"
             data-destination="2"
-            data-semester="Sem 2">Modern Physics - University of Toronto - Sem 2, Thu 17:00-18:00 (#38)</option>
+            data-semester="Sem 2"
+
+            data-course="Modern Physics" data-day="Thu" data-start="17:00" data-end="18:00"
+            >Modern Physics - University of Toronto - Sem 2, Thu 17:00-18:00 (#38)</option>
 
 
 
           <option value="145"
             data-destination="3"
-            data-semester="Sem 1">Multivariate Analysis - University College London - Sem 1, Mon 15:30-17:30 (#145)</option>
+            data-semester="Sem 1"
+
+            data-course="Multivariate Analysis" data-day="Mon" data-start="15:30" data-end="17:30"
+            >Multivariate Analysis - University College London - Sem 1, Mon 15:30-17:30 (#145)</option>
 
 
 
           <option value="73"
             data-destination="2"
-            data-semester="Sem 2">Multivariate Analysis - University of Toronto - Sem 2, Tue 11:00-14:00 (#73)</option>
+            data-semester="Sem 2"
+
+            data-course="Multivariate Analysis" data-day="Tue" data-start="11:00" data-end="14:00"
+            >Multivariate Analysis - University of Toronto - Sem 2, Tue 11:00-14:00 (#73)</option>
 
 
 
           <option value="88"
             data-destination="3"
-            data-semester="Sem 1">Number Theory - University College London - Sem 1, Mon 08:00-10:00 (#88)</option>
+            data-semester="Sem 1"
+
+            data-course="Number Theory" data-day="Mon" data-start="08:00" data-end="10:00"
+            >Number Theory - University College London - Sem 1, Mon 08:00-10:00 (#88)</option>
 
 
 
           <option value="13"
             data-destination="2"
-            data-semester="Sem 2">Number Theory - University of Toronto - Sem 2, Fri 10:30-13:30 (#13)</option>
+            data-semester="Sem 2"
+
+            data-course="Number Theory" data-day="Fri" data-start="10:30" data-end="13:30"
+            >Number Theory - University of Toronto - Sem 2, Fri 10:30-13:30 (#13)</option>
 
 
 
           <option value="136"
             data-destination="3"
-            data-semester="Sem 1">Online Marketing - University College London - Sem 1, Wed 12:30-13:30 (#136)</option>
+            data-semester="Sem 1"
+
+            data-course="Online Marketing" data-day="Wed" data-start="12:30" data-end="13:30"
+            >Online Marketing - University College London - Sem 1, Wed 12:30-13:30 (#136)</option>
 
 
 
           <option value="137"
             data-destination="3"
-            data-semester="Sem 2">Online Marketing - University College London - Sem 2, Fri 08:00-11:00 (#137)</option>
+            data-semester="Sem 2"
+
+            data-course="Online Marketing" data-day="Fri" data-start="08:00" data-end="11:00"
+            >Online Marketing - University College London - Sem 2, Fri 08:00-11:00 (#137)</option>
 
 
 
           <option value="78"
             data-destination="3"
-            data-semester="Sem 1">Operating Systems Principles - University College London - Sem 1, Tue 14:30-16:30 (#78)</option>
+            data-semester="Sem 1"
+
+            data-course="Operating Systems Principles" data-day="Tue" data-start="14:30" data-end="16:30"
+            >Operating Systems Principles - University College London - Sem 1, Tue 14:30-16:30 (#78)</option>
 
 
 
           <option value="2"
             data-destination="2"
-            data-semester="Sem 2">Operating Systems Principles - University of Toronto - Sem 2, Tue 14:00-16:00 (#2)</option>
+            data-semester="Sem 2"
+
+            data-course="Operating Systems Principles" data-day="Tue" data-start="14:00" data-end="16:00"
+            >Operating Systems Principles - University of Toronto - Sem 2, Tue 14:00-16:00 (#2)</option>
 
 
 
           <option value="117"
             data-destination="3"
-            data-semester="Sem 1">Optics - University College London - Sem 1, Wed 13:30-15:30 (#117)</option>
+            data-semester="Sem 1"
+
+            data-course="Optics" data-day="Wed" data-start="13:30" data-end="15:30"
+            >Optics - University College London - Sem 1, Wed 13:30-15:30 (#117)</option>
 
 
 
           <option value="42"
             data-destination="2"
-            data-semester="Sem 1">Optics - University of Toronto - Sem 1, Wed 16:00-19:00 (#42)</option>
+            data-semester="Sem 1"
+
+            data-course="Optics" data-day="Wed" data-start="16:00" data-end="19:00"
+            >Optics - University of Toronto - Sem 1, Wed 16:00-19:00 (#42)</option>
 
 
 
           <option value="43"
             data-destination="2"
-            data-semester="Sem 2">Optics - University of Toronto - Sem 2, Thu 08:30-10:30 (#43)</option>
+            data-semester="Sem 2"
+
+            data-course="Optics" data-day="Thu" data-start="08:30" data-end="10:30"
+            >Optics - University of Toronto - Sem 2, Thu 08:30-10:30 (#43)</option>
 
 
 
           <option value="44"
             data-destination="2"
-            data-semester="Sem 2">Particle Physics - University of Toronto - Sem 2, Tue 08:00-09:00 (#44)</option>
+            data-semester="Sem 2"
+
+            data-course="Particle Physics" data-day="Tue" data-start="08:00" data-end="09:00"
+            >Particle Physics - University of Toronto - Sem 2, Tue 08:00-09:00 (#44)</option>
 
 
 
           <option value="121"
             data-destination="3"
-            data-semester="Sem 1">Phonetics - University College London - Sem 1, Wed 11:00-13:00 (#121)</option>
+            data-semester="Sem 1"
+
+            data-course="Phonetics" data-day="Wed" data-start="11:00" data-end="13:00"
+            >Phonetics - University College London - Sem 1, Wed 11:00-13:00 (#121)</option>
 
 
 
           <option value="99"
             data-destination="3"
-            data-semester="Sem 2">Portfolio Management - University College London - Sem 2, Wed 15:30-17:30 (#99)</option>
+            data-semester="Sem 2"
+
+            data-course="Portfolio Management" data-day="Wed" data-start="15:30" data-end="17:30"
+            >Portfolio Management - University College London - Sem 2, Wed 15:30-17:30 (#99)</option>
 
 
 
           <option value="19"
             data-destination="2"
-            data-semester="Sem 1">Principles of Macroeconomics - University of Toronto - Sem 1, Thu 14:30-17:30 (#19)</option>
+            data-semester="Sem 1"
+
+            data-course="Principles of Macroeconomics" data-day="Thu" data-start="14:30" data-end="17:30"
+            >Principles of Macroeconomics - University of Toronto - Sem 1, Thu 14:30-17:30 (#19)</option>
 
 
 
           <option value="90"
             data-destination="3"
-            data-semester="Sem 2">Principles of Microeconomics - University College London - Sem 2, Thu 14:30-16:30 (#90)</option>
+            data-semester="Sem 2"
+
+            data-course="Principles of Microeconomics" data-day="Thu" data-start="14:30" data-end="16:30"
+            >Principles of Microeconomics - University College London - Sem 2, Thu 14:30-16:30 (#90)</option>
 
 
 
           <option value="68"
             data-destination="2"
-            data-semester="Sem 2">Principles of Statistical Inference - University of Toronto - Sem 2, Mon 08:00-10:00 (#68)</option>
+            data-semester="Sem 2"
+
+            data-course="Principles of Statistical Inference" data-day="Mon" data-start="08:00" data-end="10:00"
+            >Principles of Statistical Inference - University of Toronto - Sem 2, Mon 08:00-10:00 (#68)</option>
 
 
 
           <option value="125"
             data-destination="3"
-            data-semester="Sem 2">Psycholinguistics - University College London - Sem 2, Tue 16:00-18:00 (#125)</option>
+            data-semester="Sem 2"
+
+            data-course="Psycholinguistics" data-day="Tue" data-start="16:00" data-end="18:00"
+            >Psycholinguistics - University College London - Sem 2, Tue 16:00-18:00 (#125)</option>
 
 
 
           <option value="49"
             data-destination="2"
-            data-semester="Sem 2">Psycholinguistics - University of Toronto - Sem 2, Thu 11:30-13:30 (#49)</option>
+            data-semester="Sem 2"
+
+            data-course="Psycholinguistics" data-day="Thu" data-start="11:30" data-end="13:30"
+            >Psycholinguistics - University of Toronto - Sem 2, Thu 11:30-13:30 (#49)</option>
 
 
 
           <option value="74"
             data-destination="2"
-            data-semester="Sem 2">Public Finance - University of Toronto - Sem 2, Mon 08:30-11:30 (#74)</option>
+            data-semester="Sem 2"
+
+            data-course="Public Finance" data-day="Mon" data-start="08:30" data-end="11:30"
+            >Public Finance - University of Toronto - Sem 2, Mon 08:30-11:30 (#74)</option>
 
 
 
           <option value="113"
             data-destination="3"
-            data-semester="Sem 1">Quantum Theory - University College London - Sem 1, Wed 08:30-09:30 (#113)</option>
+            data-semester="Sem 1"
+
+            data-course="Quantum Theory" data-day="Wed" data-start="08:30" data-end="09:30"
+            >Quantum Theory - University College London - Sem 1, Wed 08:30-09:30 (#113)</option>
 
 
 
           <option value="114"
             data-destination="3"
-            data-semester="Sem 2">Quantum Theory - University College London - Sem 2, Fri 17:00-20:00 (#114)</option>
+            data-semester="Sem 2"
+
+            data-course="Quantum Theory" data-day="Fri" data-start="17:00" data-end="20:00"
+            >Quantum Theory - University College London - Sem 2, Fri 17:00-20:00 (#114)</option>
 
 
 
           <option value="29"
             data-destination="2"
-            data-semester="Sem 2">Real Estate Finance - University of Toronto - Sem 2, Wed 14:30-15:30 (#29)</option>
+            data-semester="Sem 2"
+
+            data-course="Real Estate Finance" data-day="Wed" data-start="14:30" data-end="15:30"
+            >Real Estate Finance - University of Toronto - Sem 2, Wed 14:30-15:30 (#29)</option>
 
 
 
           <option value="61"
             data-destination="2"
-            data-semester="Sem 2">Research for Marketing Decisions - University of Toronto - Sem 2, Mon 17:00-20:00 (#61)</option>
+            data-semester="Sem 2"
+
+            data-course="Research for Marketing Decisions" data-day="Mon" data-start="17:00" data-end="20:00"
+            >Research for Marketing Decisions - University of Toronto - Sem 2, Mon 17:00-20:00 (#61)</option>
 
 
 
           <option value="140"
             data-destination="3"
-            data-semester="Sem 1">Retail Marketing - University College London - Sem 1, Tue 17:30-20:30 (#140)</option>
+            data-semester="Sem 1"
+
+            data-course="Retail Marketing" data-day="Tue" data-start="17:30" data-end="20:30"
+            >Retail Marketing - University College London - Sem 1, Tue 17:30-20:30 (#140)</option>
 
 
 
           <option value="63"
             data-destination="2"
-            data-semester="Sem 2">Retail Marketing - University of Toronto - Sem 2, Thu 09:00-11:00 (#63)</option>
+            data-semester="Sem 2"
+
+            data-course="Retail Marketing" data-day="Thu" data-start="09:00" data-end="11:00"
+            >Retail Marketing - University of Toronto - Sem 2, Thu 09:00-11:00 (#63)</option>
 
 
 
           <option value="144"
             data-destination="3"
-            data-semester="Sem 2">Sample Surveys - University College London - Sem 2, Thu 16:30-18:30 (#144)</option>
+            data-semester="Sem 2"
+
+            data-course="Sample Surveys" data-day="Thu" data-start="16:30" data-end="18:30"
+            >Sample Surveys - University College London - Sem 2, Thu 16:30-18:30 (#144)</option>
 
 
 
           <option value="126"
             data-destination="3"
-            data-semester="Sem 2">Second Language Acquisition - University College London - Sem 2, Mon 16:30-17:30 (#126)</option>
+            data-semester="Sem 2"
+
+            data-course="Second Language Acquisition" data-day="Mon" data-start="16:30" data-end="17:30"
+            >Second Language Acquisition - University College London - Sem 2, Mon 16:30-17:30 (#126)</option>
 
 
 
           <option value="45"
             data-destination="2"
-            data-semester="Sem 2">Sentence Structure - University of Toronto - Sem 2, Mon 17:00-18:00 (#45)</option>
+            data-semester="Sem 2"
+
+            data-course="Sentence Structure" data-day="Mon" data-start="17:00" data-end="18:00"
+            >Sentence Structure - University of Toronto - Sem 2, Mon 17:00-18:00 (#45)</option>
 
 
 
           <option value="148"
             data-destination="3"
-            data-semester="Sem 1">Social Behaviour - University College London - Sem 1, Fri 09:00-11:00 (#148)</option>
+            data-semester="Sem 1"
+
+            data-course="Social Behaviour" data-day="Fri" data-start="09:00" data-end="11:00"
+            >Social Behaviour - University College London - Sem 1, Fri 09:00-11:00 (#148)</option>
 
 
 
           <option value="149"
             data-destination="3"
-            data-semester="Sem 2">Social Behaviour - University College London - Sem 2, Mon 11:00-13:00 (#149)</option>
+            data-semester="Sem 2"
+
+            data-course="Social Behaviour" data-day="Mon" data-start="11:00" data-end="13:00"
+            >Social Behaviour - University College London - Sem 2, Mon 11:00-13:00 (#149)</option>
 
 
 
           <option value="76"
             data-destination="3"
-            data-semester="Sem 2">Software Construction - University College London - Sem 2, Wed 08:30-10:30 (#76)</option>
+            data-semester="Sem 2"
+
+            data-course="Software Construction" data-day="Wed" data-start="08:30" data-end="10:30"
+            >Software Construction - University College London - Sem 2, Wed 08:30-10:30 (#76)</option>
 
 
 
           <option value="3"
             data-destination="2"
-            data-semester="Sem 2">Software Engineering Principles - University of Toronto - Sem 2, Thu 13:30-16:30 (#3)</option>
+            data-semester="Sem 2"
+
+            data-course="Software Engineering Principles" data-day="Thu" data-start="13:30" data-end="16:30"
+            >Software Engineering Principles - University of Toronto - Sem 2, Thu 13:30-16:30 (#3)</option>
 
 
 
           <option value="111"
             data-destination="3"
-            data-semester="Sem 1">Statistical Mechanics - University College London - Sem 1, Wed 14:30-16:30 (#111)</option>
+            data-semester="Sem 1"
+
+            data-course="Statistical Mechanics" data-day="Wed" data-start="14:30" data-end="16:30"
+            >Statistical Mechanics - University College London - Sem 1, Wed 14:30-16:30 (#111)</option>
 
 
 
           <option value="112"
             data-destination="3"
-            data-semester="Sem 2">Statistical Mechanics - University College London - Sem 2, Tue 09:30-11:30 (#112)</option>
+            data-semester="Sem 2"
+
+            data-course="Statistical Mechanics" data-day="Tue" data-start="09:30" data-end="11:30"
+            >Statistical Mechanics - University College London - Sem 2, Tue 09:30-11:30 (#112)</option>
 
 
 
           <option value="41"
             data-destination="2"
-            data-semester="Sem 2">Statistical Physics - University of Toronto - Sem 2, Mon 13:30-14:30 (#41)</option>
+            data-semester="Sem 2"
+
+            data-course="Statistical Physics" data-day="Mon" data-start="13:30" data-end="14:30"
+            >Statistical Physics - University of Toronto - Sem 2, Mon 13:30-14:30 (#41)</option>
 
 
 
           <option value="67"
             data-destination="2"
-            data-semester="Sem 1">Survey Design and Analysis - University of Toronto - Sem 1, Mon 14:00-16:00 (#67)</option>
+            data-semester="Sem 1"
+
+            data-course="Survey Design and Analysis" data-day="Mon" data-start="14:00" data-end="16:00"
+            >Survey Design and Analysis - University of Toronto - Sem 1, Mon 14:00-16:00 (#67)</option>
 
 
 
           <option value="91"
             data-destination="3"
-            data-semester="Sem 1">The Global Economy - University College London - Sem 1, Tue 14:00-17:00 (#91)</option>
+            data-semester="Sem 1"
+
+            data-course="The Global Economy" data-day="Tue" data-start="14:00" data-end="17:00"
+            >The Global Economy - University College London - Sem 1, Tue 14:00-17:00 (#91)</option>
 
 
 
           <option value="92"
             data-destination="3"
-            data-semester="Sem 2">The Global Economy - University College London - Sem 2, Wed 17:00-18:00 (#92)</option>
+            data-semester="Sem 2"
+
+            data-course="The Global Economy" data-day="Wed" data-start="17:00" data-end="18:00"
+            >The Global Economy - University College London - Sem 2, Wed 17:00-18:00 (#92)</option>
 
 
 
           <option value="146"
             data-destination="3"
-            data-semester="Sem 1">Time Series Analysis - University College London - Sem 1, Tue 08:00-10:00 (#146)</option>
+            data-semester="Sem 1"
+
+            data-course="Time Series Analysis" data-day="Tue" data-start="08:00" data-end="10:00"
+            >Time Series Analysis - University College London - Sem 1, Tue 08:00-10:00 (#146)</option>
 
 
 
           <option value="147"
             data-destination="3"
-            data-semester="Sem 2">Time Series Analysis - University College London - Sem 2, Mon 12:30-13:30 (#147)</option>
+            data-semester="Sem 2"
+
+            data-course="Time Series Analysis" data-day="Mon" data-start="12:30" data-end="13:30"
+            >Time Series Analysis - University College London - Sem 2, Mon 12:30-13:30 (#147)</option>
 
 
 
           <option value="71"
             data-destination="2"
-            data-semester="Sem 1">Time Series Analysis - University of Toronto - Sem 1, Tue 11:00-13:00 (#71)</option>
+            data-semester="Sem 1"
+
+            data-course="Time Series Analysis" data-day="Tue" data-start="11:00" data-end="13:00"
+            >Time Series Analysis - University of Toronto - Sem 1, Tue 11:00-13:00 (#71)</option>
 
 
 
           <option value="72"
             data-destination="2"
-            data-semester="Sem 2">Time Series Analysis - University of Toronto - Sem 2, Tue 11:30-13:30 (#72)</option>
+            data-semester="Sem 2"
+
+            data-course="Time Series Analysis" data-day="Tue" data-start="11:30" data-end="13:30"
+            >Time Series Analysis - University of Toronto - Sem 2, Tue 11:30-13:30 (#72)</option>
 
 
 
           <option value="12"
             data-destination="2"
-            data-semester="Sem 2">Topology - University of Toronto - Sem 2, Tue 14:00-16:00 (#12)</option>
+            data-semester="Sem 2"
+
+            data-course="Topology" data-day="Tue" data-start="14:00" data-end="16:00"
+            >Topology - University of Toronto - Sem 2, Tue 14:00-16:00 (#12)</option>
 
         </select>
 
@@ -998,12 +1457,15 @@
     <button type="submit" class="primary-button">Check clashes</button>
   </form>
 
+  </details>
 
 
 
 
-  <div id="preview-result" aria-live="polite" data-empty-message="No results match these filters."
+
+  <div id="preview-result" aria-live="polite" data-empty-message="No classes overlap with the selected offering."
        data-hidden-columns=""></div>
+
 
 
 
@@ -1024,8 +1486,11 @@
 
 
 
+<script src="../../static/feature-results.js?v=6beabffcf631" defer></script>
+
+
 <script src="../../static/sql-wasm.js?v=d6a9cc234ef1" defer></script>
-<script src="../../static/preview.js?v=66158257ca14" defer></script>
+<script src="../../static/preview.js?v=d5debc08cf63" defer></script>
 
 </body>
 </html>

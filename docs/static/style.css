@@ -20,7 +20,7 @@
 #exchange-planner [hidden] { display: none !important; }
 #exchange-planner :is(h1,h2,p) { margin: 0; color: inherit; }
 #exchange-planner input, #exchange-planner select, #exchange-planner button { font: inherit; }
-#exchange-planner :is(button,select,input):focus-visible {
+#exchange-planner :is(a,button,select,input,summary,[tabindex]):focus-visible {
   outline: 2px solid var(--blue);
   outline-offset: 2px;
 }
@@ -87,10 +87,10 @@
 #exchange-planner .stop strong { display: block; margin-top: 2px; font-size: 15px; line-height: 1.25; }
 #exchange-planner .route-term { display: inline-block; margin-top: 4px; color: var(--blue); font-size: 12px; font-weight: 550; }
 #exchange-planner .context {
-  display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap;
-  background: var(--page); padding: 15px clamp(16px, 5%, 52px);
+  display: flex; align-items: center; justify-content: space-between; gap: 8px 14px; flex-wrap: wrap;
+  background: var(--page); padding: 9px clamp(16px, 5%, 52px);
 }
-#exchange-planner .context-universities { display: flex; align-items: center; gap: 5px 7px; flex-wrap: wrap; margin-top: 4px; }
+#exchange-planner .context-universities { display: flex; align-items: center; gap: 5px 7px; flex-wrap: wrap; }
 #exchange-planner .plan-campus { display: inline-flex; align-items: center; gap: 6px; }
 #exchange-planner .plan-campus .campus-mark { width: 28px; height: 28px; }
 #exchange-planner .context-text strong { font-size: 16px; }
@@ -113,10 +113,20 @@
   background: var(--sheet); color: var(--quiet);
 }
 #exchange-planner .modes [aria-current="page"] { border-color: var(--blue); color: var(--blue); background: var(--blue-wash); font-weight: 600; }
-#exchange-planner .filter-line { max-width: 445px; }
-#exchange-planner .results-count { margin-top: 15px; font-size: 12px; color: var(--quiet); }
+#exchange-planner .course-filters {
+  margin-top: 16px; padding: 12px; border: 1px solid var(--rule);
+  border-radius: 10px; background: var(--page);
+}
+#exchange-planner .course-filters .modes { margin: 0; }
+#exchange-planner .course-filters .form { margin-top: 10px; }
+#exchange-planner .course-summary { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; padding: 13px 0 9px; }
+#exchange-planner .results-count { font-weight: 650; }
+#exchange-planner .applied-filter {
+  padding: 3px 8px; border-radius: 6px; background: var(--blue-wash); color: var(--blue); font-size: 13px;
+}
+#exchange-planner :is(.filter-reset,.offering-filter summary) { color: var(--blue); font-weight: 600; }
+#exchange-planner .filter-reset { padding: 5px 0; text-underline-offset: 3px; }
 #exchange-planner .course-row { padding: 12px 0; border-top: 1px solid var(--rule); }
-#exchange-planner .course-row:first-child { margin-top: 7px; }
 #exchange-planner .course-main { display: flex; justify-content: space-between; align-items: start; gap: 8px 14px; flex-wrap: wrap; }
 #exchange-planner .course-title h2 { font-size: 18px; line-height: 1.2; font-weight: 650; }
 #exchange-planner .course-meta { margin-top: 3px; font-size: 13px; color: var(--quiet); }
@@ -126,6 +136,8 @@
 #exchange-planner .row-action { padding: 4px 0; min-height: 30px; border: 0; background: transparent; color: var(--blue); font-weight: 600; text-align: left; }
 #exchange-planner .row-action:hover, #exchange-planner .row-action[aria-expanded="true"] { text-decoration: underline; text-underline-offset: 3px; }
 #exchange-planner .course-detail { margin-top: 6px; padding: 8px 11px; background: var(--page); border-left: 3px solid var(--blue); }
+#exchange-planner .course-details { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 255px), 1fr)); gap: 10px; }
+#exchange-planner .course-detail h3 { margin: 0 0 3px; font-size: 13px; }
 #exchange-planner .empty-message { padding: 14px 0; color: var(--quiet); }
 #exchange-planner .visually-hidden {
   position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap;
@@ -163,6 +175,25 @@
 #exchange-planner .block.error { color: light-dark(#951c22, #ffadb4); }
 #exchange-planner .result-head { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 14px; gap: 12px; }
 #exchange-planner .result-head h2 { font-size: 16px; font-weight: 650; }
+#exchange-planner .result-scope { padding: 0 14px 10px; color: var(--quiet); font-size: 13px; }
+#exchange-planner .selected-offering {
+  padding: 11px 14px; margin-top: 10px; border-radius: 8px;
+  background: var(--blue-wash); border-left: 3px solid var(--blue);
+}
+#exchange-planner .selected-offering strong { font-size: 16px; }
+#exchange-planner .offering-filter { margin-top: 10px; }
+#exchange-planner .offering-filter summary { cursor: pointer; padding: 6px 0; }
+#exchange-planner .offering-filter .form { margin-top: 6px; }
+#exchange-planner .schedule-list ul { list-style: none; margin: 0; padding: 0; }
+#exchange-planner .schedule-day {
+  margin: 0; padding: 7px 14px; background: var(--page); font-size: 13px; border-top: 1px solid var(--rule);
+}
+#exchange-planner .schedule-row {
+  display: grid; grid-template-columns: minmax(160px, 1fr) auto auto; align-items: center; gap: 4px 12px;
+  padding: 10px 14px; border-top: 1px solid var(--rule);
+}
+#exchange-planner .overlap-time { color: var(--match); font-weight: 650; }
+#exchange-planner .metric-note { display: block; color: var(--quiet); font-size: 12px; }
 #exchange-planner :is(.count,.null) { color: var(--quiet); }
 #exchange-planner .empty { padding: 0 14px 12px; }
 #exchange-planner .table-wrap { overflow-x: auto; }
@@ -170,48 +201,48 @@
 #exchange-planner .data :is(td,th) { padding: 9px 12px; text-align: left; border-top: 1px solid var(--rule); }
 #exchange-planner .data th { background: var(--page); white-space: nowrap; }
 #exchange-planner .insight-tools {
-  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 16px 0;
+  display: flex; flex-wrap: wrap; gap: 6px; margin: 11px 0;
 }
 #exchange-planner .insight-tools a {
-  display: grid; align-content: start; gap: 4px; padding: 12px;
-  border: 1px solid var(--rule); border-radius: 8px; background: var(--sheet);
-  color: var(--ink); text-decoration: none; line-height: 1.35;
+  display: inline-flex; align-items: center; padding: 6px 10px; min-height: 36px;
+  border: 1px solid var(--rule); border-radius: 6px; background: var(--sheet);
+  color: var(--ink); text-decoration: none; line-height: 1.3;
 }
-#exchange-planner .insight-tools a span { color: var(--quiet); font-size: 13px; }
 #exchange-planner .insight-tools a:hover { border-color: var(--blue); }
 #exchange-planner .insight-tools [aria-current="page"] {
-  border-color: var(--blue); box-shadow: inset 0 0 0 1px var(--blue);
-  background: var(--blue-wash);
+  border-color: var(--blue); color: var(--blue); font-weight: 650; background: var(--blue-wash);
 }
-#exchange-planner .insight-tools [aria-current="page"] strong { color: var(--blue); }
-#exchange-planner .insight-panel {
-  padding: clamp(12px, 2vw, 22px); border: 1px solid var(--rule); border-radius: 10px;
-}
-#exchange-planner .insight-panel > h2 { font-size: 19px; line-height: 1.3; }
-#exchange-planner .insight-panel .feature-description { margin-top: 4px; }
+#exchange-planner .insight-panel .form { margin-top: 8px; }
 #exchange-planner .insight-panel .block:last-child { margin-bottom: 0; }
 #exchange-planner .insight-panel .data tbody tr:nth-child(even) { background: var(--page); }
 #exchange-planner :is(pre,code,.mono) { font-family: ui-monospace, monospace; }
 #exchange-planner pre { white-space: pre-wrap; }
 
 @media (max-width: 720px) {
-  #exchange-planner .insight-tools { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  #exchange-planner .insight-panel .data,
-  #exchange-planner .insight-panel .data tbody { display: block; }
-  #exchange-planner .insight-panel .data thead {
+  #exchange-planner.tool-page .identity { min-height: 52px; padding-block: 8px; }
+  #exchange-planner.tool-page .identity .campus-mark { width: 28px; height: 28px; }
+  #exchange-planner .context-text strong { font-size: 14px; }
+  #exchange-planner .context-universities .campus-mark { width: 21px; height: 21px; }
+  #exchange-planner .course-content { padding-top: 16px; }
+  #exchange-planner .schedule-row { grid-template-columns: 1fr; }
+  #exchange-planner .data, #exchange-planner .data tbody { display: block; }
+  #exchange-planner .data thead {
     position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%);
   }
-  #exchange-planner .insight-panel .data tbody tr {
+  #exchange-planner .data tbody tr {
     display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
     padding: 8px 12px; border-top: 1px solid var(--rule);
   }
-  #exchange-planner .insight-panel .data td { padding: 4px 0; border: 0; }
-  #exchange-planner .insight-panel .data td:first-child { grid-column: 1 / -1; font-weight: 650; }
-  #exchange-planner .insight-panel .data td:not(:first-child)::before {
+  #exchange-planner .data td { padding: 4px 0; border: 0; }
+  #exchange-planner .data td:first-child { grid-column: 1 / -1; font-weight: 650; }
+  #exchange-planner .data td:not(:first-child)::before {
     content: attr(data-label) / "";
     display: block; color: var(--quiet); font-size: 12px;
   }
 }
 @media (max-width: 430px) {
   #exchange-planner .form label { max-width: none; }
+  #exchange-planner .course-filters .form label { flex-basis: 135px; }
+  #exchange-planner .workspace-nav { column-gap: 12px; font-size: 13px; }
+  #exchange-planner .context .quiet-button { min-height: 30px; }
 }

@@ -71,7 +71,7 @@ def main():
     SITE.mkdir(exist_ok=True)
     static = SITE / "static"
     static.mkdir(exist_ok=True)
-    for asset in ("style.css", "plan.js", "course-results.js"):
+    for asset in ("style.css", "plan.js", "course-results.js", "feature-results.js"):
         shutil.copyfile(PROJECT / "app/static" / asset, static / asset)
     shutil.copytree(PROJECT / "app/static/campus", static / "campus", dirs_exist_ok=True)
     (SITE / ".nojekyll").touch()

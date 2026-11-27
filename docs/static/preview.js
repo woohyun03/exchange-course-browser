@@ -21,78 +21,6 @@ async function fetchAsset(path) {
   return response;
 }
 
-function addCell(row, tag, text) {
-  const cell = document.createElement(tag);
-  cell.textContent = text;
-  row.append(cell);
-  return cell;
-}
-
-function showTable(columns, rows, labels, limit) {
-  const hidden = (results.dataset.hiddenColumns ?? "").split(",");
-  const visible = columns.map((key, index) => ({
-    key, index, label: labels[key] ?? key[0].toUpperCase() + key.slice(1),
-  })).filter((column) => !hidden.includes(column.key));
-  const section = document.createElement("section");
-  section.className = "block flat";
-  section.setAttribute("aria-labelledby", "results-heading");
-
-  const heading = document.createElement("div");
-  heading.className = "result-head";
-  const title = document.createElement("h2");
-  title.id = "results-heading";
-  title.textContent = "Results";
-  const count = document.createElement("span");
-  count.className = "count";
-  count.textContent = rows.length > limit
-    ? `First ${limit} results`
-    : `${rows.length} ${rows.length === 1 ? "result" : "results"}`;
-  heading.append(title, count);
-  section.append(heading);
-
-  if (rows.length === 0) {
-    const empty = document.createElement("p");
-    empty.className = "empty";
-    empty.textContent = results.dataset.emptyMessage ?? "No results match these filters.";
-    section.append(empty);
-  } else {
-    const wrapper = document.createElement("div");
-    wrapper.className = "table-wrap";
-    wrapper.tabIndex = 0;
-    wrapper.setAttribute("role", "region");
-    wrapper.setAttribute("aria-label", "Query results table");
-    const table = document.createElement("table");
-    table.className = "data";
-    table.setAttribute("role", "table");
-    const head = table.createTHead();
-    head.setAttribute("role", "rowgroup");
-    const header = head.insertRow();
-    header.setAttribute("role", "row");
-    for (const { label } of visible) {
-      const cell = addCell(header, "th", label);
-      cell.setAttribute("role", "columnheader");
-      cell.scope = "col";
-    }
-    const body = table.createTBody();
-    body.setAttribute("role", "rowgroup");
-    for (const values of rows.slice(0, limit)) {
-      const row = body.insertRow();
-      row.setAttribute("role", "row");
-      for (const { index, label } of visible) {
-        const value = values[index];
-        const cell = addCell(row, "td", value === null ? "NULL" : String(value));
-        cell.setAttribute("role", "cell");
-        cell.dataset.label = label;
-        if (value === null) cell.className = "null";
-      }
-    }
-    wrapper.append(table);
-    section.append(wrapper);
-  }
-
-  results.replaceChildren(section);
-}
-
 async function displayResults() {
   const fields = [...form.querySelectorAll("[name]:not([data-plan-context])")];
   const number = Number(form.dataset.feature);
@@ -148,7 +76,7 @@ async function displayResults() {
         keepDatabase = true;
         results.replaceChildren();
       } else {
-        showTable(columns, rows, config.columnLabels, config.limit);
+        window.renderFeatureResults(columns, rows.slice(0, config.limit), config.columnLabels, rows.length > config.limit);
       }
     } finally {
       statement.free();
