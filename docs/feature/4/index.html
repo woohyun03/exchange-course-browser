@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Find courses without a final exam · Exchange Planner</title>
-  <link rel="stylesheet" href="../../static/style.css?v=a115eb07ba44">
+  <link rel="stylesheet" href="../../static/style.css?v=75b02a69559b">
 </head>
 <body id="exchange-planner" class="tool-page">
 <header class="identity">
@@ -40,7 +40,7 @@
   </div>
   <nav class="workspace-nav" aria-label="Exchange tools">
 
-    <a href="../1/" data-plan-link
+    <a href="../1/" data-plan-link data-courses-entry
        aria-current="true">Courses</a>
 
     <a href="../5/" data-plan-link
@@ -53,7 +53,7 @@
        >Insights</a>
 
     <a href="../../my-plan/" data-plan-link
-       >My Plan</a>
+       >My Plan <span data-plan-count hidden></span></a>
   </nav>
 
 
@@ -65,18 +65,23 @@
 
   <div class="course-filters">
 
+  <details class="course-views" open><summary>More course views</summary>
   <nav class="modes" aria-label="Courses tools">
 
     <a href="../1/" data-plan-link
+       data-courses-entry
        >Search by name</a>
 
     <a href="../2/" data-plan-link
+
        >By department</a>
 
     <a href="./" data-plan-link
+
        aria-current="page">No final exam</a>
 
   </nav>
+  </details>
 
 
 
@@ -135,6 +140,7 @@
 
     </label>
 
+
     <button type="submit" class="primary-button">Find exam-free courses</button>
   </form>
 
@@ -188,19 +194,19 @@
 </template>
 <script id="exchange-choices" type="application/json">{"destinations": [[3, "University College London"], [2, "University of Toronto"]], "semesters": ["Sem 1", "Sem 2"]}</script>
 <script id="campus-photos" type="application/json">{"2": {"alt": "Entrance to University College at the University of Toronto", "city": "Toronto, Canada", "credit": "City of Toronto", "file": "toronto.jpg", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0/", "mark": "toronto", "source": "https://commons.wikimedia.org/wiki/File:University_College_in_Toronto.jpg"}, "3": {"alt": "Columns of the University College London portico", "city": "London, United Kingdom", "credit": "Raya Sharbain", "file": "ucl.jpg", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0/", "mark": "ucl", "source": "https://commons.wikimedia.org/wiki/File:Portico_of_University_College_London.jpg"}}</script>
-<script src="../../static/plan.js?v=59c875cf1458" defer></script>
-
-
-
-<script src="../../static/my-plan.js?v=c7a9e3830c28" defer></script>
-
-
-<script src="../../static/course-results.js?v=c1f792d8a99b" defer></script>
+<script src="../../static/plan.js?v=439967dee5aa" defer></script>
 
 
 
 <script src="../../static/sql-wasm.js?v=d6a9cc234ef1" defer></script>
-<script src="../../static/preview.js?v=986b47dc19ff" defer></script>
+<script src="../../static/preview.js?v=9c83424c8660" defer></script>
+
+
+<script src="../../static/my-plan.js?v=4b7e3d259822" defer></script>
+
+
+<script src="../../static/course-results.js?v=b2d80e3b2567" defer></script>
+
 
 </body>
 </html>

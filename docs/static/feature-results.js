@@ -39,7 +39,7 @@
     return schedule;
   }
 
-  async function addScheduleControls(destination, options) {
+  async function addScheduleControls(destination, options, selected) {
     if (!destination || !window.exchangePlan || options.length === 0) return;
     let catalogue;
     try {
@@ -52,6 +52,33 @@
       return;
     }
     const byOffering = new Map(catalogue.map(course => [course.offeringID, course]));
+    const clashRows = options.filter(option => option.row.conflictingCourse);
+    const schedule = target.querySelector(".schedule-list");
+    let updateGroups;
+    if (selected && schedule && clashRows.length) {
+      const plannedTitle = element("h3", "schedule-day", "In My Plan");
+      const planned = element("ul");
+      const empty = element("p", "result-scope", "No overlapping classes in My Plan.");
+      const otherTitle = element("h3", "schedule-day", "Other overlapping classes");
+      const other = element("ul");
+      schedule.replaceChildren(plannedTitle, planned, empty, otherTitle, other);
+      updateGroups = () => {
+        const focused = document.activeElement;
+        const saved = window.exchangePlan.savedOfferings(destination, selected.semester, catalogue);
+        for (const { container, row } of clashRows) {
+          const list = saved.has(row.offeringID) ? planned : other;
+          if (container.parentNode !== list) list.append(container);
+        }
+        empty.hidden = planned.children.length > 0;
+        planned.hidden = planned.children.length === 0;
+        otherTitle.hidden = other.children.length === 0;
+        other.hidden = other.children.length === 0;
+        if (schedule.contains(focused) && document.activeElement !== focused) focused.focus();
+      };
+      updateGroups();
+      window.addEventListener("pageshow", updateGroups);
+      window.addEventListener("storage", updateGroups);
+    }
     for (const { container, row } of options) {
       let course = byOffering.get(row.offeringID);
       if (!course && !row.offeringID) {
@@ -64,7 +91,7 @@
       const save = element("button", "save-course");
       save.type = "button";
       save.hidden = true;
-      window.exchangePlan.bindCourse(save, destination, course.term, course);
+      window.exchangePlan.bindCourse(save, destination, course.term, course, updateGroups);
       container.append(save);
     }
   }
@@ -163,7 +190,7 @@
     target.replaceChildren(section);
     if (saveOptions.length) {
       const destination = selected?.destination ?? form.elements.namedItem("uni_id")?.value;
-      void addScheduleControls(destination, saveOptions);
+      void addScheduleControls(destination, saveOptions, selected);
     }
   };
 

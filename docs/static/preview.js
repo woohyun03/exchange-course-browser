@@ -54,7 +54,7 @@ window.loadPreviewPlanCatalogue = async function (destination) {
 };
 
 async function displayResults() {
-  const fields = [...form.querySelectorAll("[name]:not([data-plan-context])")];
+  const fields = [...form.querySelectorAll("[name]:not([data-plan-context],[data-catalogue-filter])")];
   const number = Number(form.dataset.feature);
   const planReady = Boolean(form.querySelector("[data-plan-context]"));
   const readyWithPlan = planReady && form.hasAttribute("data-run-with-plan") &&
@@ -115,8 +115,10 @@ async function displayResults() {
 }
 
 if (form) {
-  displayResults().catch((error) => {
-    console.error(error);
-    message("Could not load the results. Refresh and try again.");
-  });
+  document.addEventListener("DOMContentLoaded", () => {
+    displayResults().catch((error) => {
+      console.error(error);
+      message("Could not load the results. Refresh and try again.");
+    });
+  }, { once: true });
 }

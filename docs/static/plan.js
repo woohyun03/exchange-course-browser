@@ -56,10 +56,26 @@
   const context = { destination, semester };
   showPlan(chosenCampus, semester);
   route.hidden = false;
+  const filterNames = ["keyword", "department", "exam_free"];
+  const filterKey = `comp3278-exchange-planner:course-filters:${destination}:${semester}`;
+  let courseFilters = new URLSearchParams();
+  try {
+    if (mainForm?.dataset.feature === "1") {
+      for (const name of filterNames) if (params.get(name)) courseFilters.set(name, params.get(name));
+      sessionStorage.setItem(filterKey, courseFilters.toString());
+    } else {
+      courseFilters = new URLSearchParams(sessionStorage.getItem(filterKey) || "");
+    }
+  } catch {
+    // Current filters are still available in the address.
+  }
 
   for (const link of document.querySelectorAll("[data-plan-link]")) {
     const url = new URL(link.href);
     for (const [name, value] of Object.entries(context)) url.searchParams.set(name, value);
+    if (link.hasAttribute("data-courses-entry")) {
+      for (const name of filterNames) if (courseFilters.has(name)) url.searchParams.set(name, courseFilters.get(name));
+    }
     link.href = url.href;
   }
 

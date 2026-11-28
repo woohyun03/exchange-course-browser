@@ -105,6 +105,10 @@
 }
 #exchange-planner .workspace-nav a { padding: 11px 0; }
 #exchange-planner .workspace-nav [aria-current] { color: var(--blue); font-weight: 650; border-bottom: 2px solid var(--blue); }
+#exchange-planner [data-plan-count] {
+  margin-inline-start: 5px; padding: 1px 5px; border-radius: 5px; background: var(--blue-wash);
+  color: var(--blue); font-size: 12px; font-weight: 650;
+}
 #exchange-planner .course-content { padding: 25px clamp(16px, 5%, 52px) 26px; }
 #exchange-planner .course-content h1 { font-size: clamp(26px, 4vw, 36px); line-height: 1.1; letter-spacing: -.035em; }
 #exchange-planner .modes { display: flex; gap: 7px; flex-wrap: wrap; margin: 15px 0 10px; }
@@ -119,6 +123,8 @@
 }
 #exchange-planner .course-filters .modes { margin: 0; }
 #exchange-planner .course-filters .form { margin-top: 10px; }
+#exchange-planner .course-views summary { color: var(--blue); font-weight: 600; cursor: pointer; }
+#exchange-planner .course-views .modes { margin-block: 6px; }
 #exchange-planner .course-summary { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; padding: 13px 0 9px; }
 #exchange-planner .results-count { font-weight: 650; }
 #exchange-planner .applied-filter {
@@ -165,8 +171,27 @@
 }
 #exchange-planner .plan-setup-link { margin-top: 12px; }
 #exchange-planner .term-plans {
-  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 16px;
+  margin-top: 12px;
 }
+#exchange-planner .term-switcher {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 14px;
+}
+#exchange-planner .term-switcher button {
+  display: grid; align-content: start; gap: 3px; padding: 8px 10px; text-align: left; cursor: pointer;
+  border: 1px solid var(--rule); border-radius: 8px; background: var(--sheet); color: var(--ink);
+}
+#exchange-planner .term-switcher button[aria-pressed="true"] { background: var(--blue-wash); border-color: var(--blue); }
+#exchange-planner [data-term-summary] { color: var(--quiet); font-size: 12px; }
+#exchange-planner .plan-schedule {
+  border-radius: 7px; border-left: 3px solid var(--match); background: var(--match-wash);
+  margin-top: 12px; padding: 8px 10px;
+}
+#exchange-planner .plan-schedule[data-has-clash="true"] {
+  border-color: light-dark(#8a4a25, #ffc395); background: light-dark(#fff2e5, #382b24);
+}
+#exchange-planner .plan-schedule ul { padding-inline-start: 18px; margin: 4px 0 0; }
+#exchange-planner .planned-course-note { display: block; font-size: 13px; }
+#exchange-planner .planned-courses select { margin-top: 5px; }
 #exchange-planner .term-plan {
   padding: 15px; border: 1px solid var(--rule); border-radius: 10px;
 }
@@ -201,6 +226,10 @@
 }
 #exchange-planner .form label { flex: 1 1 185px; min-width: 0; max-width: 445px; }
 #exchange-planner .form .label { display: block; margin-bottom: 4px; font-weight: 600; }
+#exchange-planner .form .exam-filter {
+  display: flex; flex: 0 0 auto; gap: 8px; align-items: center; min-height: 44px; font-weight: 600;
+}
+#exchange-planner .exam-filter input { width: 18px; height: 18px; min-height: 0; margin: 0; }
 #exchange-planner .primary-button {
   min-height: 44px; padding: 8px 12px; border-radius: 7px; border: 1px solid var(--blue);
   background: var(--blue); color: var(--on-blue); font-weight: 650;
@@ -252,13 +281,13 @@
   border-color: var(--blue); color: var(--blue); font-weight: 650; background: var(--blue-wash);
 }
 #exchange-planner .insight-panel .form { margin-top: 8px; }
+#exchange-planner .sample-scope { color: var(--quiet); font-size: 13px; }
 #exchange-planner .insight-panel .block:last-child { margin-bottom: 0; }
 #exchange-planner .insight-panel .data tbody tr:nth-child(even) { background: var(--page); }
 #exchange-planner :is(pre,code,.mono) { font-family: ui-monospace, monospace; }
 #exchange-planner pre { white-space: pre-wrap; }
 
 @media (max-width: 720px) {
-  #exchange-planner .term-plans { grid-template-columns: minmax(0, 1fr); }
   #exchange-planner.tool-page .identity { min-height: 52px; padding-block: 8px; }
   #exchange-planner.tool-page .identity .campus-mark { width: 28px; height: 28px; }
   #exchange-planner .context-text strong { font-size: 14px; }
@@ -287,6 +316,13 @@
 @media (max-width: 430px) {
   #exchange-planner .form label { max-width: none; }
   #exchange-planner .course-filters .form label { flex-basis: 135px; }
-  #exchange-planner .workspace-nav { column-gap: 12px; font-size: 13px; }
+  #exchange-planner .workspace-nav {
+    display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); align-items: stretch;
+    gap: 4px; padding-inline: 9px; font-size: 12px;
+  }
+  #exchange-planner .workspace-nav a {
+    min-height: 44px; padding: 5px 1px; align-content: center; text-align: center; line-height: 1.25;
+  }
+  #exchange-planner [data-plan-count] { margin-inline-start: 2px; padding-inline: 3px; font-size: 11px; }
   #exchange-planner .context .quiet-button { min-height: 30px; }
 }

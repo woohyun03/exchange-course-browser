@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>My Plan · Exchange Planner</title>
-  <link rel="stylesheet" href="../static/style.css?v=a115eb07ba44">
+  <link rel="stylesheet" href="../static/style.css?v=75b02a69559b">
 </head>
 <body id="exchange-planner" class="tool-page">
 <header class="identity">
@@ -33,14 +33,14 @@
      data-destination-mark>
           <strong data-destination-name></strong>
         </span>
-        <span class="subtle" data-semester-name></span>
+        <span class="subtle" data-semester-name hidden></span>
       </div>
     </div>
     <a class="quiet-button" href="../" data-plan-link>Change plan</a>
   </div>
   <nav class="workspace-nav" aria-label="Exchange tools">
 
-    <a href="../feature/1/" data-plan-link
+    <a href="../feature/1/" data-plan-link data-courses-entry
        >Courses</a>
 
     <a href="../feature/5/" data-plan-link
@@ -53,7 +53,7 @@
        >Insights</a>
 
     <a href="./" data-plan-link
-       aria-current="true">My Plan</a>
+       aria-current="true">My Plan <span data-plan-count hidden></span></a>
   </nav>
 
 
@@ -65,10 +65,23 @@
   </div>
 
   <div data-personal-plan hidden>
-    <p class="feature-description">Add courses and set your credit target for each semester. Your plan is saved in this browser.</p>
+    <p class="feature-description">Compare your exchange credits and class times by semester. Your plan is saved in this browser.</p>
+    <div class="term-switcher" aria-label="Planning semester">
+
+      <button type="button" data-term-switch="Sem 1" aria-pressed="false" aria-controls="plan-panel-1">
+        <strong>Semester 1</strong>
+        <span data-term-summary></span>
+      </button>
+
+      <button type="button" data-term-switch="Sem 2" aria-pressed="false" aria-controls="plan-panel-2">
+        <strong>Semester 2</strong>
+        <span data-term-summary></span>
+      </button>
+
+    </div>
     <div class="term-plans">
 
-      <section class="term-plan" data-term="Sem 1" aria-labelledby="plan-term-1">
+      <section class="term-plan" data-term="Sem 1" id="plan-panel-1" aria-labelledby="plan-term-1" hidden>
         <div class="term-plan-head">
           <h2 id="plan-term-1">Semester 1</h2>
         </div>
@@ -78,6 +91,7 @@
           <input type="number" inputmode="numeric" min="1" max="999" step="1" placeholder="Enter a target" data-credit-target>
         </label>
         <p class="credit-status" role="status" data-credit-status></p>
+        <div class="plan-schedule" data-plan-schedule aria-live="polite"></div>
         <ul class="planned-courses" data-planned-courses></ul>
         <details class="plan-course-picker">
           <summary>Add courses</summary>
@@ -90,7 +104,7 @@
         </details>
       </section>
 
-      <section class="term-plan" data-term="Sem 2" aria-labelledby="plan-term-2">
+      <section class="term-plan" data-term="Sem 2" id="plan-panel-2" aria-labelledby="plan-term-2" hidden>
         <div class="term-plan-head">
           <h2 id="plan-term-2">Semester 2</h2>
         </div>
@@ -100,6 +114,7 @@
           <input type="number" inputmode="numeric" min="1" max="999" step="1" placeholder="Enter a target" data-credit-target>
         </label>
         <p class="credit-status" role="status" data-credit-status></p>
+        <div class="plan-schedule" data-plan-schedule aria-live="polite"></div>
         <ul class="planned-courses" data-planned-courses></ul>
         <details class="plan-course-picker">
           <summary>Add courses</summary>
@@ -127,19 +142,19 @@
 </template>
 <script id="exchange-choices" type="application/json">{"destinations": [[3, "University College London"], [2, "University of Toronto"]], "semesters": ["Sem 1", "Sem 2"]}</script>
 <script id="campus-photos" type="application/json">{"2": {"alt": "Entrance to University College at the University of Toronto", "city": "Toronto, Canada", "credit": "City of Toronto", "file": "toronto.jpg", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0/", "mark": "toronto", "source": "https://commons.wikimedia.org/wiki/File:University_College_in_Toronto.jpg"}, "3": {"alt": "Columns of the University College London portico", "city": "London, United Kingdom", "credit": "Raya Sharbain", "file": "ucl.jpg", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0/", "mark": "ucl", "source": "https://commons.wikimedia.org/wiki/File:Portico_of_University_College_London.jpg"}}</script>
-<script src="../static/plan.js?v=59c875cf1458" defer></script>
+<script src="../static/plan.js?v=439967dee5aa" defer></script>
 
 
 <script id="plan-catalogue-url" type="application/json">""</script>
 
 
-<script src="../static/my-plan.js?v=c7a9e3830c28" defer></script>
-
-
-
-
 <script src="../static/sql-wasm.js?v=d6a9cc234ef1" defer></script>
-<script src="../static/preview.js?v=986b47dc19ff" defer></script>
+<script src="../static/preview.js?v=9c83424c8660" defer></script>
+
+
+<script src="../static/my-plan.js?v=4b7e3d259822" defer></script>
+
+
 
 </body>
 </html>
